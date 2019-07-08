@@ -4,9 +4,86 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlatFileExporter"
+        xmlns:FlatFileExporter="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid HorizontalAlignment="Left" Height="59" Margin="10,10,0,0" VerticalAlignment="Top" Width="772"/>
+        <Menu
+  IsMainMenu="True">
+            <MenuItem
+    Header="_File">
+                <MenuItem
+      Header="Save">
+                    <MenuItem.Icon>
+                        <FlatFileExporter:PackIcon
+          Kind="ContentSave" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem
+      Header="Save As.." />
+                <MenuItem
+      Header="Exit"
+      InputGestureText="Ctrl+E">
+                    <MenuItem.Icon>
+                        <FlatFileExporter:PackIcon
+          Kind="ExitToApp" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem
+      Header="Excellent"
+      IsCheckable="True"
+      IsChecked="True" />
+                <MenuItem
+      Header="Rubbish"
+      IsCheckable="True" />
+                <MenuItem
+      Header="Dig Deeper"
+      InputGestureText="Ctrl+D">
+                    <MenuItem
+        Header="Enlightenment?"
+        IsCheckable="True" />
+                    <MenuItem
+        Header="Disappointment"
+        IsCheckable="True" />
+                </MenuItem>
+                <MenuItem
+      Header="Look Deeper"
+      InputGestureText="Ctrl+D">
+                    <MenuItem
+        Header="Plain" />
+                    <MenuItem
+        Header="Ice Cream" />
+                </MenuItem>
+            </MenuItem>
+            <MenuItem
+    Header="_Edit">
+                <MenuItem
+      Header="_Cut"
+      Command="Cut">
+                    <MenuItem.Icon>
+                        <FlatFileExporter:PackIcon
+          Kind="ContentCut" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem
+      Header="_Copy"
+      Command="Copy">
+                    <MenuItem.Icon>
+                        <FlatFileExporter:PackIcon
+          Kind="ContentCopy" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem
+      Header="_Paste"
+      Command="Paste">
+                    <MenuItem.Icon>
+                        <FlatFileExporter:PackIcon
+          Kind="ContentPaste" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>
