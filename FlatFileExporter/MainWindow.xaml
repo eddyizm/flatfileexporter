@@ -24,7 +24,8 @@
       Header="Save As.." />
                 <MenuItem
       Header="Exit"
-      InputGestureText="Ctrl+E">
+      InputGestureText="Ctrl+E"
+      Click="Menu_Exit_Click">
                     <MenuItem.Icon>
                         <FlatFileExporter:PackIcon
           Kind="ExitToApp" />

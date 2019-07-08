@@ -24,5 +24,10 @@ namespace FlatFileExporter
         {
             InitializeComponent();
         }
+
+        private void Menu_Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
