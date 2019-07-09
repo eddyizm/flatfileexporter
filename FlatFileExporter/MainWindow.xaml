@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FlatFileExporter"
         xmlns:FlatFileExporter="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize" Icon="ffe.ico">
     <Grid>
         <Grid HorizontalAlignment="Left" Height="59" Margin="10,10,0,0" VerticalAlignment="Top" Width="772"/>
         <Menu
@@ -44,7 +44,8 @@
       InputGestureText="Ctrl+D">
                     <MenuItem
         Header="Enlightenment?"
-        IsCheckable="True" />
+        IsCheckable="True" 
+        Click="Menu_Exe_Click" />
                     <MenuItem
         Header="Disappointment"
         IsCheckable="True" />

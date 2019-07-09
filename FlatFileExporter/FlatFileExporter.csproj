@@ -64,7 +64,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <None Include="Resources\flatfile_cli.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Resource Include="ffe.ico" />
+    <None Include="PythonCodeBase\dist\flatfile_cli.exe" />
     <Content Include="PythonCodeBase\flatfile_cli.py" />
     <Resource Include="PythonCodeBase\requirements.txt" />
     <Page Include="MainWindow.xaml">
