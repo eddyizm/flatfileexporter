@@ -74,12 +74,15 @@
         </Grid>
 
         <TextBox
-            Width="121"
-            FlatFileExporter:HintAssist.Hint="Floating Hint"
+            Width="281"
+            Margin="10,0,10,10"
+            FlatFileExporter:HintAssist.Hint="Select a Sql Script"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
         <Button
-            Width="100"
-            Content="_MID"
+            Name="btnOpenFile"
+            Width="60"
+            Click="BtnOpenFile_Click"
+            Content="_File"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Resource name: MaterialDesignRaisedButton" />
     </WrapPanel>
