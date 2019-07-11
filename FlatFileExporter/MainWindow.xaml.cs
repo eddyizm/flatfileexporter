@@ -52,5 +52,15 @@ namespace FlatFileExporter
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             openFileDialog.ShowDialog();
         }
+
+        private void PopupBox_Closed(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PopupBox_Opened(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -7,19 +7,23 @@
     xmlns:local="clr-namespace:FlatFileExporter"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
-    Width="800"
+    Width="400.837"
     Height="450"
     Icon="ffe.ico"
     ResizeMode="NoResize"
     mc:Ignorable="d">
     <WrapPanel
-        Width="763"
+        Width="373"
         Height="392"
         Margin="10,10,0,0"
         HorizontalAlignment="Left"
         VerticalAlignment="Top">
-        <Grid Width="762" Height="100">
-            <Menu IsMainMenu="True">
+        <Grid Width="363" Height="50">
+
+            <Menu
+                Height="50"
+                VerticalAlignment="Top"
+                IsMainMenu="True">
                 <MenuItem Header="_File">
                     <MenuItem Header="Save">
                         <MenuItem.Icon>
@@ -70,7 +74,9 @@
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
+
             </Menu>
+
         </Grid>
 
         <TextBox
@@ -78,6 +84,7 @@
             Margin="10,0,10,10"
             FlatFileExporter:HintAssist.Hint="Select a Sql Script"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+
         <Button
             Name="btnOpenFile"
             Width="60"
@@ -85,6 +92,46 @@
             Content="_File"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Resource name: MaterialDesignRaisedButton" />
+        <!--  Combo box to display servers. Add and save to settings  -->
+        <ComboBox
+            Width="279"
+            Margin="10,0,10,10"
+            FlatFileExporter:HintAssist.Hint="Select A Server"
+            FlatFileExporter:HintAssist.HintOpacity=".26"
+            IsEditable="True">
+            <ComboBoxItem>
+                Apple
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Banana
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Pear
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Orange
+            </ComboBoxItem>
+        </ComboBox>
+        <!--  Add / Remove Server box  -->
+        <FlatFileExporter:PopupBox
+            Closed="PopupBox_Closed"
+            Opened="PopupBox_Opened"
+            PlacementMode="BottomAndAlignCentres"
+            Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
+            ToolTip="PopupBox, Style MaterialDesignMultiFloatingActionPopupBox"
+            ToolTipService.Placement="Right">
+            <StackPanel>
+                <Button Opacity="0.5" ToolTip="One with custom opacity">
+                    1
+                </Button>
+                <Button ToolTip="Two">
+                    2
+                </Button>
+                <Button ToolTip="Three">
+                    3
+                </Button>
+            </StackPanel>
+        </FlatFileExporter:PopupBox>
     </WrapPanel>
 
 
