@@ -62,5 +62,10 @@ namespace FlatFileExporter
         {
 
         }
+
+        private void BtnAddServer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

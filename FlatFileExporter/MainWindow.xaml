@@ -12,12 +12,18 @@
     Icon="ffe.ico"
     ResizeMode="NoResize"
     mc:Ignorable="d">
+    <!--  *  -->
+    <!--  Wrap Panel to contain content  -->
+    <!--  *  -->
     <WrapPanel
         Width="373"
         Height="392"
         Margin="10,10,0,0"
         HorizontalAlignment="Left"
         VerticalAlignment="Top">
+        <!--  *  -->
+        <!--  Grid panel to house classic top level menu  -->
+        <!--  *  -->
         <Grid Width="363" Height="50">
 
             <Menu
@@ -92,10 +98,12 @@
             Content="_File"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Resource name: MaterialDesignRaisedButton" />
+        <!--  *  -->
         <!--  Combo box to display servers. Add and save to settings  -->
+        <!--  *  -->
         <ComboBox
             Width="279"
-            Margin="10,0,10,10"
+            Margin="10,20"
             FlatFileExporter:HintAssist.Hint="Select A Server"
             FlatFileExporter:HintAssist.HintOpacity=".26">
             <ComboBoxItem>
@@ -111,30 +119,19 @@
                 Orange
             </ComboBoxItem>
         </ComboBox>
-        <!--  Add / Remove Server box  -->
-        <FlatFileExporter:PopupBox
-            Closed="PopupBox_Closed"
-            Opened="PopupBox_Opened"
-            PlacementMode="BottomAndAlignCentres"
-            Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
-            ToolTip="PopupBox, Style MaterialDesignMultiFloatingActionPopupBox"
-            ToolTipService.Placement="Right">
-            <StackPanel>
-                <Button Opacity="0.5" ToolTip="One with custom opacity">
-                    1
-                </Button>
-                <Button ToolTip="Two">
-                    2
-                </Button>
-                <Button ToolTip="Three">
-                    3
-                </Button>
-            </StackPanel>
-        </FlatFileExporter:PopupBox>
+        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" ToolTip="MaterialDesignFloatingActionMiniLightButton">
+            <FlatFileExporter:PackIcon
+                Width="24"
+                Height="24"
+                Kind="ServerPlus" />
+        </Button>
+
+        <!--  *  -->
         <!--  Combo box to select databases. Add and save to settings  -->
+        <!--  *  -->
         <ComboBox
             Width="279"
-            Margin="10,0,10,10"
+            Margin="10,20"
             FlatFileExporter:HintAssist.Hint="Select A Database"
             FlatFileExporter:HintAssist.HintOpacity=".26">
             <ComboBoxItem>
@@ -151,29 +148,18 @@
             </ComboBoxItem>
         </ComboBox>
         <!--  Add / Remove Database box  -->
-        <FlatFileExporter:PopupBox
-            Closed="PopupBox_Closed"
-            Opened="PopupBox_Opened"
-            PlacementMode="BottomAndAlignCentres"
-            Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
-            ToolTip="PopupBox, Style MaterialDesignMultiFloatingActionPopupBox"
-            ToolTipService.Placement="Right">
-            <StackPanel>
-                <Button Opacity="0.5" ToolTip="One with custom opacity">
-                    1
-                </Button>
-                <Button ToolTip="Two">
-                    2
-                </Button>
-                <Button ToolTip="Three">
-                    3
-                </Button>
-            </StackPanel>
-        </FlatFileExporter:PopupBox>
+        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" ToolTip="MaterialDesignFloatingActionMiniLightButton">
+            <FlatFileExporter:PackIcon
+                Width="24"
+                Height="24"
+                Kind="DatabasePlus" />
+        </Button>
+        <!--  *  -->
         <!--  Combo box to select file extension.  -->
+        <!--  *  -->
         <ComboBox
             Width="279"
-            Margin="10,0,10,10"
+            Margin="10,20"
             FlatFileExporter:HintAssist.Hint="Select A File Extension (FileType)"
             FlatFileExporter:HintAssist.HintOpacity=".26">
             <ComboBoxItem>
@@ -187,6 +173,27 @@
             </ComboBoxItem>
 
         </ComboBox>
+        <!--  *  -->
+        <!--  Combo box to select delimiter.  -->
+        <!--  TODO Disable or hide this in code behind when XLSX is selectd for file extension *  -->
+        <ComboBox
+            Width="279"
+            Margin="10,20"
+            FlatFileExporter:HintAssist.Hint="Select A Delimiter"
+            FlatFileExporter:HintAssist.HintOpacity=".26">
+            <ComboBoxItem>
+                t (tab)
+            </ComboBoxItem>
+            <ComboBoxItem>
+                , (comma)
+            </ComboBoxItem>
+            <ComboBoxItem>
+                | (pipe)
+            </ComboBoxItem>
+
+        </ComboBox>
+
+
 
     </WrapPanel>
 
