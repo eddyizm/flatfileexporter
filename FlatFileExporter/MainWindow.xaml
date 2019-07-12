@@ -97,8 +97,7 @@
             Width="279"
             Margin="10,0,10,10"
             FlatFileExporter:HintAssist.Hint="Select A Server"
-            FlatFileExporter:HintAssist.HintOpacity=".26"
-            IsEditable="True">
+            FlatFileExporter:HintAssist.HintOpacity=".26">
             <ComboBoxItem>
                 Apple
             </ComboBoxItem>
@@ -132,6 +131,63 @@
                 </Button>
             </StackPanel>
         </FlatFileExporter:PopupBox>
+        <!--  Combo box to select databases. Add and save to settings  -->
+        <ComboBox
+            Width="279"
+            Margin="10,0,10,10"
+            FlatFileExporter:HintAssist.Hint="Select A Database"
+            FlatFileExporter:HintAssist.HintOpacity=".26">
+            <ComboBoxItem>
+                Apple
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Banana
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Pear
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Orange
+            </ComboBoxItem>
+        </ComboBox>
+        <!--  Add / Remove Database box  -->
+        <FlatFileExporter:PopupBox
+            Closed="PopupBox_Closed"
+            Opened="PopupBox_Opened"
+            PlacementMode="BottomAndAlignCentres"
+            Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
+            ToolTip="PopupBox, Style MaterialDesignMultiFloatingActionPopupBox"
+            ToolTipService.Placement="Right">
+            <StackPanel>
+                <Button Opacity="0.5" ToolTip="One with custom opacity">
+                    1
+                </Button>
+                <Button ToolTip="Two">
+                    2
+                </Button>
+                <Button ToolTip="Three">
+                    3
+                </Button>
+            </StackPanel>
+        </FlatFileExporter:PopupBox>
+        <!--  Combo box to select file extension.  -->
+        <ComboBox
+            Width="279"
+            Margin="10,0,10,10"
+            FlatFileExporter:HintAssist.Hint="Select A File Extension (FileType)"
+            FlatFileExporter:HintAssist.HintOpacity=".26">
+            <ComboBoxItem>
+                TXT
+            </ComboBoxItem>
+            <ComboBoxItem>
+                CSV
+            </ComboBoxItem>
+            <ComboBoxItem>
+                XLSX
+            </ComboBoxItem>
+
+        </ComboBox>
+
     </WrapPanel>
 
 
