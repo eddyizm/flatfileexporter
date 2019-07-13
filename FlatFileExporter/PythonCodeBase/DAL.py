@@ -13,10 +13,26 @@ directory = ''
 __version__= '0.0.0.1' 
 
 DB_STRING = 'DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={};Trusted_Connection=yes;DATABASE={}'	
+ODBC_MISSING_MSG = '''ODBC driver not found
+please install ODBC Driver 17 for SQL Server
+https://www.microsoft.com/en-us/download/details.aspx?id=56567'''
 
-# TODO check for ODBC drivers
 def check_odbc() -> bool:
-  return True
+  try:
+    drivers = db.drivers()
+    if drivers:
+      print('checking for \'ODBC Driver 17 for SQL Server\' driver')
+      for driver in drivers:
+        if driver== 'ODBC Driver 17 for SQL Server':
+          return True
+      else:
+        print(ODBC_MISSING_MSG)
+        return False    
+    else:
+      print(ODBC_MISSING_MSG)
+      return False
+  except Exception as ex:
+    print (ex)    
 
 
 
