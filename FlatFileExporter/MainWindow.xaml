@@ -199,17 +199,19 @@
         <Button
             x:Name="btnGenerateFile"
             Width="161"
+            Margin="10"
             Click="BtnGenerateFile_Click"
             Content="_Generate File"
             Style="{StaticResource MaterialDesignRaisedButton}"
-            ToolTip="Resource name: MaterialDesignRaisedButton" Margin="10" />
+            ToolTip="Resource name: MaterialDesignRaisedButton" />
         <Button
             x:Name="btnClear"
             Width="161"
+            Margin="10"
             Click="BtnClear_Click"
             Content="_Clear"
             Style="{StaticResource MaterialDesignRaisedButton}"
-            ToolTip="Resource name: MaterialDesignRaisedButton" Margin="10" />
+            ToolTip="Resource name: MaterialDesignRaisedButton" />
 
 
 
