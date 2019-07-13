@@ -6,18 +6,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:FlatFileExporter"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="MainWindow"
-    Width="400.837"
-    Height="450"
+    Title="Flat File Exporter"
+    Width="397.918"
+    Height="506"
     Icon="ffe.ico"
     ResizeMode="NoResize"
+    WindowStyle="ThreeDBorderWindow"
     mc:Ignorable="d">
     <!--  *  -->
     <!--  Wrap Panel to contain content  -->
     <!--  *  -->
     <WrapPanel
         Width="373"
-        Height="392"
+        Height="446"
         Margin="10,10,0,0"
         HorizontalAlignment="Left"
         VerticalAlignment="Top">
@@ -192,6 +193,23 @@
             </ComboBoxItem>
 
         </ComboBox>
+        <!--  *  -->
+        <!--  Generate file and clear buttons  -->
+        <!--  *  -->
+        <Button
+            x:Name="btnGenerateFile"
+            Width="161"
+            Click="BtnGenerateFile_Click"
+            Content="_Generate File"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            ToolTip="Resource name: MaterialDesignRaisedButton" Margin="10" />
+        <Button
+            x:Name="btnClear"
+            Width="161"
+            Click="BtnClear_Click"
+            Content="_Clear"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            ToolTip="Resource name: MaterialDesignRaisedButton" Margin="10" />
 
 
 

@@ -67,5 +67,15 @@ namespace FlatFileExporter
         {
 
         }
+
+        private void BtnGenerateFile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnClear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
