@@ -51,7 +51,7 @@
                         Header="Excellent"
                         IsCheckable="True"
                         IsChecked="True" />
-                    <MenuItem Header="Rubbish" IsCheckable="True" />
+
                     <MenuItem Header="Dig Deeper" InputGestureText="Ctrl+D">
                         <MenuItem
                             Click="Menu_Exe_Click"
@@ -88,7 +88,7 @@
             Name="btnOpenFile"
             Click="BtnOpenFile_Click"
             Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-            ToolTip="MaterialDesignFloatingActionMiniLightButton">
+            ToolTip="Find your SQL script!">
             <FlatFileExporter:PackIcon
                 Width="24"
                 Height="24"
@@ -116,7 +116,7 @@
                 Orange
             </ComboBoxItem>
         </ComboBox>
-        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" ToolTip="MaterialDesignFloatingActionMiniLightButton">
+        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" ToolTip="Add A Server">
             <FlatFileExporter:PackIcon
                 Width="24"
                 Height="24"
@@ -145,7 +145,7 @@
             </ComboBoxItem>
         </ComboBox>
         <!--  Add / Remove Database box  -->
-        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" ToolTip="MaterialDesignFloatingActionMiniLightButton">
+        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" ToolTip="Add A Database">
             <FlatFileExporter:PackIcon
                 Width="24"
                 Height="24"
@@ -199,7 +199,7 @@
             Click="BtnGenerateFile_Click"
             Content="_Generate File"
             Style="{StaticResource MaterialDesignRaisedButton}"
-            ToolTip="Resource name: MaterialDesignRaisedButton" />
+            ToolTip="Generate File!" />
         <Button
             x:Name="btnClear"
             Width="161"
@@ -207,7 +207,7 @@
             Click="BtnClear_Click"
             Content="_Clear"
             Style="{StaticResource MaterialDesignRaisedButton}"
-            ToolTip="Resource name: MaterialDesignRaisedButton" />
+            ToolTip="Clear and reset form!" />
 
 
 
