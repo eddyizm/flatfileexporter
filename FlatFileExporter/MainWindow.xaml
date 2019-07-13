@@ -61,7 +61,7 @@
                     </MenuItem>
 
                 </MenuItem>
-                <MenuItem Header="_Add">
+                <MenuItem Header="_Tools">
                     <MenuItem Header="_Database">
                         <MenuItem.Icon>
                             <FlatFileExporter:PackIcon Kind="Database" />
@@ -72,6 +72,15 @@
                             <FlatFileExporter:PackIcon Kind="Server" />
                         </MenuItem.Icon>
                     </MenuItem>
+
+                </MenuItem>
+                <MenuItem Header="_Help">
+                    <MenuItem Header="About...">
+                        <MenuItem.Icon>
+                            <FlatFileExporter:PackIcon Kind="About" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+
 
                 </MenuItem>
 
