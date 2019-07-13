@@ -34,18 +34,7 @@ namespace FlatFileExporter
             Application.Current.Shutdown();
         }
 
-        private void Menu_Exe_Click(object sender, RoutedEventArgs e)
-        {
-
-            var folder = Environment.CurrentDirectory;
-            var ff_cli = Path.Combine(folder, "Resources\\flatfile_cli.exe");
-            MessageBox.Show(ff_cli);
-            ProcessStartInfo processStartInfo = new ProcessStartInfo(ff_cli);
-            Process p = Process.Start(processStartInfo);
-            p.WaitForExit();
-            
-        }
-
+        
         private void BtnOpenFile_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -70,7 +59,13 @@ namespace FlatFileExporter
 
         private void BtnGenerateFile_Click(object sender, RoutedEventArgs e)
         {
-
+            // this needs to be wrapped into a seperate function and possibly class.
+            var folder = Environment.CurrentDirectory;
+            var ff_cli = Path.Combine(folder, "Resources\\flatfile_cli.exe");
+            MessageBox.Show(ff_cli);
+            ProcessStartInfo processStartInfo = new ProcessStartInfo(ff_cli);
+            Process p = Process.Start(processStartInfo);
+            p.WaitForExit();
         }
 
         private void BtnClear_Click(object sender, RoutedEventArgs e)

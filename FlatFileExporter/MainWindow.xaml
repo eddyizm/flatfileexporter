@@ -53,10 +53,7 @@
                         IsChecked="True" />
 
                     <MenuItem Header="Dig Deeper" InputGestureText="Ctrl+D">
-                        <MenuItem
-                            Click="Menu_Exe_Click"
-                            Header="Enlightenment?"
-                            IsCheckable="True" />
+                        <MenuItem Header="Enlightenment?" IsCheckable="True" />
                         <MenuItem Header="Disappointment" IsCheckable="True" />
                     </MenuItem>
 
