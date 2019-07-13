@@ -91,14 +91,17 @@
             Margin="10,0,10,10"
             FlatFileExporter:HintAssist.Hint="Select a Sql Script"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-
         <Button
             Name="btnOpenFile"
-            Width="60"
             Click="BtnOpenFile_Click"
-            Content="_File"
-            Style="{StaticResource MaterialDesignRaisedButton}"
-            ToolTip="Resource name: MaterialDesignRaisedButton" />
+            Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+            ToolTip="MaterialDesignFloatingActionMiniLightButton">
+            <FlatFileExporter:PackIcon
+                Width="24"
+                Height="24"
+                Kind="FileFind" />
+        </Button>
+
         <!--  *  -->
         <!--  Combo box to display servers. Add and save to settings  -->
         <!--  *  -->
