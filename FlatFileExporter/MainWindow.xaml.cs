@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,13 +31,25 @@ namespace FlatFileExporter
             InitializeComponent();
             PopulateServerItems();
 
+            //// TODO // may need to pull this from python cli instead or figure out a way to keep them in sync. 
+            //// Check version. 
+            //var ver = typeof(MainWindow).Assembly.GetName().Version.ToString();
+            //MessageBox.Show(ver);
+            ///
+
+            
+            //SettingsDebugMethod();
+        }
+
+        private static void SettingsDebugMethod()
+        {
             // check settings 
             Console.WriteLine("--------------------DEBUGGING-------------------------------");
             MessageBox.Show("--------------------DEBUGGING-------------------------------");
             MessageBox.Show(Properties.Settings.Default.IsFirstRun.ToString());
             Console.WriteLine(Properties.Settings.Default.IsFirstRun.ToString());
-            
-            if (Properties.Settings.Default.IsFirstRun == true )
+
+            if (Properties.Settings.Default.IsFirstRun == true)
             {
                 Properties.Settings.Default.IsFirstRun = false;
                 MessageBox.Show("Moving into if statement and changing to false");
