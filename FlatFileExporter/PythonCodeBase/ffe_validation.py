@@ -4,7 +4,7 @@ will use this to build sqlite db and encrypt for usage in c# portion
 import requests
 import os
 import sqlite3
-
+db_store='file.sqlite3'
 current_directory= os.getcwd() # this may change before beta/alpha testing.
 
 # link to check https://www.instagram.com/p/voLqUzoTVk/?igshid=6astge42ug6y
@@ -37,6 +37,12 @@ def create_connection(db_file):
  
     return None  
 
+# check if db exists
+def check_if_file_exists(full_filepath) -> bool:
+  return os.path.exists(full_filepath)
+
 if __name__ == '__main__':
-  # pass
-  print(check_url())
+  pass
+  # print(check_url())
+  # print(current_directory)
+  # print(check_if_file_exists(db_store))
