@@ -160,22 +160,30 @@
         <!--  *  -->
         <!--  Combo box to select file extension.  -->
         <!--  *  -->
-        <ComboBox
-            Width="279"
-            Margin="10,20"
-            FlatFileExporter:HintAssist.Hint="Select A File Extension (FileType)"
-            FlatFileExporter:HintAssist.HintOpacity=".26">
-            <ComboBoxItem>
-                TXT
-            </ComboBoxItem>
-            <ComboBoxItem>
-                CSV
-            </ComboBoxItem>
-            <ComboBoxItem>
-                XLSX
-            </ComboBoxItem>
+        <FlatFileExporter:ColorZone
+            Width="280"
+            Margin="10,0,0,0"
+            FlatFileExporter:ShadowAssist.ShadowDepth="Depth1"
+            Mode="PrimaryLight">
+            <StackPanel Margin="2" Orientation="Horizontal">
+                <RadioButton
+                    Margin="4"
+                    Content="CSV"
+                    IsChecked="True"
+                    Style="{StaticResource MaterialDesignTabRadioButton}" />
+                <RadioButton
+                    Margin="4"
+                    Content="TXT"
+                    IsChecked="False"
+                    Style="{StaticResource MaterialDesignTabRadioButton}" />
+                <RadioButton
+                    Margin="4"
+                    Content="XLSX"
+                    IsChecked="False"
+                    Style="{StaticResource MaterialDesignTabRadioButton}" />
+            </StackPanel>
+        </FlatFileExporter:ColorZone>
 
-        </ComboBox>
         <!--  *  -->
         <!--  Combo box to select delimiter.  -->
         <!--  TODO Disable or hide this in code behind when XLSX is selectd for file extension *  -->
