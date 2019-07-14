@@ -157,33 +157,43 @@
                 Height="24"
                 Kind="DatabasePlus" />
         </Button>
-        <!--  *  -->
-        <!--  Combo box to select file extension.  -->
-        <!--  *  -->
-        <FlatFileExporter:ColorZone
-            Width="280"
+        <!--
+            *
+            Text block to for file extension tool tip
+            *
+        -->
+        <TextBlock
+            Width="285"
             Margin="10,0,0,0"
-            FlatFileExporter:ShadowAssist.ShadowDepth="Depth1"
-            Mode="PrimaryLight">
-            <StackPanel Margin="2" Orientation="Horizontal">
-                <RadioButton
-                    Margin="4"
-                    Content="CSV"
-                    IsChecked="True"
-                    Style="{StaticResource MaterialDesignTabRadioButton}" />
-                <RadioButton
-                    Margin="4"
-                    Content="TXT"
-                    IsChecked="False"
-                    Style="{StaticResource MaterialDesignTabRadioButton}" />
-                <RadioButton
-                    Margin="4"
-                    Content="XLSX"
-                    IsChecked="False"
-                    Style="{StaticResource MaterialDesignTabRadioButton}" />
-            </StackPanel>
-        </FlatFileExporter:ColorZone>
+            VerticalAlignment="Center"
+            Style="{StaticResource MaterialDesignBody1TextBlock}"
+            TextAlignment="Center">
+            Select a File Extension (Defaults to CSV)
+        </TextBlock>
+        <!--  *  -->
+        <!--  Stack Panel radio button select file extension.  -->
+        <!--  *  -->
 
+        <StackPanel
+            Width="288"
+            Margin="2"
+            Orientation="Horizontal">
+            <RadioButton
+                Margin="4"
+                Content="CSV"
+                IsChecked="True"
+                Style="{StaticResource MaterialDesignTabRadioButton}" />
+            <RadioButton
+                Margin="4"
+                Content="TXT"
+                IsChecked="False"
+                Style="{StaticResource MaterialDesignTabRadioButton}" />
+            <RadioButton
+                Margin="4"
+                Content="XLSX"
+                IsChecked="False"
+                Style="{StaticResource MaterialDesignTabRadioButton}" />
+        </StackPanel>
         <!--  *  -->
         <!--  Combo box to select delimiter.  -->
         <!--  TODO Disable or hide this in code behind when XLSX is selectd for file extension *  -->
