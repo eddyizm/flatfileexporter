@@ -36,9 +36,11 @@ namespace FlatFileExporter
             //var ver = typeof(MainWindow).Assembly.GetName().Version.ToString();
             //MessageBox.Show(ver);
             ///
-
             
+            //MessageBox.Show("--------------------DEBUGGING-------------------------------");
+            //MessageBox.Show(Properties.Settings.Default.IsFirstRun.ToString());
             //SettingsDebugMethod();
+            
         }
 
         private static void SettingsDebugMethod()
@@ -56,6 +58,11 @@ namespace FlatFileExporter
                 Properties.Settings.Default.Save();
             }
             Console.WriteLine("--------------------DEBUGGING-------------------------------");
+
+            // will need this code to maintain future settings when upgraded
+            //Properties.Settings.Default.Upgrade();
+            //Properties.Settings.Default.Reset();
+            //Properties.Settings.Default.Reload();
         }
 
         private void Menu_Exit_Click(object sender, RoutedEventArgs e)
