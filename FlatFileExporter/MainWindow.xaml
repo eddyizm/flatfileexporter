@@ -108,20 +108,8 @@
             Width="279"
             Margin="10,20"
             FlatFileExporter:HintAssist.Hint="Select A Server"
-            FlatFileExporter:HintAssist.HintOpacity=".26">
-            <ComboBoxItem>
-                Apple
-            </ComboBoxItem>
-            <ComboBoxItem>
-                Banana
-            </ComboBoxItem>
-            <ComboBoxItem>
-                Pear
-            </ComboBoxItem>
-            <ComboBoxItem>
-                Orange
-            </ComboBoxItem>
-        </ComboBox>
+            FlatFileExporter:HintAssist.HintOpacity=".26"
+            ItemsSource="{Binding cbServerItems}" />
         <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" ToolTip="Add A Server">
             <FlatFileExporter:PackIcon
                 Width="24"

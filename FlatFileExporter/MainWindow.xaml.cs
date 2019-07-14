@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -27,6 +28,7 @@ namespace FlatFileExporter
         public MainWindow()
         {
             InitializeComponent();
+            PopulateServerItems();
         }
 
         private void Menu_Exit_Click(object sender, RoutedEventArgs e)
@@ -72,5 +74,20 @@ namespace FlatFileExporter
         {
 
         }
+
+        // combo box populate
+        public ObservableCollection<ComboBoxItem> cbServerItems { get; set; }
+        public ComboBoxItem SelectedcbServerItem { get; set; }
+        private void PopulateServerItems()
+        {
+            DataContext = this;
+            cbServerItems = new ObservableCollection<ComboBoxItem>();
+            var cbServerItem = new ComboBoxItem { Content = "<--Select-->" };
+            SelectedcbServerItem = cbServerItem;
+            cbServerItems.Add(cbServerItem);
+            cbServerItems.Add(new ComboBoxItem { Content = "Option 1" });
+            cbServerItems.Add(new ComboBoxItem { Content = "Option 2" });
+        }
+        
     }
 }
