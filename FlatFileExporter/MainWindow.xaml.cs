@@ -29,6 +29,20 @@ namespace FlatFileExporter
         {
             InitializeComponent();
             PopulateServerItems();
+
+            // check settings 
+            Console.WriteLine("--------------------DEBUGGING-------------------------------");
+            MessageBox.Show("--------------------DEBUGGING-------------------------------");
+            MessageBox.Show(Properties.Settings.Default.IsFirstRun.ToString());
+            Console.WriteLine(Properties.Settings.Default.IsFirstRun.ToString());
+            
+            if (Properties.Settings.Default.IsFirstRun == true )
+            {
+                Properties.Settings.Default.IsFirstRun = false;
+                MessageBox.Show("Moving into if statement and changing to false");
+                Properties.Settings.Default.Save();
+            }
+            Console.WriteLine("--------------------DEBUGGING-------------------------------");
         }
 
         private void Menu_Exit_Click(object sender, RoutedEventArgs e)
@@ -78,8 +92,11 @@ namespace FlatFileExporter
         // combo box populate
         public ObservableCollection<ComboBoxItem> cbServerItems { get; set; }
         public ComboBoxItem SelectedcbServerItem { get; set; }
+
+
         private void PopulateServerItems()
         {
+            // TODO pull from user settings.
             DataContext = this;
             cbServerItems = new ObservableCollection<ComboBoxItem>();
             var cbServerItem = new ComboBoxItem { Content = "<--Select-->" };
