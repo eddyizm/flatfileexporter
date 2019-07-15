@@ -27,7 +27,7 @@ current_directory= os.getcwd() # this may change before beta/alpha testing.
 
 def get_seperator(*, seperator):
     ''' get file seperator from GUI or CLI and pass the correct value to function '''
-    # if sepe
+    # TODO test against DB. the \t might work directly from the constant
     pass
 
 def main():
