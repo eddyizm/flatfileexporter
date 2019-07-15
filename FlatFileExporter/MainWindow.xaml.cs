@@ -85,8 +85,9 @@ namespace FlatFileExporter
 
         private void Menu_Server_Click(object sender, RoutedEventArgs e)
         {
-            //var toolWindow = new Window();
-            //toolWindow.ShowDialog();
+            //NavigationWindow win = new NavigationWindow();
+            //win.Content = new ServerPage();
+            //win.Show();
             ServerPage toolsServer = new ServerPage();
             this.Content = toolsServer;
         }

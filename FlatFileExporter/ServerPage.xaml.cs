@@ -16,13 +16,18 @@ using System.Windows.Shapes;
 namespace FlatFileExporter
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for ServerPage.xaml
     /// </summary>
     public partial class ServerPage : Page
     {
         public ServerPage()
         {
             InitializeComponent();
+        }
+
+        private void MenuItem_BackClick(object sender, RoutedEventArgs e)
+        {
+            // TODO fix this debacle by putting the page in a frame or navigation window.
         }
     }
 }
