@@ -64,7 +64,7 @@
                             <FlatFileExporter:PackIcon Kind="Database" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="_Server">
+                    <MenuItem Click="Menu_Server_Click" Header="_Server">
                         <MenuItem.Icon>
                             <FlatFileExporter:PackIcon Kind="Server" />
                         </MenuItem.Icon>

@@ -83,9 +83,12 @@ namespace FlatFileExporter
 
         }
 
-        private void PopupBox_Opened(object sender, RoutedEventArgs e)
+        private void Menu_Server_Click(object sender, RoutedEventArgs e)
         {
-
+            //var toolWindow = new Window();
+            //toolWindow.ShowDialog();
+            ServerPage toolsServer = new ServerPage();
+            this.Content = toolsServer;
         }
 
         private void BtnAddServer_Click(object sender, RoutedEventArgs e)

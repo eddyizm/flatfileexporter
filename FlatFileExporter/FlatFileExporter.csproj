@@ -85,6 +85,10 @@
     <None Include="Resources\flatfile_cli.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Page Include="ServerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Resource Include="ffe.ico" />
     <None Include="PythonCodeBase\dist\flatfile_cli.exe" />
     <Content Include="PythonCodeBase\DAL.py" />
@@ -105,6 +109,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ServerPage.xaml.cs">
+      <DependentUpon>ServerPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

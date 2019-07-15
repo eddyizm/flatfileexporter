@@ -1,0 +1,140 @@
+﻿<Page
+    x:Class="FlatFileExporter.ServerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:FlatFileExporter="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:FlatFileExporter"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ServerPage"
+    Width="397.918"
+    Height="506"
+    mc:Ignorable="d">
+
+    <Grid Margin="0,10,0,0">
+        <Menu
+            Height="50"
+            VerticalAlignment="Top"
+            IsMainMenu="True">
+            <MenuItem Header="_Back">
+                <MenuItem.Icon>
+                    <FlatFileExporter:PackIcon Kind="ArrowLeft" />
+                </MenuItem.Icon>
+
+            </MenuItem>
+            <MenuItem Header="_Database">
+                <MenuItem.Icon>
+                    <FlatFileExporter:PackIcon Kind="Database" />
+                </MenuItem.Icon>
+
+            </MenuItem>
+            <MenuItem Header="_Server">
+                <MenuItem.Icon>
+                    <FlatFileExporter:PackIcon Kind="Server" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+
+        </Menu>
+        <ListView Margin="0,50,0,0">
+            <ListViewItem>
+                Hello
+            </ListViewItem>
+            <ListViewItem>
+                World
+            </ListViewItem>
+            <ListViewItem>
+                :)
+            </ListViewItem>
+        </ListView>
+        <!--<FlatFileExporter:DialogHost
+            Grid.ColumnSpan="3"
+            Margin="12,32"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            DialogClosing="Sample1_DialogHost_OnDialogClosing">
+            <FlatFileExporter:DialogHost.DialogContent>
+                <StackPanel Margin="16">
+                    <TextBlock>
+                        Add a new fruit.
+                    </TextBlock>
+                    <TextBox
+                        x:Name="FruitTextBox"
+                        Margin="0,8,0,0"
+                        HorizontalAlignment="Stretch" />
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <Button
+                            Margin="0,8,8,0"
+                            Command="FlatFileExporter:DialogHost.CloseDialogCommand"
+                            IsDefault="True"
+                            Style="{StaticResource MaterialDesignFlatButton}">
+                            <Button.CommandParameter>
+                                <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                    True
+                                </system:Boolean>
+                            </Button.CommandParameter>
+                            ACCEPT
+                        </Button>
+                        <Button
+                            Margin="0,8,8,0"
+                            Command="FlatFileExporter:DialogHost.CloseDialogCommand"
+                            IsCancel="True"
+                            Style="{StaticResource MaterialDesignFlatButton}">
+                            <Button.CommandParameter>
+                                <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                    False
+                                </system:Boolean>
+                            </Button.CommandParameter>
+                            CANCEL
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </FlatFileExporter:DialogHost.DialogContent>
+            <Border
+                MinWidth="256"
+                MinHeight="256"
+                BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                BorderThickness="1"
+                ClipToBounds="True">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="FruitListBox">
+                        <ListBoxItem>
+                            Apple
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            Banana
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            Pear
+                        </ListBoxItem>
+                    </ListBox>
+                    <FlatFileExporter:ColorZone
+                        Grid.Row="1"
+                        Effect="{DynamicResource MaterialDesignShadowDepth5}"
+                        Mode="PrimaryMid">
+                        <TextBlock Margin="16">
+                            Fruit Bowl
+                        </TextBlock>
+                    </FlatFileExporter:ColorZone>
+                    <Button
+                        Grid.Row="0"
+                        Margin="0,0,28,-20"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Command="{x:Static FlatFileExporter:DialogHost.OpenDialogCommand}"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                        <FlatFileExporter:PackIcon
+                            Width="22"
+                            Height="22"
+                            Kind="Plus" />
+                    </Button>
+                </Grid>
+            </Border>
+        </FlatFileExporter:DialogHost>-->
+
+    </Grid>
+</Page>
