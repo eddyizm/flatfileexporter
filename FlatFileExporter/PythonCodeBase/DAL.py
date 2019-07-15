@@ -35,8 +35,25 @@ def check_odbc() -> bool:
     print (ex)    
 
 
+def read_file(file):
+  ''' method to read sql script. 
+  Will add a check to validate that it has
+  SET NO COUNT in it '''
+  try:
+    with open(file, 'r') as f:
+      _qry = f.read()
+      return _qry
+  except Exception as ex:
+    print (ex)
+
+
+def generate_file(query, db_name, server, seperator, extension, file_name=None):
+  pass
+
+
 if __name__ == '__main__':
-  main()
+  # main()
+  pass
   # TODO Add version 
   # TODO Add logging
   
