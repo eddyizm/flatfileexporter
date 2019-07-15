@@ -35,7 +35,6 @@ def check_odbc() -> bool:
     print (ex)    
 
 
-
 if __name__ == '__main__':
   main()
   # TODO Add version 
