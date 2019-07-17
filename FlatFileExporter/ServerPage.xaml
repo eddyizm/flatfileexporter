@@ -23,8 +23,13 @@
                 :)
             </ListViewItem>
         </ListView>
-        <Button Command="{x:Static NavigationCommands.BrowseBack}">Cancel</Button>
-
-
+        <Button
+            Margin="120,232,148,232"
+            Command="{x:Static NavigationCommands.BrowseBack}"
+            Content="Back"
+            Style="{StaticResource MaterialDesignRaisedButton}" />
     </Grid>
+    <!--
+        Click="MenuItem_BackClick"
+    -->
 </Page>

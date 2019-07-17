@@ -47,7 +47,10 @@ namespace FlatFileExporter
 
         private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+
+            // this does nothing apparently.
+            NavigationService.Refresh();
+
         }
 
 

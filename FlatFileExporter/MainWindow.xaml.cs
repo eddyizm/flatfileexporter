@@ -77,14 +77,11 @@ namespace FlatFileExporter
 
         }
 
-        private void Menu_Server_Click(object sender, RoutedEventArgs e)
-        {
-            //NavigationWindow win = new NavigationWindow();
-            //win.Content = new ServerPage();
-            //win.Show();
-            ServerPage toolsServer = new ServerPage();
-            this.Content = toolsServer;
-        }
+        //private void Menu_Server_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ServerPage toolsServer = new ServerPage();
+        //    this.Content = toolsServer;
+        //}
 
         private void BtnAddServer_Click(object sender, RoutedEventArgs e)
         {
