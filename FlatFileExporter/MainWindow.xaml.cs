@@ -1,8 +1,7 @@
-﻿using Microsoft.Win32;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -29,6 +28,7 @@ namespace FlatFileExporter
         public MainWindow()
         {
             InitializeComponent();
+            _mainFrame.Navigate(new MainPage());
             PopulateServerItems();
 
             //// TODO // may need to pull this from python cli instead or figure out a way to keep them in sync. 
@@ -70,13 +70,7 @@ namespace FlatFileExporter
             Application.Current.Shutdown();
         }
 
-        
-        private void BtnOpenFile_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            openFileDialog.ShowDialog();
-        }
+              
 
         private void PopupBox_Closed(object sender, RoutedEventArgs e)
         {
@@ -97,27 +91,13 @@ namespace FlatFileExporter
 
         }
 
-        private void BtnGenerateFile_Click(object sender, RoutedEventArgs e)
-        {
-            // this needs to be wrapped into a seperate function and possibly class.
-            var folder = Environment.CurrentDirectory;
-            var ff_cli = Path.Combine(folder, "Resources\\flatfile_cli.exe");
-            MessageBox.Show(ff_cli);
-            ProcessStartInfo processStartInfo = new ProcessStartInfo(ff_cli);
-            Process p = Process.Start(processStartInfo);
-            p.WaitForExit();
-        }
+      
 
-        private void BtnClear_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         // combo box populate
         public ObservableCollection<ComboBoxItem> cbServerItems { get; set; }
         public ComboBoxItem SelectedcbServerItem { get; set; }
-
-
+        
         private void PopulateServerItems()
         {
             // TODO pull from user settings.
@@ -129,6 +109,10 @@ namespace FlatFileExporter
             cbServerItems.Add(new ComboBoxItem { Content = "Option 1" });
             cbServerItems.Add(new ComboBoxItem { Content = "Option 2" });
         }
-        
+
+        private void MenuItem_Settings_Click(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.Navigate(new ServerPage());
+        }
     }
 }

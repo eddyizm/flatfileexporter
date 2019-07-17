@@ -1,0 +1,159 @@
+﻿<Page
+    x:Class="FlatFileExporter.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:FlatFileExporter="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:FlatFileExporter"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ServerPage"
+    Width="397.918"
+    Height="506"
+    mc:Ignorable="d">
+    <WrapPanel
+        Width="373"
+        Height="446"
+        Margin="10,10,0,0"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top">
+
+        <!--  *  -->
+        <!--  text box to select sql script  -->
+        <!--  *  -->
+        <TextBox
+            Margin="10,0,10,10"
+            FlatFileExporter:HintAssist.Hint="Select a Sql Script"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <Button
+            Name="btnOpenFile"
+            Click="BtnOpenFile_Click"
+            Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+            ToolTip="Find your SQL script!">
+            <FlatFileExporter:PackIcon
+                Width="24"
+                Height="24"
+                Kind="FileFind" />
+        </Button>
+
+        <!--  *  -->
+        <!--  Combo box to display servers. Add and save to settings  -->
+        <!--  *  -->
+        <ComboBox
+            Width="279"
+            Margin="10,20"
+            FlatFileExporter:HintAssist.Hint="Select A Server"
+            FlatFileExporter:HintAssist.HintOpacity=".26"
+            ItemsSource="{Binding cbServerItems}" />
+        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" ToolTip="Add A Server">
+            <FlatFileExporter:PackIcon
+                Width="24"
+                Height="24"
+                Kind="ServerPlus" />
+        </Button>
+
+        <!--  *  -->
+        <!--  Combo box to select databases. Add and save to settings  -->
+        <!--  *  -->
+        <ComboBox
+            Width="279"
+            Margin="10,20"
+            FlatFileExporter:HintAssist.Hint="Select A Database"
+            FlatFileExporter:HintAssist.HintOpacity=".26">
+            <ComboBoxItem>
+                Apple
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Banana
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Pear
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Orange
+            </ComboBoxItem>
+        </ComboBox>
+        <!--  Add / Remove Database box  -->
+        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" ToolTip="Add A Database">
+            <FlatFileExporter:PackIcon
+                Width="24"
+                Height="24"
+                Kind="DatabasePlus" />
+        </Button>
+        <!--
+            *
+            Text block to for file extension tool tip
+            *
+        -->
+        <TextBlock
+            Width="285"
+            Margin="10,0,0,0"
+            VerticalAlignment="Center"
+            Style="{StaticResource MaterialDesignBody1TextBlock}"
+            TextAlignment="Center">
+            Select a File Extension (Defaults to CSV)
+        </TextBlock>
+        <!--  *  -->
+        <!--  Stack Panel radio button select file extension.  -->
+        <!--  *  -->
+
+        <StackPanel
+            Width="288"
+            Margin="2"
+            Orientation="Horizontal">
+            <RadioButton
+                Margin="4"
+                Content="CSV"
+                IsChecked="True"
+                Style="{StaticResource MaterialDesignTabRadioButton}" />
+            <RadioButton
+                Margin="4"
+                Content="TXT"
+                IsChecked="False"
+                Style="{StaticResource MaterialDesignTabRadioButton}" />
+            <RadioButton
+                Margin="4"
+                Content="XLSX"
+                IsChecked="False"
+                Style="{StaticResource MaterialDesignTabRadioButton}" />
+        </StackPanel>
+        <!--  *  -->
+        <!--  Combo box to select delimiter.  -->
+        <!--  TODO Disable or hide this in code behind when XLSX is selectd for file extension *  -->
+        <ComboBox
+            Height="117"
+            Margin="55,145,60,234"
+            FlatFileExporter:HintAssist.Hint="Select A Delimiter"
+            FlatFileExporter:HintAssist.HintOpacity=".26">
+            <ComboBoxItem>
+                t (tab)
+            </ComboBoxItem>
+            <ComboBoxItem>
+                , (comma)
+            </ComboBoxItem>
+            <ComboBoxItem>
+                | (pipe)
+            </ComboBoxItem>
+
+        </ComboBox>
+        <!--  *  -->
+        <!--  Generate file and clear buttons  -->
+        <!--  *  -->
+        <Button
+            x:Name="btnGenerateFile"
+            Width="161"
+            Margin="10"
+            Click="BtnGenerateFile_Click"
+            Content="_Generate File"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            ToolTip="Generate File!" />
+        <Button
+            x:Name="btnClear"
+            Width="161"
+            Margin="10"
+            Click="BtnClear_Click"
+            Content="_Clear"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            ToolTip="Clear and reset form!" />
+
+    </WrapPanel>
+</Page>

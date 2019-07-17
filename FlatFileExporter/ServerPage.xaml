@@ -34,7 +34,6 @@
                 </MenuItem.Icon>
             </MenuItem>
 
-
         </Menu>
         <ListView Margin="10,50,10,10">
             <ListViewItem>
@@ -47,6 +46,8 @@
                 :)
             </ListViewItem>
         </ListView>
+        <Button Command="{x:Static NavigationCommands.BrowseBack}">Cancel</Button>
+
 
     </Grid>
 </Page>
