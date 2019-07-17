@@ -11,21 +11,20 @@
     Height="506"
     mc:Ignorable="d">
     <WrapPanel
-        Width="373"
-        Height="446"
+        Width="378"
+        Height="486"
         Margin="10,10,0,0"
         HorizontalAlignment="Left"
         VerticalAlignment="Top">
 
-        <!--  *  -->
         <!--  text box to select sql script  -->
-        <!--  *  -->
         <TextBox
+            Width="280"
             Margin="10,0,10,10"
             FlatFileExporter:HintAssist.Hint="Select a Sql Script"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
         <Button
-            Name="btnOpenFile"
+            x:Name="btnOpenFile"
             Click="BtnOpenFile_Click"
             Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
             ToolTip="Find your SQL script!">
@@ -80,21 +79,18 @@
                 Kind="DatabasePlus" />
         </Button>
         <!--
-            *
             Text block to for file extension tool tip
-            *
         -->
         <TextBlock
             Width="285"
             Margin="10,0,0,0"
             VerticalAlignment="Center"
-            Style="{StaticResource MaterialDesignBody1TextBlock}"
-            TextAlignment="Center">
+            Style="{StaticResource MaterialDesignBody1TextBlock}">
             Select a File Extension (Defaults to CSV)
         </TextBlock>
-        <!--  *  -->
-        <!--  Stack Panel radio button select file extension.  -->
-        <!--  *  -->
+        <!--
+            Stack Panel radio button select file extension.
+        -->
 
         <StackPanel
             Width="288"
@@ -116,31 +112,27 @@
                 IsChecked="False"
                 Style="{StaticResource MaterialDesignTabRadioButton}" />
         </StackPanel>
-        <!--  *  -->
-        <!--  Combo box to select delimiter.  -->
-        <!--  TODO Disable or hide this in code behind when XLSX is selectd for file extension *  -->
+        <!--
+            Combo box to select delimiter.
+            TODO Disable or hide this in code behind when XLSX is selectd for file extension
+        -->
         <ComboBox
-            Height="117"
-            Margin="55,145,60,234"
+            Width="295"
+            Height="41"
+            Margin="10"
             FlatFileExporter:HintAssist.Hint="Select A Delimiter"
             FlatFileExporter:HintAssist.HintOpacity=".26">
-            <ComboBoxItem>
-                t (tab)
-            </ComboBoxItem>
-            <ComboBoxItem>
-                , (comma)
-            </ComboBoxItem>
-            <ComboBoxItem>
-                | (pipe)
-            </ComboBoxItem>
+            <ComboBoxItem Content="t (tab)" />
+            <ComboBoxItem Content=", (comma)" />
+            <ComboBoxItem Content="| (pipe)" />
 
         </ComboBox>
-        <!--  *  -->
-        <!--  Generate file and clear buttons  -->
-        <!--  *  -->
+        <!--
+            Generate file and clear buttons
+        -->
         <Button
             x:Name="btnGenerateFile"
-            Width="161"
+            Width="140"
             Margin="10"
             Click="BtnGenerateFile_Click"
             Content="_Generate File"
@@ -148,7 +140,7 @@
             ToolTip="Generate File!" />
         <Button
             x:Name="btnClear"
-            Width="161"
+            Width="150"
             Margin="10"
             Click="BtnClear_Click"
             Content="_Clear"
