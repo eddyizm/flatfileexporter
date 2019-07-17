@@ -89,8 +89,6 @@ namespace FlatFileExporter
         }
 
       
-
-
         // combo box populate
         public ObservableCollection<ComboBoxItem> cbServerItems { get; set; }
         public ComboBoxItem SelectedcbServerItem { get; set; }
@@ -107,7 +105,7 @@ namespace FlatFileExporter
             cbServerItems.Add(new ComboBoxItem { Content = "Option 2" });
         }
 
-        private void MenuItem_Settings_Click(object sender, RoutedEventArgs e)
+        private void MenuItem_Server_Click(object sender, RoutedEventArgs e)
         {
             _mainFrame.Navigate(new ServerPage());
         }

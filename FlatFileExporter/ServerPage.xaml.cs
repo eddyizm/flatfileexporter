@@ -25,10 +25,8 @@ namespace FlatFileExporter
             InitializeComponent();
         }
 
-        private void MenuItem_BackClick(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // TODO fix this debacle by putting the page in a frame or navigation window.
-            
 
         }
     }

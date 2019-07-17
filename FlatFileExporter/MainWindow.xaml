@@ -32,7 +32,7 @@
                 VerticalAlignment="Top"
                 IsMainMenu="True">
                 <MenuItem Header="_File">
-                    <MenuItem Click="MenuItem_Settings_Click" Header="Settings">
+                    <MenuItem Click="MenuItem_Server_Click" Header="Settings">
                         <MenuItem.Icon>
                             <FlatFileExporter:PackIcon Kind="ContentSave" />
                         </MenuItem.Icon>
@@ -64,7 +64,7 @@
                             <FlatFileExporter:PackIcon Kind="Database" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Click="MenuItem_Settings_Click" Header="_Server">
+                    <MenuItem Click="MenuItem_Server_Click" Header="_Server">
                         <MenuItem.Icon>
                             <FlatFileExporter:PackIcon Kind="Server" />
                         </MenuItem.Icon>

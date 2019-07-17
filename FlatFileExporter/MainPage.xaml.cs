@@ -22,9 +22,13 @@ namespace FlatFileExporter
     /// </summary>
     public partial class MainPage : Page
     {
+        
+
         public MainPage()
         {
             InitializeComponent();
+            
+
         }
 
         private void BtnGenerateFile_Click(object sender, RoutedEventArgs e)
@@ -47,12 +51,17 @@ namespace FlatFileExporter
 
         private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
-
             // this does nothing apparently.
             NavigationService.Refresh();
 
         }
 
-
+        private void btnAddServer_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (mw != null)
+                mw._mainFrame.Content = new ServerPage();
+                
+        }
     }
 }

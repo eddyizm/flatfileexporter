@@ -7,29 +7,50 @@
     xmlns:local="clr-namespace:FlatFileExporter"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="ServerPage"
-    Width="397.918"
+    Width="378"
     Height="506"
     mc:Ignorable="d">
 
-    <Grid Margin="0,10,0,0">
-        <ListView Margin="10,50,10,10">
-            <ListViewItem>
-                Hello
-            </ListViewItem>
-            <ListViewItem>
-                World
-            </ListViewItem>
-            <ListViewItem>
-                :)
-            </ListViewItem>
-        </ListView>
-        <Button
-            Margin="120,232,148,232"
-            Command="{x:Static NavigationCommands.BrowseBack}"
-            Content="Back"
-            Style="{StaticResource MaterialDesignRaisedButton}" />
+    <Grid Margin="0,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="155*" />
+            <RowDefinition Height="351*" />
+        </Grid.RowDefinitions>
+        <WrapPanel
+            Grid.RowSpan="2"
+            Width="378"
+            Margin="0,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top">
+            <ListView Width="355" Margin="10,10,10,10">
+                <ListViewItem>
+                    Hello
+                </ListViewItem>
+                <ListViewItem>
+                    World
+                </ListViewItem>
+                <ListViewItem>
+                    :)
+                </ListViewItem>
+            </ListView>
+            <WrapPanel
+                Width="378  "
+                Height="64"
+                Margin="10"
+                HorizontalAlignment="Center">
+                <Button
+                    Width="125"
+                    Margin="25,10,10,10"
+                    Click="Button_Click"
+                    Content="Add"
+                    Style="{StaticResource MaterialDesignRaisedButton}" />
+                <Button
+                    Width="125"
+                    Margin="10"
+                    Command="{x:Static NavigationCommands.BrowseBack}"
+                    Content="Back"
+                    Style="{StaticResource MaterialDesignFlatButton}" />
+            </WrapPanel>
+        </WrapPanel>
     </Grid>
-    <!--
-        Click="MenuItem_BackClick"
-    -->
 </Page>
