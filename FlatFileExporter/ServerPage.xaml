@@ -43,6 +43,11 @@
                 Margin="10,0,0,0"
                 HorizontalAlignment="Stretch"
                 Orientation="Horizontal">
+                <TextBox
+                    x:Name="NameTextBox"
+                    Width="180"
+                    Margin="10"
+                    FlatFileExporter:HintAssist.Hint="Enter Server -&gt;" />
                 <!--
                     Adding round buttons for actions.
                 -->
@@ -67,14 +72,15 @@
                         Height="24"
                         Kind="DeleteForever" />
                 </Button>
-                <Button
-                    Width="125"
-                    Margin="10,0,0,0"
-                    Command="{x:Static NavigationCommands.BrowseBack}"
-                    Content="Back"
-                    Style="{StaticResource MaterialDesignFlatButton}" />
+
 
             </StackPanel>
+            <Button
+                Width="125"
+                Margin="10,0,0,0"
+                Command="{x:Static NavigationCommands.BrowseBack}"
+                Content="Back"
+                Style="{StaticResource MaterialDesignFlatButton}" />
         </WrapPanel>
     </Grid>
 </Page>
