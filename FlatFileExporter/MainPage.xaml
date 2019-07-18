@@ -11,7 +11,7 @@
     Height="506"
     mc:Ignorable="d">
     <WrapPanel
-        Width="378"
+        Width="358"
         Height="486"
         Margin="10,10,0,0"
         HorizontalAlignment="Left"

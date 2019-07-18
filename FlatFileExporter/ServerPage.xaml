@@ -18,11 +18,15 @@
         </Grid.RowDefinitions>
         <WrapPanel
             Grid.RowSpan="2"
-            Width="378"
-            Margin="0,0,0,0"
+            Width="358"
+            Height="390"
+            Margin="10,10,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top">
-            <ListView Width="355" Margin="10,10,10,10">
+            <ListView
+                Width="340"
+                Height="104"
+                Margin="0,0,0,0">
                 <ListViewItem>
                     Hello
                 </ListViewItem>
@@ -33,24 +37,43 @@
                     :)
                 </ListViewItem>
             </ListView>
-            <WrapPanel
-                Width="378  "
-                Height="64"
-                Margin="10"
-                HorizontalAlignment="Center">
+            <StackPanel
+                Width="335"
+                Margin="10,0,0,0"
+                HorizontalAlignment="Stretch"
+                Orientation="Horizontal">
+                <!--
+                    Adding round buttons for actions.
+                -->
                 <Button
-                    Width="125"
-                    Margin="25,10,10,10"
-                    Click="Button_Click"
-                    Content="Add"
-                    Style="{StaticResource MaterialDesignRaisedButton}" />
-                <Button
-                    Width="125"
                     Margin="10"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                    ToolTip="Add Server">
+                    <FlatFileExporter:PackIcon
+                        Width="24"
+                        Height="24"
+                        Kind="Add" />
+                </Button>
+
+                <Button
+                    Background="#FFFBB5B5"
+                    BorderBrush="#FFFF210B"
+                    Click="btnDelete_Click"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                    ToolTip="Delete Selected">
+                    <FlatFileExporter:PackIcon
+                        Width="24"
+                        Height="24"
+                        Kind="DeleteForever" />
+                </Button>
+                <Button
+                    Width="125"
+                    Margin="10,0,0,0"
                     Command="{x:Static NavigationCommands.BrowseBack}"
                     Content="Back"
                     Style="{StaticResource MaterialDesignFlatButton}" />
-            </WrapPanel>
+
+            </StackPanel>
         </WrapPanel>
     </Grid>
 </Page>
