@@ -32,7 +32,18 @@ namespace FlatFileExporter
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            var items = lv_server.Items.Count;
+            MessageBox.Show($"{lv_server.SelectedValue}: Item Count");
+            if (lv_server.SelectedValue != null)
+            {
+                var nipples = ((ListBoxItem)lv_server.SelectedValue).Content.ToString();
+                MessageBox.Show($"{nipples}: To Delete");
+            }
+            else
+            { MessageBox.Show($"Please select an item to delete"); }
+              
+            
+            
         }
     }
 }
