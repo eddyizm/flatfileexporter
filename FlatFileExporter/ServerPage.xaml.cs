@@ -29,7 +29,19 @@ namespace FlatFileExporter
         {
             var nServer = ServerTextBox.Text;
             MessageBox.Show($"Add Server - {nServer}");
+            AddSettings(nServer);
 
+        }
+
+        private void AddSettings(string nServer)
+        {
+            
+            var prop = new System.Configuration.SettingsProperty(nServer);
+            prop.PropertyType = typeof(string);
+            Properties.Settings.Default.Properties.Add(prop);
+            Properties.Settings.Default.Save();
+            Properties.Settings.Default.Properties[nServer].DefaultValue = nServer;
+                Properties.Settings.Default.Save();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
