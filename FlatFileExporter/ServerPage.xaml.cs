@@ -25,8 +25,10 @@ namespace FlatFileExporter
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnAddServer_Click(object sender, RoutedEventArgs e)
         {
+            var nServer = ServerTextBox.Text;
+            MessageBox.Show($"Add Server - {nServer}");
 
         }
 
