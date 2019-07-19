@@ -47,7 +47,7 @@ namespace FlatFileExporter
             {
                 //prop.Add(server);
                 //Properties.Settings.Default.Save();
-                Properties.Settings.Default.Servers.Insert(0, server);
+                Properties.Settings.Default.Servers.Add(server);
                 Properties.Settings.Default.Save();
             }
             catch (NullReferenceException ex )
