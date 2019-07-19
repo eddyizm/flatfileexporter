@@ -28,20 +28,34 @@ namespace FlatFileExporter
         private void btnAddServer_Click(object sender, RoutedEventArgs e)
         {
             var nServer = ServerTextBox.Text;
-            MessageBox.Show($"Add Server - {nServer}");
+            // MessageBox.Show($"Add Server - {nServer}");
             AddSettings(nServer);
 
         }
 
-        private void AddSettings(string nServer)
+        private void AddSettings(string server)
         {
-            
-            var prop = new System.Configuration.SettingsProperty(nServer);
-            prop.PropertyType = typeof(string);
-            Properties.Settings.Default.Properties.Add(prop);
-            Properties.Settings.Default.Save();
-            Properties.Settings.Default.Properties[nServer].DefaultValue = nServer;
+
+            //var prop = new System.Configuration.SettingsProperty(server);
+            //prop.PropertyType = typeof(string);
+            //var prop = Properties.Settings.Default.Servers;
+            //Properties.Settings.Default.Properties.Add(prop);
+            //Properties.Settings.Default.Save();
+            //Properties.Settings.Default.Properties[server].DefaultValue = server;
+            //    Properties.Settings.Default.Save();
+            try
+            {
+                //prop.Add(server);
+                //Properties.Settings.Default.Save();
+                Properties.Settings.Default.Servers.Insert(0, server);
                 Properties.Settings.Default.Save();
+            }
+            catch (NullReferenceException ex )
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+            
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
