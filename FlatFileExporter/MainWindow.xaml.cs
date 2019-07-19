@@ -36,10 +36,45 @@ namespace FlatFileExporter
             //var ver = typeof(MainWindow).Assembly.GetName().Version.ToString();
             //MessageBox.Show(ver);
             ///
-            
+
             //MessageBox.Show("--------------------DEBUGGING-------------------------------");
             //MessageBox.Show(Properties.Settings.Default.IsFirstRun.ToString());
             //SettingsDebugMethod();
+            //LoadServers();
+            LoadDataBaseList();
+            
+        }
+
+        private void LoadDataBaseList()
+        {
+            var dbCount = Properties.Settings.Default.Databases.Count;
+            if (dbCount > 0)
+            {
+                string[] dbList = new string[dbCount];
+                Properties.Settings.Default.Databases.CopyTo(dbList, 0);
+                foreach (var x in dbList)
+                {
+                    if (x.Length > 0)
+                        MessageBox.Show($"{x}");
+                }
+                    
+                
+            }
+        }
+
+        private void LoadServers()
+        {
+            var sCount = Properties.Settings.Default.Servers.Count;
+            if (sCount > 0)
+            {
+                string[] serverList = new string[sCount];
+                Properties.Settings.Default.Servers.CopyTo(serverList, 0);
+                foreach (var x in serverList)
+                {
+                    if (x.Length > 0)
+                        MessageBox.Show($"{x}");
+                }
+            }
             
         }
 

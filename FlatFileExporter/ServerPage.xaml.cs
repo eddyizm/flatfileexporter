@@ -36,23 +36,15 @@ namespace FlatFileExporter
         private void AddSettings(string server)
         {
 
-            //var prop = new System.Configuration.SettingsProperty(server);
-            //prop.PropertyType = typeof(string);
-            //var prop = Properties.Settings.Default.Servers;
-            //Properties.Settings.Default.Properties.Add(prop);
-            //Properties.Settings.Default.Save();
-            //Properties.Settings.Default.Properties[server].DefaultValue = server;
-            //    Properties.Settings.Default.Save();
             try
             {
-                //prop.Add(server);
-                //Properties.Settings.Default.Save();
+                // TODO Check if setting exists
+                // TODO Confirm before saving 
                 Properties.Settings.Default.Servers.Add(server);
                 Properties.Settings.Default.Save();
             }
             catch (NullReferenceException ex )
             {
-
                 MessageBox.Show(ex.ToString());
             }
             
