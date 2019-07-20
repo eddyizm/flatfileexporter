@@ -23,7 +23,7 @@ def check_odbc() -> bool:
     if drivers:
       print('checking for \'ODBC Driver 17 for SQL Server\' driver')
       for driver in drivers:
-        if driver== 'ODBC Driver 17 for SQL Server':
+        if driver == 'ODBC Driver 17 for SQL Server':
           return True
       else:
         print(ODBC_MISSING_MSG)
@@ -51,6 +51,23 @@ def generate_file(query, db_name, server, seperator, extension, file_name=None):
   db_connection = DB_STRING.format(server, db_name)
   # testing db connection
   print(db_connection)
+  if file_name:
+    filename = (file_name+'_'+date_var+extension)
+  else:
+    return
+   
+  try:
+    with db.connect(db_connection) as cnxn:
+        df = pd.read_sql((qry), cnxn)
+        if extension == '.xlsx':
+          writer = pd.ExcelWriter(filename, engine = 'xlsxwriter')
+          df.to_excel(writer, sheet_name = (db_name), index=False)
+        else:
+          df.to_csv(filename ,sep = separator, encoding='utf-8', index = False)
+    
+    return filename
+  except Exception as ex:
+    return str(ex)
   
 
 
