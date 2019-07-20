@@ -29,7 +29,7 @@ namespace FlatFileExporter
         {
             InitializeComponent();
             _mainFrame.Navigate(new MainPage());
-            PopulateServerItems();
+            //PopulateServerItems();
 
             //// TODO // may need to pull this from python cli instead or figure out a way to keep them in sync. 
             //// Check version. 
@@ -124,21 +124,21 @@ namespace FlatFileExporter
         }
 
       
-        // combo box populate
-        public ObservableCollection<ComboBoxItem> CbServerItems { get; set; }
-        public ComboBoxItem SelectedcbServerItem { get; set; }
+        //// combo box populate
+        //public ObservableCollection<ComboBoxItem> CbServerItems { get; set; }
+        //public ComboBoxItem SelectedcbServerItem { get; set; }
         
-        private void PopulateServerItems()
-        {
-            // TODO pull from user settings.
-            DataContext = this;
-            CbServerItems = new ObservableCollection<ComboBoxItem>();
-            var cbServerItem = new ComboBoxItem { Content = "<--Select-->" };
-            SelectedcbServerItem = cbServerItem;
-            CbServerItems.Add(cbServerItem);
-            CbServerItems.Add(new ComboBoxItem { Content = "Option 1" });
-            CbServerItems.Add(new ComboBoxItem { Content = "Option 2" });
-        }
+        //private void PopulateServerItems()
+        //{
+        //    // TODO pull from user settings.
+        //    DataContext = this;
+        //    CbServerItems = new ObservableCollection<ComboBoxItem>();
+        //    var cbServerItem = new ComboBoxItem { Content = "<--Select-->" };
+        //    SelectedcbServerItem = cbServerItem;
+        //    CbServerItems.Add(cbServerItem);
+        //    CbServerItems.Add(new ComboBoxItem { Content = "Option 1" });
+        //    CbServerItems.Add(new ComboBoxItem { Content = "Option 2" });
+        //}
 
         private void MenuItem_Server_Click(object sender, RoutedEventArgs e)
         {

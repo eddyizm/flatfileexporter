@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
 
 namespace FlatFileExporter
 {
@@ -27,7 +28,7 @@ namespace FlatFileExporter
         public MainPage()
         {
             InitializeComponent();
-            
+            PopulateServerItems();
 
         }
 
@@ -76,11 +77,11 @@ namespace FlatFileExporter
                 return false;
             }
 
-            MainWindow mw = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-            if (mw != null)
-            {
-                MessageBox.Show(mw.SelectedcbServerItem.Content.ToString());
-            }
+            //MainWindow mw = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            //if (mw != null)
+            //{
+            //    MessageBox.Show(mw.SelectedcbServerItem.Content.ToString());
+            //}
             //MessageBox.Show(cbServerItems.SelectedItem.ToString());
             //else
             //{
@@ -90,5 +91,20 @@ namespace FlatFileExporter
 
         }
         #endregion
+        // combo box populate
+        public ObservableCollection<ComboBoxItem> CbServerItems { get; set; }
+        public ComboBoxItem SelectedcbServerItem { get; set; }
+
+        private void PopulateServerItems()
+        {
+            // TODO pull from user settings.
+            DataContext = this;
+            CbServerItems = new ObservableCollection<ComboBoxItem>();
+            var cbServerItem = new ComboBoxItem { Content = "<--Select-->" };
+            SelectedcbServerItem = cbServerItem;
+            CbServerItems.Add(cbServerItem);
+            CbServerItems.Add(new ComboBoxItem { Content = "Option 1" });
+            CbServerItems.Add(new ComboBoxItem { Content = "Option 2" });
+        }
     }
 }
