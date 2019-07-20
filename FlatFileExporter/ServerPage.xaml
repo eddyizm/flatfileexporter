@@ -77,11 +77,26 @@
 
             </StackPanel>
             <Button
+                Command="{x:Static NavigationCommands.BrowseBack}"
+                Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                ToolTip="go back">
+                <FlatFileExporter:PackIcon
+                    Width="24"
+                    Height="24"
+                    Kind="KeyboardBackspace" />
+            </Button>
+
+            <!--<Button
+                Name="btnGoBack"
                 Width="125"
                 Margin="10,0,0,0"
                 Command="{x:Static NavigationCommands.BrowseBack}"
                 Content="Back"
-                Style="{StaticResource MaterialDesignFlatButton}" />
+                Style="{StaticResource MaterialDesignFlatButton}"
+
+
+                />-->
+
         </WrapPanel>
     </Grid>
 </Page>

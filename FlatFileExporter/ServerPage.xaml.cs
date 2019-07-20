@@ -29,8 +29,15 @@ namespace FlatFileExporter
         {
             var nServer = ServerTextBox.Text;
             // MessageBox.Show($"Add Server - {nServer}");
+            IsValid(nServer);
             AddSettings(nServer);
 
+        }
+
+        private bool IsValid(string nServer)
+        {
+
+            return (nServer.Length > 1 ? true : false);
         }
 
         private void AddSettings(string server)
