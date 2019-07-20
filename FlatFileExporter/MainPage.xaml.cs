@@ -33,6 +33,9 @@ namespace FlatFileExporter
 
         private void BtnGenerateFile_Click(object sender, RoutedEventArgs e)
         {
+            //MessageBox.Show(ValidateFields().ToString());
+            ValidateFields();
+            return;
             // this needs to be wrapped into a seperate function and possibly class.
             var folder = Environment.CurrentDirectory;
             var ff_cli = System.IO.Path.Combine(folder, "Resources\\flatfile_cli.exe");
@@ -61,7 +64,31 @@ namespace FlatFileExporter
             MainWindow mw = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
             if (mw != null)
                 mw._mainFrame.Content = new ServerPage();
-                
         }
+
+        #region form validations
+        private bool ValidateFields()
+        {
+            var result = string.IsNullOrEmpty(tSqlScript.Text);
+            
+            if (result)
+            {
+                return false;
+            }
+
+            MainWindow mw = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (mw != null)
+            {
+                MessageBox.Show(mw.SelectedcbServerItem.Content.ToString());
+            }
+            //MessageBox.Show(cbServerItems.SelectedItem.ToString());
+            //else
+            //{
+            //    
+            //}
+            return true;
+
+        }
+        #endregion
     }
 }

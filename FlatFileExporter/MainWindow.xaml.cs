@@ -125,19 +125,19 @@ namespace FlatFileExporter
 
       
         // combo box populate
-        public ObservableCollection<ComboBoxItem> cbServerItems { get; set; }
+        public ObservableCollection<ComboBoxItem> CbServerItems { get; set; }
         public ComboBoxItem SelectedcbServerItem { get; set; }
         
         private void PopulateServerItems()
         {
             // TODO pull from user settings.
             DataContext = this;
-            cbServerItems = new ObservableCollection<ComboBoxItem>();
+            CbServerItems = new ObservableCollection<ComboBoxItem>();
             var cbServerItem = new ComboBoxItem { Content = "<--Select-->" };
             SelectedcbServerItem = cbServerItem;
-            cbServerItems.Add(cbServerItem);
-            cbServerItems.Add(new ComboBoxItem { Content = "Option 1" });
-            cbServerItems.Add(new ComboBoxItem { Content = "Option 2" });
+            CbServerItems.Add(cbServerItem);
+            CbServerItems.Add(new ComboBoxItem { Content = "Option 1" });
+            CbServerItems.Add(new ComboBoxItem { Content = "Option 2" });
         }
 
         private void MenuItem_Server_Click(object sender, RoutedEventArgs e)

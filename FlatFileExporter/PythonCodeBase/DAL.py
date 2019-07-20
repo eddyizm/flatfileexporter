@@ -55,7 +55,7 @@ def generate_file(query, db_name, server, seperator, extension, file_name=None):
     filename = (file_name+'_'+date_var+extension)
   else:
     return
-   
+
   try:
     with db.connect(db_connection) as cnxn:
         df = pd.read_sql((qry), cnxn)
@@ -69,7 +69,6 @@ def generate_file(query, db_name, server, seperator, extension, file_name=None):
   except Exception as ex:
     return str(ex)
   
-
 
 if __name__ == '__main__':
   # main()

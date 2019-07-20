@@ -5,7 +5,7 @@ import requests
 import os
 import sqlite3
 db_store='file.sqlite3'
-current_directory= os.getcwd() # this may change before beta/alpha testing.
+
 
 # link to check https://www.instagram.com/p/voLqUzoTVk/?igshid=6astge42ug6y
 

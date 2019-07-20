@@ -19,6 +19,7 @@
 
         <!--  text box to select sql script  -->
         <TextBox
+            Name="tSqlScript"
             Width="280"
             Margin="10,0,10,10"
             FlatFileExporter:HintAssist.Hint="Select a Sql Script"
@@ -38,6 +39,7 @@
         <!--  Combo box to display servers. Add and save to settings  -->
         <!--  *  -->
         <ComboBox
+            Name="cbServers"
             Width="279"
             Margin="10,20"
             FlatFileExporter:HintAssist.Hint="Select A Server"
