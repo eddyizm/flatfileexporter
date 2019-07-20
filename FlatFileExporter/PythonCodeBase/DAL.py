@@ -48,7 +48,10 @@ def read_file(file):
 
 
 def generate_file(query, db_name, server, seperator, extension, file_name=None):
-  pass
+  db_connection = DB_STRING.format(server, db_name)
+  # testing db connection
+  print(db_connection)
+  
 
 
 if __name__ == '__main__':
