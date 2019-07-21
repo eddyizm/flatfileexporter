@@ -29,6 +29,8 @@ namespace FlatFileExporter
         {
             InitializeComponent();
             _mainFrame.Navigate(new MainPage());
+
+        
             //PopulateServerItems();
 
             //// TODO // may need to pull this from python cli instead or figure out a way to keep them in sync. 
@@ -42,10 +44,10 @@ namespace FlatFileExporter
             //SettingsDebugMethod();
             //LoadServers();
             //LoadDataBaseList();
-            
+
         }
 
-        
+                        
         private static void SettingsDebugMethod()
         {
             // check settings 
@@ -75,7 +77,7 @@ namespace FlatFileExporter
 
         private void PopupBox_Closed(object sender, RoutedEventArgs e)
         {
-
+            Console.WriteLine("test");
         }
 
         //private void Menu_Server_Click(object sender, RoutedEventArgs e)

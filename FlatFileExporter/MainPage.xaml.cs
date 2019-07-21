@@ -65,8 +65,11 @@ namespace FlatFileExporter
         {
             MainWindow mw = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
             if (mw != null)
+                mw._mainFrame.NavigationService.RemoveBackEntry();
                 mw._mainFrame.Content = new ServerPage();
+            
         }
+
 
         #region form validations
         private bool ValidateFields()

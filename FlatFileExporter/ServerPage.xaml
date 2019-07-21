@@ -30,6 +30,7 @@
                 Margin="0,0,0,0" />
             <StackPanel
                 Width="335"
+                Height="61"
                 Margin="10,0,0,0"
                 HorizontalAlignment="Stretch"
                 Orientation="Horizontal">
@@ -66,8 +67,9 @@
 
 
             </StackPanel>
+            <!--  Command="{x:Static NavigationCommands.BrowseBack}"  -->
             <Button
-                Command="{x:Static NavigationCommands.BrowseBack}"
+                Click="Button_Click"
                 Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
                 ToolTip="go back">
                 <FlatFileExporter:PackIcon

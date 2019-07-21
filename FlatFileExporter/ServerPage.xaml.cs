@@ -20,6 +20,7 @@ namespace FlatFileExporter
     /// </summary>
     public partial class ServerPage : Page
     {
+        
         public ServerPage()
         {
             InitializeComponent();
@@ -41,27 +42,9 @@ namespace FlatFileExporter
             }
         }
 
-        
-        private void btnAddServer_Click(object sender, RoutedEventArgs e)
-        {
-            var nServer = ServerTextBox.Text;
-            if (string.IsNullOrEmpty(nServer))
-            {
-                MessageBox.Show("Please enter a valid server");
-                return;
-            }
-            var result = MessageBox.Show($"Add Server {nServer} to list?", "Add Server", MessageBoxButton.OKCancel);
-            if (result == MessageBoxResult.OK)
-            {
-                AddServer(nServer);
-            }
-
-        }
-
-        
+                
         private void AddServer(string server)
         {
-
             try
             {
                 // TODO Check if setting exists
@@ -74,7 +57,6 @@ namespace FlatFileExporter
             {
                 MessageBox.Show(ex.ToString());
             }
-            
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -85,7 +67,7 @@ namespace FlatFileExporter
                 if (lv_server.SelectedValue != null)
                 {
                     var delServer = lv_server.SelectedValue.ToString();
-                    var result = MessageBox.Show($"Remove {delServer}?", "Remove Server", MessageBoxButton.OKCancel);
+                    var result = MessageBox.Show($"Remove \"{delServer}\"?", "Remove Server", MessageBoxButton.OKCancel);
                     if (result == MessageBoxResult.OK)
                     {
                         RemoveServer(delServer);
@@ -117,6 +99,33 @@ namespace FlatFileExporter
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void btnAddServer_Click(object sender, RoutedEventArgs e)
+        {
+            var nServer = ServerTextBox.Text;
+            if (string.IsNullOrEmpty(nServer))
+            {
+                MessageBox.Show("Please enter a valid server");
+                return;
+            }
+            var result = MessageBox.Show($"Add Server \"{nServer}\" to list?", "Add Server", MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+                AddServer(nServer);
+                
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (mw != null)
+            {
+                mw._mainFrame.NavigationService.RemoveBackEntry();
+                mw._mainFrame.Content = new MainPage();
+            }
+                
         }
     }
 }
