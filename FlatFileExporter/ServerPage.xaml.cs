@@ -23,8 +23,24 @@ namespace FlatFileExporter
         public ServerPage()
         {
             InitializeComponent();
+            PopulateServerList();
         }
 
+        private void PopulateServerList()
+        {
+            var sCount = Properties.Settings.Default.Servers.Count;
+            if (sCount > 0)
+            {
+                string[] serverList = new string[sCount];
+                Properties.Settings.Default.Servers.CopyTo(serverList, 0);
+                foreach (var x in serverList)
+                {
+                    lv_server.Items.Add(x);
+                }
+            }
+        }
+
+        
         private void btnAddServer_Click(object sender, RoutedEventArgs e)
         {
             var nServer = ServerTextBox.Text;

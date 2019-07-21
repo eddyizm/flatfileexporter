@@ -27,17 +27,7 @@
                 Name="lv_server"
                 Width="340"
                 Height="104"
-                Margin="0,0,0,0">
-                <ListViewItem>
-                    Hello
-                </ListViewItem>
-                <ListViewItem>
-                    World
-                </ListViewItem>
-                <ListViewItem>
-                    :)
-                </ListViewItem>
-            </ListView>
+                Margin="0,0,0,0" />
             <StackPanel
                 Width="335"
                 Margin="10,0,0,0"
