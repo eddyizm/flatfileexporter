@@ -30,6 +30,7 @@ namespace FlatFileExporter
             InitializeComponent();
             PopulateServerItems();
             LoadDataBaseList();
+            
         }
 
         private void BtnGenerateFile_Click(object sender, RoutedEventArgs e)
@@ -98,6 +99,8 @@ namespace FlatFileExporter
         /// </summary>
         private void PopulateServerItems()
         {
+
+            cbServers.Items.Clear();
             var sCount = Properties.Settings.Default.Servers.Count;
             if (sCount > 0)
             {
@@ -109,6 +112,7 @@ namespace FlatFileExporter
                     cbServers.Items.Add(cbServerItem);
                 }
             }
+            
         }
 
         /// <summary>
@@ -129,5 +133,7 @@ namespace FlatFileExporter
             }
         }
         #endregion
+
+        
     }
 }

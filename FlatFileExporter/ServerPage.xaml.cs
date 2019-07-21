@@ -53,13 +53,13 @@ namespace FlatFileExporter
             var result = MessageBox.Show($"Add Server {nServer} to list?", "Add Server", MessageBoxButton.OKCancel);
             if (result == MessageBoxResult.OK)
             {
-                AddSettings(nServer);
+                AddServer(nServer);
             }
 
         }
 
         
-        private void AddSettings(string server)
+        private void AddServer(string server)
         {
 
             try
@@ -79,15 +79,44 @@ namespace FlatFileExporter
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (lv_server.SelectedValue != null)
+
+            try
             {
-                var nipples = ((ListBoxItem)lv_server.SelectedValue).Content.ToString();
-                MessageBox.Show($"{nipples}: To Delete");
+                if (lv_server.SelectedValue != null)
+                {
+                    var delServer = lv_server.SelectedValue.ToString();
+                    var result = MessageBox.Show($"Remove {delServer}?", "Remove Server", MessageBoxButton.OKCancel);
+                    if (result == MessageBoxResult.OK)
+                    {
+                        RemoveServer(delServer);
+                    }
+                }
+                else
+                { MessageBox.Show($"Please select an item to delete"); }
             }
-            else
-            { MessageBox.Show($"Please select an item to delete"); }
-           
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Oops, please close application and try again. Error:{ex.ToString()}");
+            }
             
+            
+        }
+
+        private void RemoveServer(string server)
+        {
+            try
+            {
+                // TODO Check if setting exists
+                Properties.Settings.Default.Servers.Remove(server);
+                Properties.Settings.Default.Save();
+                ServerTextBox.Text = "";
+                PopulateServerList();
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }
