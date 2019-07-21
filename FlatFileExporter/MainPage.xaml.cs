@@ -91,7 +91,8 @@ namespace FlatFileExporter
 
         }
         #endregion
-        
+
+        #region load data
         /// <summary>
         /// Populates server list from user settings
         /// </summary>
@@ -127,5 +128,6 @@ namespace FlatFileExporter
                 }
             }
         }
+        #endregion
     }
 }

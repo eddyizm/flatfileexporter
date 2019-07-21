@@ -28,6 +28,7 @@ namespace FlatFileExporter
 
         private void PopulateServerList()
         {
+            lv_server.Items.Clear();
             var sCount = Properties.Settings.Default.Servers.Count;
             if (sCount > 0)
             {
@@ -44,27 +45,30 @@ namespace FlatFileExporter
         private void btnAddServer_Click(object sender, RoutedEventArgs e)
         {
             var nServer = ServerTextBox.Text;
-            // MessageBox.Show($"Add Server - {nServer}");
-            IsValid(nServer);
-            AddSettings(nServer);
+            if (string.IsNullOrEmpty(nServer))
+            {
+                MessageBox.Show("Please enter a valid server");
+                return;
+            }
+            var result = MessageBox.Show($"Add Server {nServer} to list?", "Add Server", MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+                AddSettings(nServer);
+            }
 
         }
 
-        private bool IsValid(string nServer)
-        {
-
-            return (nServer.Length > 1 ? true : false);
-        }
-
+        
         private void AddSettings(string server)
         {
 
             try
             {
                 // TODO Check if setting exists
-                // TODO Confirm before saving 
                 Properties.Settings.Default.Servers.Add(server);
                 Properties.Settings.Default.Save();
+                ServerTextBox.Text = "";
+                PopulateServerList();
             }
             catch (NullReferenceException ex )
             {

@@ -84,10 +84,7 @@ namespace FlatFileExporter
         //    this.Content = toolsServer;
         //}
 
-        private void BtnAddServer_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
 
         private void MenuItem_Server_Click(object sender, RoutedEventArgs e)
         {
