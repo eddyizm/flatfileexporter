@@ -29,6 +29,7 @@ namespace FlatFileExporter
         {
             InitializeComponent();
             PopulateServerItems();
+            LoadDataBaseList();
         }
 
         private void BtnGenerateFile_Click(object sender, RoutedEventArgs e)
@@ -96,7 +97,6 @@ namespace FlatFileExporter
         /// </summary>
         private void PopulateServerItems()
         {
-            
             var sCount = Properties.Settings.Default.Servers.Count;
             if (sCount > 0)
             {
@@ -106,6 +106,24 @@ namespace FlatFileExporter
                 {
                     var cbServerItem = new ComboBoxItem { Content = x };
                     cbServers.Items.Add(cbServerItem);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Populates database list from user settings
+        /// </summary>
+        private void LoadDataBaseList()
+        {
+            var dbCount = Properties.Settings.Default.Databases.Count;
+            if (dbCount > 0)
+            {
+                string[] dbList = new string[dbCount];
+                Properties.Settings.Default.Databases.CopyTo(dbList, 0);
+                foreach (var x in dbList)
+                {
+                    var cbDatabaseItem = new ComboBoxItem { Content = x };
+                    cbDataBase.Items.Add(cbDatabaseItem);
                 }
             }
         }

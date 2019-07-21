@@ -43,8 +43,7 @@
             Width="279"
             Margin="10,20"
             FlatFileExporter:HintAssist.Hint="Select A Server"
-            FlatFileExporter:HintAssist.HintOpacity=".26"
-            />
+            FlatFileExporter:HintAssist.HintOpacity=".26" />
         <Button
             Click="btnAddServer_Click"
             Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
@@ -59,21 +58,13 @@
         <!--  Combo box to select databases. Add and save to settings  -->
         <!--  *  -->
         <ComboBox
+            Name="cbDataBase"
             Width="279"
             Margin="10,20"
             FlatFileExporter:HintAssist.Hint="Select A Database"
             FlatFileExporter:HintAssist.HintOpacity=".26">
             <ComboBoxItem>
                 Apple
-            </ComboBoxItem>
-            <ComboBoxItem>
-                Banana
-            </ComboBoxItem>
-            <ComboBoxItem>
-                Pear
-            </ComboBoxItem>
-            <ComboBoxItem>
-                Orange
             </ComboBoxItem>
         </ComboBox>
         <!--  Add / Remove Database box  -->

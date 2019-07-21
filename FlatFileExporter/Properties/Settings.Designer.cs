@@ -56,7 +56,8 @@ namespace FlatFileExporter.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
             "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
-            "tring />\r\n</ArrayOfString>")]
+            "tring>DB1</string>\r\n  <string>DB2</string>\r\n  <string>DB3</string>\r\n</ArrayOfStr" +
+            "ing>")]
         public global::System.Collections.Specialized.StringCollection Databases {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["Databases"]));

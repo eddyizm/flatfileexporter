@@ -45,39 +45,7 @@ namespace FlatFileExporter
             
         }
 
-        private void LoadDataBaseList()
-        {
-            var dbCount = Properties.Settings.Default.Databases.Count;
-            if (dbCount > 0)
-            {
-                string[] dbList = new string[dbCount];
-                Properties.Settings.Default.Databases.CopyTo(dbList, 0);
-                foreach (var x in dbList)
-                {
-                    if (x.Length > 0)
-                        MessageBox.Show($"{x}");
-                }
-                    
-                
-            }
-        }
-
-        private void LoadServers()
-        {
-            var sCount = Properties.Settings.Default.Servers.Count;
-            if (sCount > 0)
-            {
-                string[] serverList = new string[sCount];
-                Properties.Settings.Default.Servers.CopyTo(serverList, 0);
-                foreach (var x in serverList)
-                {
-                    if (x.Length > 0)
-                        MessageBox.Show($"{x}");
-                }
-            }
-            
-        }
-
+        
         private static void SettingsDebugMethod()
         {
             // check settings 
@@ -105,8 +73,6 @@ namespace FlatFileExporter
             Application.Current.Shutdown();
         }
 
-              
-
         private void PopupBox_Closed(object sender, RoutedEventArgs e)
         {
 
@@ -122,8 +88,6 @@ namespace FlatFileExporter
         {
 
         }
-
-                
 
         private void MenuItem_Server_Click(object sender, RoutedEventArgs e)
         {
