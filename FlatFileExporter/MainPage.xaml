@@ -44,7 +44,7 @@
             Margin="10,20"
             FlatFileExporter:HintAssist.Hint="Select A Server"
             FlatFileExporter:HintAssist.HintOpacity=".26"
-            ItemsSource="{Binding CbServerItems}" />
+            />
         <Button
             Click="btnAddServer_Click"
             Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"

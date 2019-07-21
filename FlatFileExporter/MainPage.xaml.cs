@@ -23,13 +23,12 @@ namespace FlatFileExporter
     /// </summary>
     public partial class MainPage : Page
     {
-        
+
 
         public MainPage()
         {
             InitializeComponent();
             PopulateServerItems();
-
         }
 
         private void BtnGenerateFile_Click(object sender, RoutedEventArgs e)
@@ -71,7 +70,7 @@ namespace FlatFileExporter
         private bool ValidateFields()
         {
             var result = string.IsNullOrEmpty(tSqlScript.Text);
-            
+
             if (result)
             {
                 return false;
@@ -91,20 +90,24 @@ namespace FlatFileExporter
 
         }
         #endregion
-        // combo box populate
-        public ObservableCollection<ComboBoxItem> CbServerItems { get; set; }
-        public ComboBoxItem SelectedcbServerItem { get; set; }
-
+        
+        /// <summary>
+        /// Populates server list from user settings
+        /// </summary>
         private void PopulateServerItems()
         {
-            // TODO pull from user settings.
-            DataContext = this;
-            CbServerItems = new ObservableCollection<ComboBoxItem>();
-            var cbServerItem = new ComboBoxItem { Content = "<--Select-->" };
-            SelectedcbServerItem = cbServerItem;
-            CbServerItems.Add(cbServerItem);
-            CbServerItems.Add(new ComboBoxItem { Content = "Option 1" });
-            CbServerItems.Add(new ComboBoxItem { Content = "Option 2" });
+            
+            var sCount = Properties.Settings.Default.Servers.Count;
+            if (sCount > 0)
+            {
+                string[] serverList = new string[sCount];
+                Properties.Settings.Default.Servers.CopyTo(serverList, 0);
+                foreach (var x in serverList)
+                {
+                    var cbServerItem = new ComboBoxItem { Content = x };
+                    cbServers.Items.Add(cbServerItem);
+                }
+            }
         }
     }
 }

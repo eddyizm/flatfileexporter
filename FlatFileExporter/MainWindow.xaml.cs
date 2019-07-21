@@ -41,7 +41,7 @@ namespace FlatFileExporter
             //MessageBox.Show(Properties.Settings.Default.IsFirstRun.ToString());
             //SettingsDebugMethod();
             //LoadServers();
-            LoadDataBaseList();
+            //LoadDataBaseList();
             
         }
 
@@ -123,22 +123,7 @@ namespace FlatFileExporter
 
         }
 
-      
-        //// combo box populate
-        //public ObservableCollection<ComboBoxItem> CbServerItems { get; set; }
-        //public ComboBoxItem SelectedcbServerItem { get; set; }
-        
-        //private void PopulateServerItems()
-        //{
-        //    // TODO pull from user settings.
-        //    DataContext = this;
-        //    CbServerItems = new ObservableCollection<ComboBoxItem>();
-        //    var cbServerItem = new ComboBoxItem { Content = "<--Select-->" };
-        //    SelectedcbServerItem = cbServerItem;
-        //    CbServerItems.Add(cbServerItem);
-        //    CbServerItems.Add(new ComboBoxItem { Content = "Option 1" });
-        //    CbServerItems.Add(new ComboBoxItem { Content = "Option 2" });
-        //}
+                
 
         private void MenuItem_Server_Click(object sender, RoutedEventArgs e)
         {
