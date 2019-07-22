@@ -70,6 +70,14 @@ namespace FlatFileExporter
             
         }
 
+        private void btnAddDatabase_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (mw != null)
+                mw._mainFrame.NavigationService.RemoveBackEntry();
+            mw._mainFrame.Content = new DatabasePage();
+        }
+
 
         #region form validations
         private bool ValidateFields()
@@ -135,6 +143,7 @@ namespace FlatFileExporter
                 }
             }
         }
+
         #endregion
 
         

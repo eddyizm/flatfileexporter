@@ -62,13 +62,12 @@
             Width="279"
             Margin="10,20"
             FlatFileExporter:HintAssist.Hint="Select A Database"
-            FlatFileExporter:HintAssist.HintOpacity=".26">
-            <ComboBoxItem>
-                Apple
-            </ComboBoxItem>
-        </ComboBox>
+            FlatFileExporter:HintAssist.HintOpacity=".26" />
         <!--  Add / Remove Database box  -->
-        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" ToolTip="Add A Database">
+        <Button
+            Click="btnAddDatabase_Click"
+            Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+            ToolTip="Add A Database">
             <FlatFileExporter:PackIcon
                 Width="24"
                 Height="24"
