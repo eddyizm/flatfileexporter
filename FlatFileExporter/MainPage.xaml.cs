@@ -33,11 +33,19 @@ namespace FlatFileExporter
             
         }
 
+
+        private void BtnOpenFile_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            openFileDialog.ShowDialog();
+        }
+
         private void BtnGenerateFile_Click(object sender, RoutedEventArgs e)
         {
             //MessageBox.Show(ValidateFields().ToString());
             ValidateFields();
-            return;
+            
             // this needs to be wrapped into a seperate function and possibly class.
             var folder = Environment.CurrentDirectory;
             var ff_cli = System.IO.Path.Combine(folder, "Resources\\flatfile_cli.exe");
@@ -47,17 +55,15 @@ namespace FlatFileExporter
             p.WaitForExit();
         }
 
-        private void BtnOpenFile_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            openFileDialog.ShowDialog();
-        }
 
         private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
-            // this does nothing apparently.
-            NavigationService.Refresh();
+            MainWindow mw = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (mw != null)
+            {
+                mw._mainFrame.NavigationService.RemoveBackEntry();
+                mw._mainFrame.Content = new MainPage();
+            }
 
         }
 
