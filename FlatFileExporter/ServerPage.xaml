@@ -26,12 +26,12 @@
             <ListView
                 Name="lv_server"
                 Width="340"
-                Height="104"
+                Height="255"
                 Margin="0,0,0,0" />
             <StackPanel
-                Width="335"
+                Width="340"
                 Height="61"
-                Margin="10,0,0,0"
+                Margin="0,0,0,0"
                 HorizontalAlignment="Stretch"
                 Orientation="Horizontal">
                 <TextBox
@@ -39,6 +39,11 @@
                     Width="180"
                     Margin="10"
                     FlatFileExporter:HintAssist.Hint="Enter Server -&gt;" />
+
+
+
+            </StackPanel>
+            <StackPanel Width="195" Orientation="Horizontal">
                 <!--
                     Adding round buttons for actions.
                 -->
@@ -54,6 +59,7 @@
                 </Button>
 
                 <Button
+                    Margin="10"
                     Background="#FFFBB5B5"
                     BorderBrush="#FFFF210B"
                     Click="btnDelete_Click"
@@ -64,30 +70,20 @@
                         Height="24"
                         Kind="DeleteForever" />
                 </Button>
-
-
+                <Button
+                    Margin="10"
+                    Click="Button_Click"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                    ToolTip="Go Back">
+                    <FlatFileExporter:PackIcon
+                        Width="24"
+                        Height="24"
+                        Kind="KeyboardBackspace" />
+                </Button>
             </StackPanel>
-            <!--  Command="{x:Static NavigationCommands.BrowseBack}"  -->
-            <Button
-                Click="Button_Click"
-                Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-                ToolTip="go back">
-                <FlatFileExporter:PackIcon
-                    Width="24"
-                    Height="24"
-                    Kind="KeyboardBackspace" />
-            </Button>
-
-            <!--<Button
-                Name="btnGoBack"
-                Width="125"
-                Margin="10,0,0,0"
-                Command="{x:Static NavigationCommands.BrowseBack}"
-                Content="Back"
-                Style="{StaticResource MaterialDesignFlatButton}"
 
 
-                />-->
+
 
         </WrapPanel>
     </Grid>
