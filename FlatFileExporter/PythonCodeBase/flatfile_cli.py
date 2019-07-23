@@ -36,6 +36,10 @@ def get_seperator(*, seperator):
     pass
 
 def main():
+    # TODO implement the odbc check
+    if not db.check_odbc():
+        print("Try again after install. Application exiting.")
+        sys.exit()
     # debugging CLI arg inputs
     print(args.server)
     print(args.db)
@@ -44,6 +48,7 @@ def main():
     print(args.comma)
     print(args.tab)
     print(args.pipe)
+    
 
 if __name__ == '__main__':
     main()
