@@ -30,7 +30,6 @@ namespace FlatFileExporter
             InitializeComponent();
             PopulateServerItems();
             LoadDataBaseList();
-            
         }
 
 
@@ -44,8 +43,11 @@ namespace FlatFileExporter
         private void BtnGenerateFile_Click(object sender, RoutedEventArgs e)
         {
             //MessageBox.Show(ValidateFields().ToString());
-            ValidateFields();
-            
+            if (!ValidateFields())
+            {
+                MessageBox.Show("Please make sure you select a Sql Script, Server, Database and Delimiter.");
+                return;
+            }
             // this needs to be wrapped into a seperate function and possibly class.
             var folder = Environment.CurrentDirectory;
             var ff_cli = System.IO.Path.Combine(folder, "Resources\\flatfile_cli.exe");
@@ -55,18 +57,7 @@ namespace FlatFileExporter
             p.WaitForExit();
         }
 
-
-        private void BtnClear_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow mw = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-            if (mw != null)
-            {
-                mw._mainFrame.NavigationService.RemoveBackEntry();
-                mw._mainFrame.Content = new MainPage();
-            }
-
-        }
-
+        #region button clicks 
         private void btnAddServer_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mw = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
@@ -84,6 +75,17 @@ namespace FlatFileExporter
             mw._mainFrame.Content = new DatabasePage();
         }
 
+        private void BtnClear_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (mw != null)
+            {
+                mw._mainFrame.NavigationService.RemoveBackEntry();
+                mw._mainFrame.Content = new MainPage();
+            }
+
+        }
+        #endregion
 
         #region form validations
         private bool ValidateFields()
@@ -95,18 +97,23 @@ namespace FlatFileExporter
                 return false;
             }
 
-            //MainWindow mw = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-            //if (mw != null)
-            //{
-            //    MessageBox.Show(mw.SelectedcbServerItem.Content.ToString());
-            //}
-            //MessageBox.Show(cbServerItems.SelectedItem.ToString());
-            //else
-            //{
-            //    
-            //}
-            return true;
+            if (cbServers.SelectedIndex == -1)
+            {
+                return false;
+            }
+            
+            if (cbDataBase.SelectedIndex == -1)
+            {
+                
+                return false;
+            }
+            
+            if (cbDelimiter.SelectedIndex == -1)
+            {
+                return false;
+            }
 
+            return true;
         }
         #endregion
 

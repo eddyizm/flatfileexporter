@@ -43,7 +43,8 @@
             Width="279"
             Margin="10,20"
             FlatFileExporter:HintAssist.Hint="Select A Server"
-            FlatFileExporter:HintAssist.HintOpacity=".26" />
+            FlatFileExporter:HintAssist.HintOpacity=".26"
+            SelectedValuePath="Content" />
         <Button
             Click="btnAddServer_Click"
             Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
@@ -112,6 +113,7 @@
             TODO Disable or hide this in code behind when XLSX is selectd for file extension
         -->
         <ComboBox
+            Name="cbDelimiter"
             Width="295"
             Height="41"
             Margin="10"
