@@ -19,7 +19,7 @@ parser.add_argument("filename", help="filename. Date will be appended/")
 # first group for extension
 group_seperator = parser.add_mutually_exclusive_group(required=True)
 group_seperator.add_argument("-c", "--comma", action='store_const', const=',', help="use comma characterfor seperator.")
-group_seperator.add_argument("-t", "--tab", action='store_const', const='t', help="uses tab for seperator.")
+group_seperator.add_argument("-t", "--tab", action='store_const', const='\\t', help="uses tab for seperator.")
 group_seperator.add_argument("-p", "--pipe", action='store_const', const='|', help="uses pipe character for seperator.")
 # second group for sql script or stored proc
 group_sql = parser.add_mutually_exclusive_group(required=True)
@@ -30,18 +30,20 @@ args=parser.parse_args()
 
 current_directory= os.getcwd() # this may change before beta/alpha testing.
 
-def get_seperator(*, seperator):
-    ''' get file seperator from GUI or CLI and pass the correct value to function '''
+def get_seperator():
+    ''' find argument with value from GUI or CLI '''
     # TODO test against DB. the \t might work directly from the constant
-    pass
+    if args.comma:
+        return args.comma
+    elif args.tab:
+        return args.tab
+    else:
+        return args.pipe    
+    
 
-
-def main():
-    # TODO implement the odbc check
-    if not db.check_odbc():
-        print("Try again after installing ODBC driver. Application exiting.")
-        sys.exit()
-    # debugging CLI arg inputs
+# debugging method
+def print_args():
+    # CLI arg inputs
     print(args.server)
     print(args.db)
     print(args.directory)
@@ -49,6 +51,20 @@ def main():
     print(args.comma)
     print(args.tab)
     print(args.pipe)
+    print(args.sqlscript)
+    print(args.storedproc)
+    # print('testing check odbc')
+    # print(db.check_odbc())
+    # print('testing ffe validation')
+    # print(current_directory)
+    # print(ffe_val.db_store)
+
+def main():
+    # TODO implement the odbc check
+    if not db.check_odbc():
+        print("Try again after installing ODBC driver. Application exiting.")
+        sys.exit()
+    
 
     try:
         if not args.sqlscript:
@@ -63,11 +79,9 @@ def main():
     
 
 if __name__ == '__main__':
-    main()
-    # print('testing check odbc')
-    # print(db.check_odbc())
-    # print('testing ffe validation')
-    # print(current_directory)
-    # print(ffe_val.db_store)
+    # main()
+    print(get_seperator())
+    print_args()
+    
 
     os.system("pause")
