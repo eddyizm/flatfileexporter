@@ -35,10 +35,11 @@ def get_seperator(*, seperator):
     # TODO test against DB. the \t might work directly from the constant
     pass
 
+
 def main():
     # TODO implement the odbc check
     if not db.check_odbc():
-        print("Try again after install. Application exiting.")
+        print("Try again after installing ODBC driver. Application exiting.")
         sys.exit()
     # debugging CLI arg inputs
     print(args.server)
@@ -48,6 +49,17 @@ def main():
     print(args.comma)
     print(args.tab)
     print(args.pipe)
+
+    try:
+        if not args.sqlscript:
+            ''' if sql script is None/null then process using stored proc '''
+            print (f'executing stored proc {args.storedproc}') 
+            
+    except:
+        pass
+    
+
+
     
 
 if __name__ == '__main__':
