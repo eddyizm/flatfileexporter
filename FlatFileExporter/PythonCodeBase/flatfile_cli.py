@@ -70,7 +70,8 @@ def main():
         if not args.sqlscript:
             ''' if sql script is None/null then process using stored proc '''
             print (f'executing stored proc {args.storedproc}') 
-            
+            fullpath = os.path.join(args.directory, args.filename)
+            result = db.generate_file(qry, get_seperator(), args.db, args.server, args.extension, fullpath)
     except:
         pass
     
