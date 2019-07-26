@@ -15,6 +15,7 @@ __version__= '0.0.0.2'
 
 # DB_STRING = 'DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={};Trusted_Connection=yes;DATABASE={}'	
 DB_STRING = 'DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={};DATABASE={};UID=sa;PWD=ex0Planet693$'	
+USERPASS_DBSTRING = 'DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={};DATABASE={};UID={};PWD={}'
 ODBC_MISSING_MSG = '''ODBC driver not found
 please install ODBC Driver 17 for SQL Server
 https://www.microsoft.com/en-us/download/details.aspx?id=56567'''
