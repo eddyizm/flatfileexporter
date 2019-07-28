@@ -92,6 +92,9 @@ def main():
     if not db.check_odbc():
         print("Try again after installing ODBC driver. Application exiting.")
         sys.exit()
+    if not ffe_val.validate():
+        print("Trial is over. Please buy a license.")
+        sys.exit()
     
     login, cred = get_login()
 

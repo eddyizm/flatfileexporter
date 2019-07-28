@@ -4,8 +4,10 @@ will use this to build sqlite db and encrypt for usage in c# portion
 import requests
 import os
 import sqlite3
+from datetime import datetime, timedelta
 db_store='file.sqlite3'
-
+current_directory = os.getcwd()
+dateTimeStart = datetime(2019, 8, 1)
 
 # link to check https://www.instagram.com/p/voLqUzoTVk/?igshid=6astge42ug6y
 
@@ -34,15 +36,32 @@ def create_connection(db_file):
         return conn
     except Error as e:
         print(e)
- 
     return None  
 
 # check if db exists
 def check_if_file_exists(full_filepath) -> bool:
   return os.path.exists(full_filepath)
 
+def check_date():
+    time_between_insertion = datetime.now() - dateTimeStart
+    if  time_between_insertion.days > 30:
+        return False
+    else:
+        return True
+
+
+def validate():
+    if check_url() and check_date():
+         return True
+    else:
+        return False
+        
+ 
+
 if __name__ == '__main__':
-  pass
-  # print(check_url())
-  # print(current_directory)
-  # print(check_if_file_exists(db_store))
+    pass
+    
+    
+    
+    
+  
