@@ -14,7 +14,6 @@ directory = os.getcwd()
 __version__= '0.0.0.2' 
 
 DB_STRING = 'DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={};Trusted_Connection=yes;DATABASE={}'	
-# DB_STRING = 'DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={};DATABASE={};UID=sa;PWD=ex0Planet693$'	
 USERPASS_DBSTRING = 'DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={};DATABASE={};UID={};PWD={}'
 ODBC_MISSING_MSG = '''ODBC driver not found
 please install ODBC Driver 17 for SQL Server
@@ -52,21 +51,23 @@ def read_file(file):
 
 
 def generate_file(query, db_name, server, separator, extension, file_name=None, usename=None, password=None):
+  # defaulting to no username and going to trusted connection. Should be the setup in most enterprise shops
   if not usename:
     db_connection=DB_STRING.format(server, db_name)
   else:
     db_connection = USERPASS_DBSTRING.format(server, db_name, usename, password)
-
+  # passing the name supplied otherwise defaulting but this may not work properly. Need to test in other environments.
   if file_name:
     filename = (file_name+'_'+date_var+extension)
   else:
     filename = os.path.join(directory, (f'ffe_output_{date_var}{extension}'))
+  # connect to db and execute query, output file
   try:
     with db.connect(db_connection) as cnxn:
         df = pd.read_sql((query), cnxn)
         if extension == '.xlsx':
           writer = pd.ExcelWriter(filename, engine = 'xlsxwriter')
-          df.to_excel(writer, sheet_name = (db_name), index=False)
+          df.to_excel(writer, sheet_name = (db_name), index = False)
         else:
           df.to_csv(filename ,sep = separator, encoding='utf-8', index = False)
     return filename
