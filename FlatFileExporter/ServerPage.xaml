@@ -19,14 +19,17 @@
         <WrapPanel
             Grid.RowSpan="2"
             Width="358"
-            Height="390"
+            Height="385"
             Margin="10,10,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top">
+            <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}">
+                Servers
+            </TextBlock>
             <ListView
                 Name="lv_server"
                 Width="340"
-                Height="255"
+                Height="210"
                 Margin="0,0,0,0" />
             <StackPanel
                 Width="340"
@@ -39,8 +42,6 @@
                     Width="180"
                     Margin="10"
                     FlatFileExporter:HintAssist.Hint="Enter Server -&gt;" />
-
-
 
             </StackPanel>
             <StackPanel Width="195" Orientation="Horizontal">

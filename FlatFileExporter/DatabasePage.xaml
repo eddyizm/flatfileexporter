@@ -19,14 +19,17 @@
         <WrapPanel
             Grid.RowSpan="2"
             Width="358"
-            Height="390"
+            Height="395"
             Margin="10,10,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top">
+            <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}">
+                Databases
+            </TextBlock>
             <ListView
                 Name="lv_database"
                 Width="340"
-                Height="255"
+                Height="215"
                 Margin="0,0,0,0" />
             <StackPanel
                 Width="340"
