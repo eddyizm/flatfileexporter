@@ -85,6 +85,10 @@
     <None Include="Resources\flatfile_cli.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Page Include="CredentialsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DatabasePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -110,6 +114,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CredentialsPage.xaml.cs">
+      <DependentUpon>CredentialsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="DatabasePage.xaml.cs">
       <DependentUpon>DatabasePage.xaml</DependentUpon>

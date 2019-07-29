@@ -92,5 +92,10 @@ namespace FlatFileExporter
         {
             _mainFrame.Navigate(new ServerPage());
         }
+
+        private void MenuItem_Credentials_Click(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.Navigate(new CredentialsPage());
+        }
     }
 }
