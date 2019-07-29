@@ -33,10 +33,7 @@
                 IsMainMenu="True">
                 <MenuItem Header="_File">
                     <MenuItem Header="Save As.." />
-                    <MenuItem
-                        Click="Menu_Exit_Click"
-                        Header="Exit"
-                        InputGestureText="Ctrl+E">
+                    <MenuItem Click="Menu_Exit_Click" Header="Exit">
                         <MenuItem.Icon>
                             <FlatFileExporter:PackIcon Kind="ExitToApp" />
                         </MenuItem.Icon>
