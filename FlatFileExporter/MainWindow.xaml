@@ -32,7 +32,11 @@
                 VerticalAlignment="Top"
                 IsMainMenu="True">
                 <MenuItem Header="_File">
-                    <MenuItem Header="Save As.." />
+                    <MenuItem Click="MenuItem_HomeClick" Header="Home">
+                        <MenuItem.Icon>
+                            <FlatFileExporter:PackIcon Kind="Home" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                     <MenuItem Click="Menu_Exit_Click" Header="Exit">
                         <MenuItem.Icon>
                             <FlatFileExporter:PackIcon Kind="ExitToApp" />

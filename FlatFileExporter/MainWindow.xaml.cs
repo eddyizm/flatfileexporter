@@ -97,5 +97,11 @@ namespace FlatFileExporter
         {
             _mainFrame.Navigate(new CredentialsPage());
         }
+
+        private void MenuItem_HomeClick(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.NavigationService.RemoveBackEntry();
+            _mainFrame.Content = new MainPage();
+        }
     }
 }
