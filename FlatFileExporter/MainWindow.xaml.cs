@@ -80,14 +80,6 @@ namespace FlatFileExporter
             Console.WriteLine("test");
         }
 
-        //private void Menu_Server_Click(object sender, RoutedEventArgs e)
-        //{
-        //    ServerPage toolsServer = new ServerPage();
-        //    this.Content = toolsServer;
-        //}
-
-
-
         private void MenuItem_Server_Click(object sender, RoutedEventArgs e)
         {
             _mainFrame.Navigate(new ServerPage());
