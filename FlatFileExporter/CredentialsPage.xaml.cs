@@ -34,6 +34,10 @@ namespace FlatFileExporter
                 {
                     txUserName.Text = Properties.Settings.Default.Username;
                 }
+                if (!string.IsNullOrEmpty(Properties.Settings.Default.Password))
+                {
+                    txPassword.Password = Properties.Settings.Default.Password;
+                }
             }
             catch (Exception ex)
             {
@@ -60,17 +64,30 @@ namespace FlatFileExporter
         private void btnSaveCred_Click(object sender, RoutedEventArgs e)
         {
 
+            if (!AreCredentialsValid())
+                return;
             try
             {
                 Properties.Settings.Default.Username = txUserName.Text;
-                //Properties.Settings.Default.Password = txPassword.Text;
+                Properties.Settings.Default.Password = txPassword.Password.ToString();
                 Properties.Settings.Default.Save();
-                
+                MessageBox.Show("Credentials successfully saved.");
             }
             catch (NullReferenceException ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private bool AreCredentialsValid()
+        {
+            if (string.IsNullOrEmpty(txUserName.Text) || string.IsNullOrEmpty(txPassword.Password.ToString())) 
+            {
+                MessageBox.Show("Please enter a username and password.");
+                return false;
+            }
+            return true;
+            
         }
     }
 }
