@@ -24,5 +24,10 @@ namespace FlatFileExporter
         {
             InitializeComponent();
         }
+
+        private void ExUserPass_Expanded(object sender, RoutedEventArgs e)
+        {
+            exTrustConnnect.IsExpanded = false;
+        }
     }
 }
