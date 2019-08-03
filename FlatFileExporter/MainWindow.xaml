@@ -53,7 +53,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
                     <Separator />
-                    <MenuItem Header="_Database">
+                    <MenuItem Click="MenuItem_Database_Click" Header="_Database">
                         <MenuItem.Icon>
                             <FlatFileExporter:PackIcon Kind="Database" />
                         </MenuItem.Icon>

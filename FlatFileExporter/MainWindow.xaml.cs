@@ -95,5 +95,10 @@ namespace FlatFileExporter
             _mainFrame.NavigationService.RemoveBackEntry();
             _mainFrame.Content = new MainPage();
         }
+
+        private void MenuItem_Database_Click(object sender, RoutedEventArgs e)
+        {
+            _mainFrame.Navigate(new DatabasePage());
+        }
     }
 }

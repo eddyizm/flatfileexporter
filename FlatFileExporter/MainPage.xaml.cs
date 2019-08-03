@@ -37,7 +37,14 @@ namespace FlatFileExporter
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            openFileDialog.Filter = "SQL files (*.sql)|*.sql|All files (*.*)|*.*"; ;
             openFileDialog.ShowDialog();
+            if (!string.IsNullOrEmpty(openFileDialog.FileName))
+            {
+                tSqlScript.Text = openFileDialog.FileName;
+            }
+            
+
         }
 
         private void BtnGenerateFile_Click(object sender, RoutedEventArgs e)
