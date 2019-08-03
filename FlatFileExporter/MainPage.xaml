@@ -89,22 +89,29 @@
         -->
 
         <StackPanel
+            x:Name="stkExtensionGroup"
             Width="288"
             Margin="2"
             Orientation="Horizontal">
             <RadioButton
+                Name="CSV"
                 Margin="4"
                 Content="CSV"
+                GroupName="ExtensionGroup"
                 IsChecked="True"
                 Style="{StaticResource MaterialDesignTabRadioButton}" />
             <RadioButton
+                Name="TXT"
                 Margin="4"
                 Content="TXT"
+                GroupName="ExtensionGroup"
                 IsChecked="False"
                 Style="{StaticResource MaterialDesignTabRadioButton}" />
             <RadioButton
+                Name="XLSX"
                 Margin="4"
                 Content="XLSX"
+                GroupName="ExtensionGroup"
                 IsChecked="False"
                 Style="{StaticResource MaterialDesignTabRadioButton}" />
         </StackPanel>

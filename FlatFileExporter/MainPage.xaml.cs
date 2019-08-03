@@ -33,38 +33,54 @@ namespace FlatFileExporter
         }
 
 
+        #region button clicks 
+
         private void BtnOpenFile_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            openFileDialog.Filter = "SQL files (*.sql)|*.sql|All files (*.*)|*.*"; ;
-            openFileDialog.ShowDialog();
-            if (!string.IsNullOrEmpty(openFileDialog.FileName))
+            try
             {
-                tSqlScript.Text = openFileDialog.FileName;
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                openFileDialog.Filter = "SQL files (*.sql)|*.sql|All files (*.*)|*.*"; ;
+                openFileDialog.ShowDialog();
+                if (!string.IsNullOrEmpty(openFileDialog.FileName))
+                {
+                    tSqlScript.Text = openFileDialog.FileName;
+                }
             }
-            
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error getting file. Tech Details:{ex.ToString()}");
+            }
 
         }
 
         private void BtnGenerateFile_Click(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show(ValidateFields().ToString());
             if (!ValidateFields())
             {
                 MessageBox.Show("Please make sure you select a Sql Script, Server, Database and Delimiter.");
                 return;
             }
             // this needs to be wrapped into a seperate function and possibly class.
-            var folder = Environment.CurrentDirectory;
-            var ff_cli = System.IO.Path.Combine(folder, "Resources\\flatfile_cli.exe");
-            MessageBox.Show(ff_cli);
-            ProcessStartInfo processStartInfo = new ProcessStartInfo(ff_cli);
-            Process p = Process.Start(processStartInfo);
-            p.WaitForExit();
+            var checkedExtension = stkExtensionGroup.Children.OfType<RadioButton>()
+                                      .FirstOrDefault(r => r.IsChecked == true).Content.ToString();
+            CallCommandLine(tSqlScript.Text, cbServers.Text, cbDataBase.Text, checkedExtension, cbDelimiter.Text);
         }
 
-        #region button clicks 
+        
+        private void CallCommandLine(string sqlscript, string svr, string db, string ext, string delim)
+        {
+            throw new NotImplementedException();
+            //var folder = Environment.CurrentDirectory;
+            //var ff_cli = System.IO.Path.Combine(folder, "Resources\\flatfile_cli.exe");
+            //MessageBox.Show(ff_cli);
+            //ProcessStartInfo processStartInfo = new ProcessStartInfo(ff_cli);
+            //Process p = Process.Start(processStartInfo);
+            //p.WaitForExit();
+        }
+
         private void btnAddServer_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mw = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
