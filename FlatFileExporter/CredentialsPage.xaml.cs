@@ -51,7 +51,7 @@ namespace FlatFileExporter
             exTrustConnnect.IsExpanded = false;
         }
 
-        private void btnClear_Click(object sender, RoutedEventArgs e)
+        private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mw = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
             if (mw != null)
@@ -87,6 +87,28 @@ namespace FlatFileExporter
                 return false;
             }
             return true;
+            
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show($"Clear credentials?", "Are you sure?", MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+                try
+                {
+                    Properties.Settings.Default.Username = "";
+                    Properties.Settings.Default.Password = "";
+                    Properties.Settings.Default.Save();
+                    MessageBox.Show("Credentials cleared!");
+                    txUserName.Clear();
+                    txPassword.Clear();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
             
         }
     }
