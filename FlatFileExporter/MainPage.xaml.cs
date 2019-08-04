@@ -64,16 +64,56 @@ namespace FlatFileExporter
                 MessageBox.Show("Please make sure you select a Sql Script, Server, Database and Delimiter.");
                 return;
             }
-            // this needs to be wrapped into a seperate function and possibly class.
+            // set cli arguments and pass to method
             var checkedExtension = stkExtensionGroup.Children.OfType<RadioButton>()
                                       .FirstOrDefault(r => r.IsChecked == true).Content.ToString();
-            CallCommandLine(tSqlScript.Text, cbServers.Text, cbDataBase.Text, checkedExtension, cbDelimiter.Text);
+            var extension = GetExtension(checkedExtension);
+            var delimiter = GetDelimiter(cbDelimiter.Text);
+            CallCommandLine(tSqlScript.Text, cbServers.Text, cbDataBase.Text, extension, delimiter);
         }
 
-        
+          
+        private string GetDelimiter(string delim)
+        {
+            var cli_arg = string.Empty;
+                switch(delim)
+            {
+                case "t (tab)":
+                    cli_arg = "-t";
+                    break;
+                case ", (comma)":
+                    cli_arg = "-c";
+                    break;
+                default:
+                    cli_arg = "-p";
+                    break;
+            }
+            return cli_arg;
+        }
+
+        private string GetExtension(string ext)
+        {
+            var cli_arg = string.Empty;
+            switch (ext)
+            {
+                case "CSV":
+                    cli_arg = "-csv";
+                    break;
+                case "TXT":
+                    cli_arg = "-txt";
+                    break;
+                default:
+                    cli_arg = "-xlsx";
+                    break;
+            }
+
+            return cli_arg;
+        }
+
         private void CallCommandLine(string sqlscript, string svr, string db, string ext, string delim)
         {
 
+            StringBuilder cliLog = new StringBuilder();
             try
             {
                 var folder = Environment.CurrentDirectory;
@@ -81,22 +121,20 @@ namespace FlatFileExporter
                 // command = f'{FILE_EXPORT} PRODSTAR01 HPDataRaw {EXPORT_PATH} {healthplan} .xlsx "|" -sp "EXEC usp_GenerateMMR_UniversalFile \'{healthplan}\',\'{filename}\'" '
                 // TODO - construct command
                 var myDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                //var command = $"\"{ff_cli}\" {svr} {db} \"{myDocs}\"";
-                var args = $"{svr} {db} \"{myDocs}\" {ext}";
+                var args = $"{svr} {db} \"{myDocs}\" {ext} {delim} -s {sqlscript}";
                 
                 ProcessStartInfo processStartInfo = new ProcessStartInfo(ff_cli);
                 // added properties to funnel output to a text and avoid the shell
-                processStartInfo.RedirectStandardOutput = true;
-                processStartInfo.UseShellExecute = false;
-                processStartInfo.CreateNoWindow = true;
+                //processStartInfo.RedirectStandardOutput = true;
+                //processStartInfo.UseShellExecute = false;
+                //processStartInfo.CreateNoWindow = true;
+
                 processStartInfo.Arguments = args;
                 Process p = Process.Start(processStartInfo);
-                string output = p.StandardOutput.ReadToEnd();
-                Console.WriteLine(output);
+                //string output = p.StandardOutput.ReadToEnd();
+                //Console.WriteLine(output);
                 p.WaitForExit();
-                MessageBox.Show($"Log!:\n'{output}'");
-
-
+                
 
             }
             catch (Exception ex)

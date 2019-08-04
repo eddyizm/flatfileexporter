@@ -7,7 +7,7 @@ import sqlite3
 from datetime import datetime, timedelta
 db_store='file.sqlite3'
 current_directory = os.getcwd()
-dateTimeStart = datetime(2019, 6, 1)
+dateTimeStart = datetime(2019, 8, 1)
 
 # link to check https://www.instagram.com/p/voLqUzoTVk/?igshid=6astge42ug6y
 
@@ -59,7 +59,6 @@ def validate():
  
 
 if __name__ == '__main__':
-    print(validate())
     pass
     
     
