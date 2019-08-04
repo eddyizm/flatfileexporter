@@ -1,4 +1,4 @@
-﻿''' Testing python script to be called from WPF C# applicaiton.
+﻿''' Python script to be called from WPF C# applicaiton.
     Compiling with pyinstaller to EXE.
     pyinstaller -F --icon="../ffe.ico" --clean --distpath "../Resources" flatfile_cli.py
     
@@ -12,6 +12,7 @@ import DAL as db # local library
 import ffe_validation as ffe_val # Local Library
 import argparse
 import sys
+directory = os.getcwd() 
 
 # argument parser
 parser = argparse.ArgumentParser(description="Takes sql script or stored proc to export csv, txt or excel file.")
@@ -31,8 +32,8 @@ group_extension.add_argument("-xlsx", "--xlsx", action='store_const', const='.xl
 # first group for seperator
 group_seperator = parser.add_mutually_exclusive_group(required=True)
 group_seperator.add_argument("-c", "--comma", action='store_const', const=',', help="use comma character for seperator.")
-group_seperator.add_argument("-t", "--tab", action='store_const', const='\t', help="uses tab for seperator.")
-group_seperator.add_argument("-p", "--pipe", action='store_const', const='|', help="uses pipe character for seperator.")
+group_seperator.add_argument("-t", "--tab", action='store_const', const='\t', help="use tab for seperator.")
+group_seperator.add_argument("-p", "--pipe", action='store_const', const='|', help="use pipe character for seperator.")
 # second group for sql script or stored proc
 group_sql = parser.add_mutually_exclusive_group(required=True)
 group_sql.add_argument("-s", "--sqlscript",  help="full path of sql script *MUST HAVE* SET NO COUNT on script.")
@@ -76,12 +77,7 @@ def print_args():
     print(args.storedproc)
     print(args.username)
     print(args.password)
-    # print('testing check odbc')
-    # print(db.check_odbc())
-    # print('testing ffe validation')
-    # print(current_directory)
-    # print(ffe_val.db_store)
-
+    
 
 def get_login():
     ''' assign login credentials if passed from GUI or from CLI '''
@@ -90,6 +86,10 @@ def get_login():
     else:
         return None, None        
 
+
+def get_filename():
+    # TODO pass filename or generate default here if none is pass
+    # since i didn't fucking make it required in the args. DUMB DUMB!
 
 def main():
     # odbc check
@@ -103,18 +103,18 @@ def main():
         sys.exit()
     
     login, cred = get_login()
-
+    # def generate_file(query, db_name, server, separator, directory, extension, file_name=None, usename=None, password=None):
     try:
         if not args.sqlscript:
             ''' if sql script is None/null then process using stored proc '''
             print (f'executing stored proc {args.storedproc}') 
-            fullpath = os.path.join(args.directory, args.filename)
-            result = db.generate_file(qry, args.db, args.server, get_seperator(), get_extension(), args.directory, login, cred)
+            # fullpath = os.path.join(args.directory, args.filename)
+            result = db.generate_file(args.storedproc, args.db, args.server, get_seperator(), args.directory, get_extension(), login, cred)
         else:
             print (f'executing sql script {args.sqlscript}')
             qry = db.read_file(args.sqlscript)
             # fullpath = os.path.join(args.directory, args.filename)
-            result = db.generate_file(qry, args.db, args.server, get_seperator(), get_extension(), args.directory, login, cred)
+            result = db.generate_file(qry, args.db, args.server, get_seperator(), args.directory, get_extension(), login, cred)
     except Exception as ex:
         print(f'error in main(): {ex}')
     else: 
