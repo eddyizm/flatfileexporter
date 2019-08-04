@@ -118,7 +118,6 @@ namespace FlatFileExporter
             {
                 var folder = Environment.CurrentDirectory;
                 var ff_cli = System.IO.Path.Combine(folder, "Resources\\flatfile_cli.exe");
-                // command = f'{FILE_EXPORT} PRODSTAR01 HPDataRaw {EXPORT_PATH} {healthplan} .xlsx "|" -sp "EXEC usp_GenerateMMR_UniversalFile \'{healthplan}\',\'{filename}\'" '
                 // TODO - construct command
                 var myDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 var args = $"{svr} {db} \"{myDocs}\" {ext} {delim} -s {sqlscript}";

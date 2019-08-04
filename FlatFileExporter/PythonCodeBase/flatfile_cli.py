@@ -109,12 +109,12 @@ def main():
             ''' if sql script is None/null then process using stored proc '''
             print (f'executing stored proc {args.storedproc}') 
             fullpath = os.path.join(args.directory, args.filename)
-            result = db.generate_file(qry, args.db, args.server, get_seperator(), get_extension(), fullpath, login, cred)
+            result = db.generate_file(qry, args.db, args.server, get_seperator(), get_extension(), args.directory, login, cred)
         else:
             print (f'executing sql script {args.sqlscript}')
             qry = db.read_file(args.sqlscript)
-            fullpath = os.path.join(args.directory, args.filename)
-            result = db.generate_file(qry, args.db, args.server, get_seperator(), get_extension(), fullpath, login, cred)
+            # fullpath = os.path.join(args.directory, args.filename)
+            result = db.generate_file(qry, args.db, args.server, get_seperator(), get_extension(), args.directory, login, cred)
     except Exception as ex:
         print(f'error in main(): {ex}')
     else: 

@@ -9,7 +9,6 @@ from datetime import datetime
 import xlsxwriter
 date_var = datetime.now().strftime("%Y%m%d")
 # TODO When called from UI the directory will default to the location of the SQL script. 
-directory = os.getcwd() 
 # TODO figure out how to auto increment this and pass it/share it with c# codebase
 __version__= '0.0.0.2' 
 
@@ -50,7 +49,10 @@ def read_file(file):
     print(f'error in read_file(): {ex}')
 
 
-def generate_file(query, db_name, server, separator, extension, file_name=None, usename=None, password=None):
+def generate_file(query, db_name, server, separator, extension, directory=None, file_name=None, usename=None, password=None):
+  # get directory if passed
+  if not directory:
+    directory = os.getcwd() 
   # defaulting to no username and going to trusted connection. Should be the setup in most enterprise shops
   if not usename:
     db_connection=DB_STRING.format(server, db_name)
