@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using System.IO;
 
 namespace FlatFileExporter
 {
@@ -72,13 +73,39 @@ namespace FlatFileExporter
         
         private void CallCommandLine(string sqlscript, string svr, string db, string ext, string delim)
         {
-            throw new NotImplementedException();
-            //var folder = Environment.CurrentDirectory;
-            //var ff_cli = System.IO.Path.Combine(folder, "Resources\\flatfile_cli.exe");
-            //MessageBox.Show(ff_cli);
-            //ProcessStartInfo processStartInfo = new ProcessStartInfo(ff_cli);
-            //Process p = Process.Start(processStartInfo);
-            //p.WaitForExit();
+
+            try
+            {
+                var folder = Environment.CurrentDirectory;
+                var ff_cli = System.IO.Path.Combine(folder, "Resources\\flatfile_cli.exe");
+                // command = f'{FILE_EXPORT} PRODSTAR01 HPDataRaw {EXPORT_PATH} {healthplan} .xlsx "|" -sp "EXEC usp_GenerateMMR_UniversalFile \'{healthplan}\',\'{filename}\'" '
+                // TODO - construct command
+                var myDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                //var command = $"\"{ff_cli}\" {svr} {db} \"{myDocs}\"";
+                var args = $"{svr} {db} \"{myDocs}\" {ext}";
+                
+                ProcessStartInfo processStartInfo = new ProcessStartInfo(ff_cli);
+                // added properties to funnel output to a text and avoid the shell
+                processStartInfo.RedirectStandardOutput = true;
+                processStartInfo.UseShellExecute = false;
+                processStartInfo.CreateNoWindow = true;
+                processStartInfo.Arguments = args;
+                Process p = Process.Start(processStartInfo);
+                string output = p.StandardOutput.ReadToEnd();
+                Console.WriteLine(output);
+                p.WaitForExit();
+                MessageBox.Show($"Log!:\n'{output}'");
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error calling CLI. Details:{ex.ToString()}");
+                
+            }
+   
+            
         }
 
         private void btnAddServer_Click(object sender, RoutedEventArgs e)

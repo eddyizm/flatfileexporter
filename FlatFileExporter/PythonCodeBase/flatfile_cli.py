@@ -2,6 +2,10 @@
     Compiling with pyinstaller to EXE.
     pyinstaller -F --icon="../ffe.ico" --clean --distpath "../Resources" flatfile_cli.py
     
+    # testing environment
+    # linux sql server - 127.0.0.1,14333
+    # database - TutorialDB
+    
 ''' 
 import os
 import DAL as db # local library
@@ -91,9 +95,11 @@ def main():
     # odbc check
     if not db.check_odbc():
         print("Try again after installing ODBC driver. Application exiting.")
+        os.system("pause")
         sys.exit()
     if not ffe_val.validate():
         print("Trial is over. Please buy a license.")
+        os.system("pause")
         sys.exit()
     
     login, cred = get_login()
