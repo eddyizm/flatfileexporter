@@ -100,9 +100,9 @@ namespace FlatFileExporter
                     Properties.Settings.Default.Username = "";
                     Properties.Settings.Default.Password = "";
                     Properties.Settings.Default.Save();
-                    MessageBox.Show("Credentials cleared!");
                     txUserName.Clear();
                     txPassword.Clear();
+                    MessageBox.Show("Credentials cleared!");
                 }
                 catch (Exception ex)
                 {

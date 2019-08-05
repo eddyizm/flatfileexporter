@@ -64,6 +64,8 @@ namespace FlatFileExporter
                 MessageBox.Show("Please make sure you select a Sql Script, Server, Database and Delimiter.");
                 return;
             }
+            // check if credentials are needed
+            var needCreds = CheckCredentials();
             // set cli arguments and pass to method
             var checkedExtension = stkExtensionGroup.Children.OfType<RadioButton>()
                                       .FirstOrDefault(r => r.IsChecked == true).Content.ToString();
@@ -201,6 +203,12 @@ namespace FlatFileExporter
             }
 
             return true;
+        }
+        
+        private bool CheckCredentials()
+        {
+            // check if credentials are being used. 
+            return !string.IsNullOrEmpty(Properties.Settings.Default.Username);
         }
         #endregion
 
