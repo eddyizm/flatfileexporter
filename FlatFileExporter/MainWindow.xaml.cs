@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -100,5 +101,46 @@ namespace FlatFileExporter
         {
             _mainFrame.Navigate(new DatabasePage());
         }
-    }
+
+        private void MenuItemAbout_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var folder = Environment.CurrentDirectory;
+                var ff_cli = System.IO.Path.Combine(folder, "Resources\\flatfile_cli.exe");
+                ProcessStartInfo processStartInfo = new ProcessStartInfo(ff_cli, "-V");
+                //ProcessStartInfo processStartInfo = new ProcessStartInfo(ff_cli, "--help");
+                processStartInfo.RedirectStandardOutput = true;
+                processStartInfo.UseShellExecute = false;
+                processStartInfo.CreateNoWindow = true;
+                Process p = Process.Start(processStartInfo);
+                string output = p.StandardOutput.ReadToEnd();
+                Console.WriteLine(output);
+                p.WaitForExit();
+                MessageBox.Show($"{output}", "Beta build");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error getting verison:{ex.ToString()}");
+            }
+
+        }
+
+        //private void CallCommandLine(string sqlscript, string svr, string db, string ext, string delim)
+        //{
+
+
+        //        // TODO - construct command
+        //        var myDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        //        var args = $"{svr} {db} \"{myDocs}\" {ext} {delim} -s {sqlscript}";
+
+
+        //        processStartInfo.Arguments = args;
+        //        Process p = Process.Start(processStartInfo);
+        //        //string output = p.StandardOutput.ReadToEnd();
+        //        //Console.WriteLine(output);
+        //        p.WaitForExit();
+
+
+        }
 }
