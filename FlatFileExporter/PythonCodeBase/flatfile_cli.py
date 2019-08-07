@@ -66,17 +66,17 @@ def get_extension():
 # debugging method
 def print_args():
     # CLI arg inputs
-    print(args.server)
-    print(args.db)
-    print(args.directory)
-    print(args.filename)
-    print(args.comma)
-    print(args.tab)
-    print(args.pipe)
-    print(args.sqlscript)
-    print(args.storedproc)
-    print(args.username)
-    print(args.password)
+    print(f'args.server: {args.server}')
+    print(f'args.db: {args.db}')
+    print(f'args.directory: {args.directory}')
+    print(f'args.filename: {args.filename}')
+    print(f'args.comma: {args.comma}')
+    print(f'args.tab: {args.tab}')
+    print(f'args.pipe: {args.pipe}')
+    print(f'args.sqlscript: {args.sqlscript}')
+    print(f'args.storedproc: {args.storedproc}')
+    print(f'args.username: {args.username}')
+    print(f'args.password: {args.password}')
     
 
 def get_login():
@@ -104,18 +104,21 @@ def main():
         sys.exit()
     
     login, cred = get_login()
-    # def generate_file(query, db_name, server, separator, directory, extension, file_name=None, usename=None, password=None):
+    
     try:
         if not args.sqlscript:
             ''' if sql script is None/null then process using stored proc '''
             print (f'executing stored proc {args.storedproc}') 
             # fullpath = os.path.join(args.directory, args.filename)
-            result = db.generate_file(args.storedproc, args.db, args.server, get_seperator(), args.directory, get_extension(), usename=login, password=cred)
+            result = db.generate_file(args.storedproc, args.db, args.server, get_seperator(), args.directory, get_extension(), username=login, password=cred)
         else:
             print (f'executing sql script {args.sqlscript}')
             qry = db.read_file(args.sqlscript)
-            # fullpath = os.path.join(args.directory, args.filename)
-            result = db.generate_file(qry, args.db, args.server, get_seperator(), args.directory, get_extension(), usename=login, password=cred)
+            # fullpath = os.path.join(args.directory, a
+            # rgs.filename)
+            # def generate_file(query, db_name, server, separator, directory, extension, file_name=None, username=None, password=None):
+            # python flatfile_cli.py 127.0.0.1,14333 TutorialDB "C:\Users\eddyizm\Documents" -csv -c -s "C:\Users\eddyizm\Documents\queries.sql" -u sa -pass ex0Planet693$
+            result = db.generate_file(qry, args.db, args.server, get_seperator(), args.directory, get_extension(), username=login, password=cred)
     except Exception as ex:
         print(f'error in main(): {ex}')
     else: 
@@ -123,5 +126,6 @@ def main():
     
 
 if __name__ == '__main__':
+    print_args()
     main()
     os.system("pause")

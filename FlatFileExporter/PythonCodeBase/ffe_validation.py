@@ -17,6 +17,7 @@ def check_url():
     # print('true' if r.status_code==200 else 'false')
     return True if r.status_code==200 else False
 
+
 # TODO Get current date and store in sqlite3 for 30 day trial. 
 ''' sqlite3 statements '''
 create_validation_table = """ CREATE TABLE IF NOT EXISTS validation_date (
@@ -24,6 +25,7 @@ create_validation_table = """ CREATE TABLE IF NOT EXISTS validation_date (
                                         current_date text,
                                         start_date text
                                     ); """		
+
 
 def create_connection(db_file):
     """ create a database connection to the SQLite database
@@ -42,6 +44,7 @@ def create_connection(db_file):
 def check_if_file_exists(full_filepath) -> bool:
   return os.path.exists(full_filepath)
 
+
 def check_date():
     time_between_insertion = datetime.now() - dateTimeStart
     if  time_between_insertion.days > 30:
@@ -51,10 +54,12 @@ def check_date():
 
 
 def validate():
-    if check_url() and check_date():
+    if check_date():
          return True
+         # if check_url() and check_date():
     else:
         return False
+
         
  
 

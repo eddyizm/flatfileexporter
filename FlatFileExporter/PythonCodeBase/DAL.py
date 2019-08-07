@@ -49,15 +49,12 @@ def read_file(file):
     print(f'error in read_file(): {ex}')
 
 
-def generate_file(query, db_name, server, separator, extension, directory=None, file_name=None, usename=None, password=None):
-  # get directory if passed
-  if not directory:
-    directory = os.getcwd() 
+def generate_file(query, db_name, server, separator, directory, extension, file_name=None, username=None, password=None):
   # defaulting to no username and going to trusted connection. Should be the setup in most enterprise shops
-  if not usename:
+  if not username:
     db_connection=DB_STRING.format(server, db_name)
   else:
-    db_connection = USERPASS_DBSTRING.format(server, db_name, usename, password)
+    db_connection = USERPASS_DBSTRING.format(server, db_name, username, password)
   # passing the name supplied otherwise defaulting but this may not work properly. Need to test in other environments.
   if file_name:
     filename = (file_name+'_'+date_var+extension)
