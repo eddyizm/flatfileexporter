@@ -88,6 +88,7 @@ def get_login():
 
 
 def get_filename():
+    pass
     # TODO pass filename or generate default here if none is pass
     # since i didn't fucking make it required in the args. DUMB DUMB!
 
@@ -109,12 +110,12 @@ def main():
             ''' if sql script is None/null then process using stored proc '''
             print (f'executing stored proc {args.storedproc}') 
             # fullpath = os.path.join(args.directory, args.filename)
-            result = db.generate_file(args.storedproc, args.db, args.server, get_seperator(), args.directory, get_extension(), login, cred)
+            result = db.generate_file(args.storedproc, args.db, args.server, get_seperator(), args.directory, get_extension(), usename=login, password=cred)
         else:
             print (f'executing sql script {args.sqlscript}')
             qry = db.read_file(args.sqlscript)
             # fullpath = os.path.join(args.directory, args.filename)
-            result = db.generate_file(qry, args.db, args.server, get_seperator(), args.directory, get_extension(), login, cred)
+            result = db.generate_file(qry, args.db, args.server, get_seperator(), args.directory, get_extension(), usename=login, password=cred)
     except Exception as ex:
         print(f'error in main(): {ex}')
     else: 

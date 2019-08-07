@@ -71,7 +71,7 @@ namespace FlatFileExporter
                                       .FirstOrDefault(r => r.IsChecked == true).Content.ToString();
             var extension = GetExtension(checkedExtension);
             var delimiter = GetDelimiter(cbDelimiter.Text);
-            CallCommandLine(tSqlScript.Text, cbServers.Text, cbDataBase.Text, extension, delimiter);
+            CallCommandLine(tSqlScript.Text, cbServers.Text, cbDataBase.Text, extension, delimiter, needCreds);
         }
 
           
@@ -112,7 +112,7 @@ namespace FlatFileExporter
             return cli_arg;
         }
 
-        private void CallCommandLine(string sqlscript, string svr, string db, string ext, string delim)
+        private void CallCommandLine(string sqlscript, string svr, string db, string ext, string delim, bool needLogin)
         {
 
             StringBuilder cliLog = new StringBuilder();
@@ -122,8 +122,14 @@ namespace FlatFileExporter
                 var ff_cli = System.IO.Path.Combine(folder, "Resources\\flatfile_cli.exe");
                 // TODO - construct command
                 var myDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                var args = $"{svr} {db} \"{myDocs}\" {ext} {delim} -s {sqlscript}";
+                //return (value == 1 ? Periods.VariablePeriods : Periods.FixedPeriods);
+                var args = $"{svr} {db} \"{myDocs}\" {ext} {delim} -s \"{sqlscript}\"";
+                if (needLogin)
+                {
+                    args += $" -u {Properties.Settings.Default.Username} -pass {Properties.Settings.Default.Password}";
+                }
                 
+                                
                 ProcessStartInfo processStartInfo = new ProcessStartInfo(ff_cli);
                 // added properties to funnel output to a text and avoid the shell
                 //processStartInfo.RedirectStandardOutput = true;
