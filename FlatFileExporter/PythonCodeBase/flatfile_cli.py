@@ -121,11 +121,12 @@ def main():
             result = db.generate_file(qry, args.db, args.server, get_seperator(), args.directory, get_extension(), username=login, password=cred)
     except Exception as ex:
         print(f'error in main(): {ex}')
-    else: 
-      print(f'file generated - {result}')        
+    finally: 
+      print(f'file generated - {result}')  
+      os.system("pause")      
     
 
 if __name__ == '__main__':
     print_args()
     main()
-    os.system("pause")
+    
