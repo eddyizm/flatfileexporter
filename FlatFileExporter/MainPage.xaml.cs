@@ -122,26 +122,23 @@ namespace FlatFileExporter
                 var ff_cli = System.IO.Path.Combine(folder, "Resources\\flatfile_cli.exe");
                 // TODO - construct command
                 var myDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                //return (value == 1 ? Periods.VariablePeriods : Periods.FixedPeriods);
                 var args = $"{svr} {db} \"{myDocs}\" {ext} {delim} -s \"{sqlscript}\"";
                 if (needLogin)
                 {
                     args += $" -u {Properties.Settings.Default.Username} -pass {Properties.Settings.Default.Password}";
                 }
-                
-                                
+                                                
                 ProcessStartInfo processStartInfo = new ProcessStartInfo(ff_cli);
                 // added properties to funnel output to a text and avoid the shell
                 //processStartInfo.RedirectStandardOutput = true;
                 //processStartInfo.UseShellExecute = false;
                 //processStartInfo.CreateNoWindow = true;
-
                 processStartInfo.Arguments = args;
                 Process p = Process.Start(processStartInfo);
                 //string output = p.StandardOutput.ReadToEnd();
                 //Console.WriteLine(output);
                 p.WaitForExit();
-                
+                              
 
             }
             catch (Exception ex)
@@ -183,6 +180,10 @@ namespace FlatFileExporter
         #endregion
 
         #region form validations
+        /// <summary>
+        /// Checks if all fields in form are filled out.
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateFields()
         {
             var result = string.IsNullOrEmpty(tSqlScript.Text);
@@ -210,10 +211,13 @@ namespace FlatFileExporter
 
             return true;
         }
-        
+
+        /// <summary>
+        /// check if credentials are being used. 
+        /// </summary>
+        /// <returns></returns>
         private bool CheckCredentials()
         {
-            // check if credentials are being used. 
             return !string.IsNullOrEmpty(Properties.Settings.Default.Username);
         }
         #endregion
