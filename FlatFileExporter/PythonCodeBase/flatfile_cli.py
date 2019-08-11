@@ -115,7 +115,6 @@ def main():
             print (f'executing sql script {args.sqlscript}')
             qry = db.read_file(args.sqlscript)
             # fullpath = os.path.join(args.directory, a
-            # rgs.filename)
             # def generate_file(query, db_name, server, separator, directory, extension, file_name=None, username=None, password=None):
             # python flatfile_cli.py 127.0.0.1,14333 TutorialDB "C:\Users\eddyizm\Documents" -csv -c -s "C:\Users\eddyizm\Documents\queries.sql" -u sa -pass ex0Planet693$
             result = db.generate_file(qry, args.db, args.server, get_seperator(), args.directory, get_extension(), username=login, password=cred)

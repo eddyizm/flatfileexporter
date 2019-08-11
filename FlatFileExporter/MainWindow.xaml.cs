@@ -29,9 +29,8 @@ namespace FlatFileExporter
         public MainWindow()
         {
             InitializeComponent();
+            CheckSettingsUpdate();
             _mainFrame.Navigate(new MainPage());
-
-        
             //PopulateServerItems();
 
             //// TODO // may need to pull this from python cli instead or figure out a way to keep them in sync. 
@@ -48,7 +47,16 @@ namespace FlatFileExporter
 
         }
 
-                        
+        private void CheckSettingsUpdate()
+        {
+            if (Properties.Settings.Default.updateSettings)
+            {
+                Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.updateSettings = false;
+                Properties.Settings.Default.Save();
+            }
+        }
+
         private static void SettingsDebugMethod()
         {
             // check settings 
@@ -115,8 +123,6 @@ namespace FlatFileExporter
             }
 
         }
-
-        
 
         }
 }
