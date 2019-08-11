@@ -42,6 +42,10 @@ group_sql.add_argument("-sp", "--storedproc", help="instead of sql script, point
 args=parser.parse_args()
 current_directory= os.getcwd() # this may change before beta/alpha testing.
 
+def clean_path(dir_path):
+    return dir_path.replace('\\', '/')
+
+
 def get_seperator():
     ''' find argument with value from GUI or CLI '''
     # TODO test against DB. the \t might work directly from the constant
@@ -114,10 +118,8 @@ def main():
         else:
             print (f'executing sql script {args.sqlscript}')
             qry = db.read_file(args.sqlscript)
-            # fullpath = os.path.join(args.directory, a
-            # def generate_file(query, db_name, server, separator, directory, extension, file_name=None, username=None, password=None):
             # python flatfile_cli.py 127.0.0.1,14333 TutorialDB "C:\Users\eddyizm\Documents" -csv -c -s "C:\Users\eddyizm\Documents\queries.sql" -u sa -pass ex0Planet693$
-            result = db.generate_file(qry, args.db, args.server, get_seperator(), args.directory, get_extension(), username=login, password=cred)
+            result = db.generate_file(qry, args.db, args.server, get_seperator(), clean_path(args.directory), get_extension(), username=login, password=cred)
     except Exception as ex:
         print(f'error in main(): {ex}')
     finally: 

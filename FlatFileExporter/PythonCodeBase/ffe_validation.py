@@ -54,9 +54,9 @@ def check_date():
 
 
 def validate():
-    if check_date():
+    if check_url() and check_date():
          return True
-         # if check_url() and check_date():
+         # if check_date():
     else:
         return False
 

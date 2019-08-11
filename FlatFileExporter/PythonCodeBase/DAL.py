@@ -8,7 +8,7 @@ import os
 from datetime import datetime
 import xlsxwriter
 date_var = datetime.now().strftime("%Y%m%d")
-# TODO When called from UI the directory will default to the location of the SQL script. 
+# When called from UI the directory will default to the location of the SQL script. 
 # TODO figure out how to auto increment this and pass it/share it with c# codebase
 __version__= '0.0.1.0' 
 
@@ -63,10 +63,14 @@ def generate_file(query, db_name, server, separator, directory, extension, file_
   # connect to db and execute query, output file
   try:
     with db.connect(db_connection) as cnxn:
+        print(f'{directory}')
         df = pd.read_sql((query), cnxn)
+        print("in generate file method.")
         if extension == '.xlsx':
           writer = pd.ExcelWriter(filename, engine = 'xlsxwriter')
           df.to_excel(writer, sheet_name = (db_name), index = False)
+          writer.save()
+          writer.close()
         else:
           df.to_csv(filename ,sep = separator, encoding='utf-8', index = False)
     return filename
