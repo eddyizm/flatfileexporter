@@ -106,17 +106,8 @@ namespace FlatFileExporter
         {
             try
             {
-                var folder = Environment.CurrentDirectory;
-                var ff_cli = System.IO.Path.Combine(folder, "Resources\\flatfile_cli.exe");
-                ProcessStartInfo processStartInfo = new ProcessStartInfo(ff_cli, "-V");
-                //ProcessStartInfo processStartInfo = new ProcessStartInfo(ff_cli, "--help");
-                processStartInfo.RedirectStandardOutput = true;
-                processStartInfo.UseShellExecute = false;
-                processStartInfo.CreateNoWindow = true;
-                Process p = Process.Start(processStartInfo);
-                string output = p.StandardOutput.ReadToEnd();
-                p.WaitForExit();
-                MessageBox.Show($"{output}", "Beta build");
+                var version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                MessageBox.Show($"{version}", "Beta build");
             }
             catch (Exception ex)
             {
