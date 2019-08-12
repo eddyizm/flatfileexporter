@@ -82,6 +82,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <None Include="README.md" />
     <None Include="Resources\flatfile_cli.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

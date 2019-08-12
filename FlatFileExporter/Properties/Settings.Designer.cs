@@ -37,12 +37,9 @@ namespace FlatFileExporter.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
-<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-  <string>Server1</string>
-  <string>Server2</string>
-  <string>Server3</string>
-</ArrayOfString>")]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
+            "tring>Server1</string>\r\n  <string xsi:nil=\"true\" />\r\n</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection Servers {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["Servers"]));
@@ -56,8 +53,7 @@ namespace FlatFileExporter.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
             "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
-            "tring>DB1</string>\r\n  <string>DB2</string>\r\n  <string>DB3</string>\r\n</ArrayOfStr" +
-            "ing>")]
+            "tring>DB1</string>\r\n</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection Databases {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["Databases"]));
