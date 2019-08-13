@@ -15,7 +15,7 @@ import sys
 directory = os.getcwd() 
 
 # argument parser
-parser = argparse.ArgumentParser(description="Takes sql script or stored proc to export csv, txt or excel file.")
+parser = argparse.ArgumentParser(description="Reads a sql script or calls a stored procedure and exports results tp csv, txt or excel file.")
 parser.add_argument("-V", "--version", action='version', version =f'v{db.__version__}')
 parser.add_argument("server", help="server to run query against.")
 parser.add_argument("db", help="database to use on server.")

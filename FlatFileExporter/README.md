@@ -5,7 +5,20 @@
 
 ## Overview 
 
-Application to generate flat files or excel data dumps. The application will take a sql file or stored procedure and export a file.
+Reads a sql script or calls a stored procedure and exports results to a csv, txt or excel file. The GUI is limited to a SQL script and currently exports to the same location where the SQL script is called from. The CLI allows more flexibility such as specifying the export directory, file name and the ability to call a stored procedure on the database.
+
+**CRITICAL NOTE**
+SQL scripts require   
+`SET NOCOUNT ON`  
+at the top of the script, else the python/pandas based engine will fail with the query results. 
+
+Output file will have date appended for GUI and CLI, eg.
+> GUI  
+`FFE_OUTPUT_<YYYYMMDD>.<EXT>`
+
+> CLI  
+`<FILENAME_SUPPLIED>_<YYYYMMDD>.<EXT>` 
+
 
 Supported extensions: 
 * txt
@@ -25,7 +38,7 @@ Supported delimiters:
 If you don't have it on your system, please install ODBC Driver 17 for SQL Server here:
 https://www.microsoft.com/en-us/download/details.aspx?id=56567  
 
-Update .Net Framework here:
+Update .Net Framework here:  
 https://www.microsoft.com/en-us/download/details.aspx?id=49981
 
 
@@ -54,7 +67,7 @@ By default Flat File Exporter uses Microsoft's ODBC Driver 17 for SQL Server and
 The CLI is far more powerful and allows passing a stored procedure. You can also call the exe directly to schedule file exports along with calling it programmatically to go through loops over large amounts of variables and data.
 
 ```
-usage: flatfile_cli.py [-h] [-V] [-f FILENAME] [-u USERNAME] [-pass PASSWORD]
+usage: flatfile_cli.exe [-h] [-V] [-f FILENAME] [-u USERNAME] [-pass PASSWORD]
                        (-csv | -txt | -xlsx) (-c | -t | -p)
                        (-s SQLSCRIPT | -sp STOREDPROC)
                        server db directory
