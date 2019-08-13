@@ -19,8 +19,14 @@ Supported delimiters:
 
 ## Requirements 
 
-Flat File Exporter requires ODBC Driver 17 for SQL Server. If you don't have it on your system, please install ODBC Driver 17 for SQL Server here  
+* ODBC Driver 17 for SQL Server
+* Microsoft .NET Framework 4.6.1 
+
+If you don't have it on your system, please install ODBC Driver 17 for SQL Server here:
 https://www.microsoft.com/en-us/download/details.aspx?id=56567  
+
+Update .Net Framework here:
+https://www.microsoft.com/en-us/download/details.aspx?id=49981
 
 
 # GUI 
