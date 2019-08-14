@@ -66,6 +66,27 @@ By default Flat File Exporter uses Microsoft's ODBC Driver 17 for SQL Server and
 
 The CLI is far more powerful and allows passing a stored procedure. You can also call the exe directly to schedule file exports along with calling it programmatically to go through loops over large amounts of variables and data.
 
+#### Location
+The CLI can be found in the Program folder, in the Resources folder
+
+> [AppRoot]\Resources\flatfile_cli.exe
+
+### CLI usage
+
+Sample calls
+
+`flatfile_cli.exe <SERVER> <DATABASE> "C:\Users\BOB\Desktop" -csv -c -s "C:\Users\BOB\Desktop\sample_query.sql"`
+
+ where <SERVER> and <DATABASE> is your system,   
+`"C:\Users\BOB\Desktop"` -- The output directory  
+`-csv` specifies a .csv file  
+`-c` requests a comma delimited file  
+`-s` switch specifies a sql script and requires a path/file  
+`"C:\Users\BOB\Desktop\sample_query.sql"` requested above
+
+
+Full usage
+
 ```
 usage: flatfile_cli.exe [-h] [-V] [-f FILENAME] [-u USERNAME] [-pass PASSWORD]
                        (-csv | -txt | -xlsx) (-c | -t | -p)

@@ -50,7 +50,7 @@ namespace FlatFileExporter
                 MessageBox.Show("Please enter a valid server");
                 return;
             }
-            var result = MessageBox.Show($"Add Server \"{nDatabase}\" to list?", "Add Server", MessageBoxButton.OKCancel);
+            var result = MessageBox.Show($"Add Database \"{nDatabase}\" to list?", "Add Database", MessageBoxButton.OKCancel);
             if (result == MessageBoxResult.OK)
             {
                 AddDatabase(nDatabase);
