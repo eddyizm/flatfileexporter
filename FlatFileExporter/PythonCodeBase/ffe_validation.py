@@ -60,7 +60,6 @@ def validate():
     else:
         return False
 
-        
  
 
 if __name__ == '__main__':

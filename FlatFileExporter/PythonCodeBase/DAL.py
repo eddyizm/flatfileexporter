@@ -63,9 +63,7 @@ def generate_file(query, db_name, server, separator, directory, extension, file_
   # connect to db and execute query, output file
   try:
     with db.connect(db_connection) as cnxn:
-        print(f'{directory}')
         df = pd.read_sql((query), cnxn)
-        print("in generate file method.")
         if extension == '.xlsx':
           writer = pd.ExcelWriter(filename, engine = 'xlsxwriter')
           df.to_excel(writer, sheet_name = (db_name), index = False)
