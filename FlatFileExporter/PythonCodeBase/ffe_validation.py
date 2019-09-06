@@ -7,12 +7,12 @@ import sqlite3
 from datetime import datetime, timedelta
 db_store='file.sqlite3'
 current_directory = os.getcwd()
-dateTimeStart = datetime(2019, 8, 1)
+dateTimeStart = datetime(2019, 10, 1)
 
-# link to check https://www.instagram.com/p/voLqUzoTVk/?igshid=6astge42ug6y
+# link to check https://www.instagram.com/p/BqrAosjhU7a/
 
 def check_url():
-    r = requests.get('https://www.instagram.com/p/voLqUzoTVk/')
+    r = requests.get('https://www.instagram.com/p/BqrAosjhU7a/')
     # print(r.status_code)
     # print('true' if r.status_code==200 else 'false')
     return True if r.status_code==200 else False
