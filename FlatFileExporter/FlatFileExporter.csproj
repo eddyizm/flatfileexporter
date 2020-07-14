@@ -82,7 +82,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <None Include="README.md" />
     <None Include="Resources\flatfile_cli.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -104,10 +103,6 @@
     </Page>
     <Resource Include="ffe.ico" />
     <None Include="PythonCodeBase\dist\flatfile_cli.exe" />
-    <Resource Include="assets\ffe_01.png" />
-    <Resource Include="assets\ffe_02.png" />
-    <Resource Include="assets\ffe_03.png" />
-    <Resource Include="assets\ffe_04.png" />
     <Content Include="PythonCodeBase\DAL.py" />
     <Content Include="PythonCodeBase\ffe_validation.py" />
     <Content Include="PythonCodeBase\flatfile_cli.py" />
@@ -162,7 +157,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

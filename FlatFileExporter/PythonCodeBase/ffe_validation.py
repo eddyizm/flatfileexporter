@@ -7,12 +7,11 @@ import sqlite3
 from datetime import datetime, timedelta
 db_store='file.sqlite3'
 current_directory = os.getcwd()
-dateTimeStart = datetime(2019, 10, 1)
+dateTimeStart = datetime(2020, 8, 1)
 
-# link to check https://www.instagram.com/p/BqrAosjhU7a/
 
 def check_url():
-    r = requests.get('https://www.instagram.com/p/BqrAosjhU7a/')
+    r = requests.get('https://storage.cloud.google.com/som_eddyizm/TWC.png')
     # print(r.status_code)
     # print('true' if r.status_code==200 else 'false')
     return True if r.status_code==200 else False
@@ -47,7 +46,7 @@ def check_if_file_exists(full_filepath) -> bool:
 
 def check_date():
     time_between_insertion = datetime.now() - dateTimeStart
-    if  time_between_insertion.days > 30:
+    if  time_between_insertion.days > 90:
         return False
     else:
         return True
