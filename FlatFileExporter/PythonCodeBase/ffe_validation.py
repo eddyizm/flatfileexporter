@@ -10,6 +10,7 @@ current_directory = os.getcwd()
 dateTimeStart = datetime(2020, 8, 1)
 
 
+
 def check_url():
     r = requests.get('https://storage.cloud.google.com/som_eddyizm/TWC.png')
     # print(r.status_code)

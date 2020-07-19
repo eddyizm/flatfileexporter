@@ -10,7 +10,7 @@ import xlsxwriter
 date_var = datetime.now().strftime("%Y%m%d")
 # When called from UI the directory will default to the location of the SQL script. 
 # TODO figure out how to auto increment this and pass it/share it with c# codebase
-__version__= '0.0.1.1'
+__version__= '0.0.1.2'
 
 
 DB_STRING = 'DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={};Trusted_Connection=yes;DATABASE={}'	
