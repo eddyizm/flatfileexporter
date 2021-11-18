@@ -24,7 +24,21 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Top">
             <TextBlock Width="287" Style="{StaticResource MaterialDesignDisplay1TextBlock}"><Run Text="About" /></TextBlock>
-            <TextBlock Margin="10"> <Run Text="Current Version: BETA v0.0.1.2" /></TextBlock>
+            <Grid>
+                <TextBlock Width="350" Padding="0,0,0,0" Height="30" FontSize="12" Margin="10"> <Run Text="Current Version: BETA 0.0.1.2" /></TextBlock>
+                <Button 
+                    x:Name="VersionCheck" Width="143" Height="30" 
+                    HorizontalAlignment="Right" 
+                    Margin="0,10,20,10"
+                    Padding="0,0,5,0" 
+                    Click="test"
+                    Content="_Check for Updates"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    ToolTip="Check For Updates"/>
+            </Grid>
+
+
+
 
             <StackPanel>
                 <Expander
