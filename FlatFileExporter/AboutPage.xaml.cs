@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -58,6 +57,7 @@ namespace FlatFileExporter
 
         private void checkversion()
         {
+            string caption = "Checking Version...";
             try
             {
                 var client = new RestClient("http://127.0.0.1:8000/api/v1/flat_file_version");
@@ -69,24 +69,30 @@ namespace FlatFileExporter
                 var version1 = new Version(result.version);
                 var version2 = new Version(vrsn);
                 var versionResult = version1.CompareTo(version2);
+                
 
                 if (versionResult > 0)
                 {
-                    MessageBox.Show($"New Version Available: {result.version}\n" +
+                    MessageBoxButton button = MessageBoxButton.YesNo;
+                    MessageBoxResult mresult;
+                    mresult = MessageBox.Show($"New Version Available: {result.version}\n" +
                     $"Last Updated: {String.Format("{0:d}", result.dateUpdated)}\n" +
-                    $"Link: {result.URL}");
+                    $"Update", caption, button);
+                    if (mresult == MessageBoxResult.Yes)
+                    {
+                        Process.Start(result.URL);
+                    }
+
                 }
                 else
                 {
                     MessageBox.Show($"Software Up to Date: {vrsn}\n");
                 }
-               
-
                 
             }
             catch (Exception)
             {
-                MessageBox.Show($"Error contacting Server. Are you offline?");
+                MessageBox.Show($"Error contacting Server. Please try again later.", caption);
             }
 
 
