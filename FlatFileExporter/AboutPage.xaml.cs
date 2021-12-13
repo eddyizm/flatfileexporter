@@ -19,7 +19,7 @@ namespace FlatFileExporter
             InitializeComponent();
         }
 
-        public string vrsn = "0.0.1.2";
+        public string vrsn = "0.0.1.4";
 
         #region Support Links to repo
 
@@ -60,7 +60,9 @@ namespace FlatFileExporter
             string caption = "Checking Version...";
             try
             {
-                var client = new RestClient("http://127.0.0.1:8000/api/v1/flat_file_version");
+                // dev
+                // var client = new RestClient("http://127.0.0.1:8000/api/v1/flat_file_version");
+                var client = new RestClient("https://eddyizm.com/api/v1/flat_file_version");
                 client.Timeout = -1;
                 var request = new RestRequest(Method.GET);
                 IRestResponse response = client.Execute(request);
