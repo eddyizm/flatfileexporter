@@ -25,9 +25,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>0.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -53,7 +54,7 @@
     <ApplicationIcon>ffe.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -62,10 +63,16 @@
     <TargetZone>Internet</TargetZone>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>false</GenerateManifests>
+    <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>C9105BFAF2A985054A1A6925E4F9CCF359D581B2</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>FlatFileExporter_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
@@ -105,6 +112,7 @@
     <Resource Include="Resources\BuyMeACoffee.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <None Include="FlatFileExporter_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />
     <None Include="Resources\flatfile_cli.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -132,7 +140,6 @@
     <Resource Include="ffe.ico" />
     <None Include="PythonCodeBase\dist\flatfile_cli.exe" />
     <Content Include="PythonCodeBase\DAL.py" />
-    <Content Include="PythonCodeBase\ffe_validation.py" />
     <Content Include="PythonCodeBase\flatfile_cli.py" />
     <Resource Include="PythonCodeBase\requirements.txt" />
     <Page Include="MainWindow.xaml">
