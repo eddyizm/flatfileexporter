@@ -10,7 +10,8 @@
 
 Reads a sql script or calls a stored procedure and exports results to a csv, txt or excel file. The GUI is limited to a SQL script and currently exports to the same location where the SQL script is called from. The CLI allows more flexibility such as specifying the export directory, file name and the ability to call a stored procedure on the database.
 
-Support 
+Support  
+ 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L3L01HI5A)
 
 **CRITICAL NOTE**
