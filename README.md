@@ -1,8 +1,6 @@
 # Flat File Exporter
 ---
-#### CURRENT BUILD - BETA 0.0.1.4
-
-[Home](README.md) | [Releases](Docs/Releases.md) | [Issues](https://github.com/eddyizm/flatfileexporter/issues)
+[Home](README.md) | [Releases][https://github.com/eddyizm/flatfileexporter/releases]) | [Issues](https://github.com/eddyizm/flatfileexporter/issues)
 
 ---
 
