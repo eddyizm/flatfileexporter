@@ -1,6 +1,6 @@
 # Flat File Exporter
 ---
-[Home](README.md) | [Releases][https://github.com/eddyizm/flatfileexporter/releases]) | [Issues](https://github.com/eddyizm/flatfileexporter/issues)
+[Home](README.md) | [Releases](https://github.com/eddyizm/flatfileexporter/releases) | [Issues](https://github.com/eddyizm/flatfileexporter/issues)
 
 ---
 
