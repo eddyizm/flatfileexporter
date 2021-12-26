@@ -25,7 +25,7 @@
             VerticalAlignment="Top">
             <TextBlock Width="287" Style="{StaticResource MaterialDesignDisplay1TextBlock}"><Run Text="About" /></TextBlock>
             <Grid>
-                <TextBlock Width="350" Padding="0,0,0,0" Height="30" FontSize="12" Margin="10"> <Run Text="Current Version: BETA 0.0.1.2" /></TextBlock>
+                <TextBlock Width="350" Padding="0,0,0,0" Height="30" FontSize="12" Margin="10"> <Run Text="Current Version: 0.1.5 BETA" /></TextBlock>
                 <Button 
                     x:Name="VersionCheck" Width="143" Height="30" 
                     HorizontalAlignment="Right" 

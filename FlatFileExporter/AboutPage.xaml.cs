@@ -19,19 +19,19 @@ namespace FlatFileExporter
             InitializeComponent();
         }
 
-        public string vrsn = "0.0.1.4";
+        public string vrsn = "0.1.5";
 
         #region Support Links to repo
 
         private void btnSupportDocs(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://bitbucket.org/eddyizm/flatfileexporter/wiki/Home");
+            Process.Start("https://github.com/eddyizm/flatfileexporter");
             e.Handled = true;
         }
 
         private void btnIssues(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://bitbucket.org/eddyizm/flatfileexporter/issues?status=new&status=open");
+            Process.Start("https://github.com/eddyizm/flatfileexporter/issues");
             e.Handled = true;
         }
 
