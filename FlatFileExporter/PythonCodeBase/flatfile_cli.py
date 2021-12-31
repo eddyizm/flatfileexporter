@@ -10,8 +10,26 @@
 import os
 import DAL as db # local library
 import argparse
+import logging
+from logging.handlers import RotatingFileHandler
 import sys
 directory = os.getcwd() 
+
+LOG_DIR = directory
+LOG_FILE = os.path.join(LOG_DIR, 'flatfile_cli.log') 
+FINISH_MSG = 'Closing FFE CLI'
+log_formatter = logging.Formatter('%(asctime)s | %(levelname)s | %(message)s')
+log_handler = RotatingFileHandler(LOG_FILE, mode='a', maxBytes=5*1024*1024, 
+                                 backupCount=5, encoding=None, delay=0)
+log_handler.setFormatter(log_formatter)
+log = logging.getLogger('root')
+log.setLevel(logging.DEBUG)
+log.addHandler(log_handler)
+ch = logging.StreamHandler()
+ch.setLevel(logging.INFO)
+ch.setFormatter(log_formatter)
+log.addHandler(ch)
+
 
 # argument parser
 parser = argparse.ArgumentParser(description="Reads a sql script or calls a stored procedure and exports results to a csv, txt or excel file.")
@@ -48,6 +66,7 @@ def clean_path(dir_path):
 def get_seperator():
     ''' find argument with value from GUI or CLI '''
     # TODO test against DB. the \t might work directly from the constant
+    log.info('Getting separator...')
     if args.comma:
         return args.comma
     elif args.tab:
@@ -59,6 +78,7 @@ def get_seperator():
 def get_extension():
     ''' find extension with value from GUI or CLI '''
     # TODO test against DB. the \t might work directly from the constant
+    log.info('Getting extenstion...')
     if args.csv:
         return args.csv
     elif args.txt:
@@ -66,27 +86,29 @@ def get_extension():
     else:
         return args.xlsx        
 
-# debugging method
-def print_args():
-    # CLI arg inputs
-    print(f'args.server: {args.server}')
-    print(f'args.db: {args.db}')
-    print(f'args.directory: {args.directory}')
-    print(f'args.filename: {args.filename}')
-    print(f'args.comma: {args.comma}')
-    print(f'args.tab: {args.tab}')
-    print(f'args.pipe: {args.pipe}')
-    print(f'args.sqlscript: {args.sqlscript}')
-    print(f'args.storedproc: {args.storedproc}')
-    print(f'args.username: {args.username}')
-    print(f'args.password: {args.password}')
+
+def log_args():
+    ''' CLI arg inputs -debugging method only'''
+    log.debug(f'args.server: {args.server}')
+    log.debug(f'args.db: {args.db}')
+    log.debug(f'args.directory: {args.directory}')
+    log.debug(f'args.filename: {args.filename}')
+    log.debug(f'args.comma: {args.comma}')
+    log.debug(f'args.tab: {args.tab}')
+    log.debug(f'args.pipe: {args.pipe}')
+    log.debug(f'args.sqlscript: {args.sqlscript}')
+    log.debug(f'args.storedproc: {args.storedproc}')
+    log.debug(f'args.username: {args.username}')
+    log.debug(f'args.password: {args.password}')
     
 
 def get_login():
     ''' assign login credentials if passed from GUI or from CLI '''
     if args.username:
+        log.debug('Getting credentials')
         return args.username, args.password
     else:
+        log.debug('no credentials found, returning None')
         return None, None        
 
 
@@ -111,9 +133,9 @@ def main():
             # fullpath = os.path.join(args.directory, args.filename)
             result = db.generate_file(args.storedproc, args.db, args.server, get_seperator(), args.directory, get_extension(), username=login, password=cred)
         else:
-            print (f'executing sql script {args.sqlscript}')
+            log.info(f'executing sql script {args.sqlscript}')
             qry = db.read_file(args.sqlscript)
-            # python flatfile_cli.py 127.0.0.1,14333 TutorialDB "C:\Users\eddyizm\Documents" -csv -c -s "C:\Users\eddyizm\Documents\queries.sql" -u sa -pass ex0Planet693$
+            
             result = db.generate_file(qry, args.db, args.server, get_seperator(), clean_path(args.directory), get_extension(), username=login, password=cred)
     except Exception as ex:
         print(f'error in main(): {ex}')
@@ -123,6 +145,8 @@ def main():
     
 
 if __name__ == '__main__':
-    # print_args()
+    log.info(f'Startiing FFE CLI version: {db.__version__}')
+    # log_args()
     main()
+    log.info(FINISH_MSG)
     
