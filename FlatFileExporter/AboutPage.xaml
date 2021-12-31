@@ -44,12 +44,12 @@
                 <Expander
                     x:Name="CurrentIssues"
                     HorizontalAlignment="Stretch"
-                    Header="Report Issues">
+                    Header="Submit Issues/Requests">
                     <StackPanel
                         Margin="24,8,24,16"
                         Orientation="Vertical"
                         TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
-                        <TextBlock Text="Support" />
+                        
                         <TextBlock
                             Opacity=".68"
                             Text="Please click below to read the documentation or submit and issue or feature request."
@@ -85,7 +85,7 @@
                         Margin="24,8,24,16"
                         Orientation="Vertical"
                         TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
-                        <TextBlock Height="78"><Run Text="Like the product? Buy me a coffee" /><Run Text=" " /><LineBreak />
+                        <TextBlock Height="78"><Run Text="Enjoy the app? Buy me a coffee" /><Run Text=" " /><LineBreak />
                             <InlineUIContainer>
                                 <Button
                                     Width="188"
