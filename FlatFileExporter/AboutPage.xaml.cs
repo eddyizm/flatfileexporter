@@ -44,11 +44,10 @@ namespace FlatFileExporter
 
         #endregion
 
-        private void test(object sender, RoutedEventArgs e)
+        private void btnLinkToWeb(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("hello");
-            checkversion();
-            
+            Process.Start("https://eddyizm.com/about/");
+            e.Handled = true;
         }
 
         private void Contribute_Expanded(object sender, RoutedEventArgs e)
@@ -56,7 +55,7 @@ namespace FlatFileExporter
             CurrentIssues.IsExpanded = false;
         }
 
-        private void checkversion()
+        private void btnCheckVersion(object sender, RoutedEventArgs e)
         {
             string caption = "Checking Version...";
             try

@@ -34,7 +34,7 @@
                     HorizontalAlignment="Right" 
                     Margin="0,10,20,10"
                     Padding="0,0,5,0" 
-                    Click="test"
+                    Click="btnCheckVersion"
                     Content="_Check for Updates"
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     ToolTip="Check For Updates"/>
@@ -83,7 +83,7 @@
                     x:Name="Contribute"
                     HorizontalAlignment="Stretch"
                     Expanded="Contribute_Expanded"
-                    Header="Contribute">
+                    Header="Say Hello">
                     <StackPanel
                         Margin="24,8,24,16"
                         Orientation="Vertical"
@@ -98,6 +98,19 @@
                                     <Button.Background>
                                         <ImageBrush ImageSource="/Resources/BuyMeACoffee.png" />
                                     </Button.Background>
+                                </Button>
+                            </InlineUIContainer><Run Text=" " />
+                            <InlineUIContainer />
+                        </TextBlock>
+                        <TextBlock Height="78"><Run Text="Need help? Need customization? Say hello!" /><Run Text=" " /><LineBreak />
+                            <InlineUIContainer>
+                                <Button
+                                    Width="188"
+                                    Height="37"
+                                    Margin="10"
+                                    Content="_Visit my personal page"
+                                    Click="btnLinkToWeb">
+                                    
                                 </Button>
                             </InlineUIContainer><Run Text=" " />
                             <InlineUIContainer />
