@@ -5,7 +5,7 @@
     # testing environment
     # linux sql server - 127.0.0.1,14333
     # database - TutorialDB
-    
+   
 ''' 
 import os
 import DAL as db # local library
@@ -33,7 +33,7 @@ log.addHandler(ch)
 
 # argument parser
 parser = argparse.ArgumentParser(description="Reads a sql script or calls a stored procedure and exports results to a csv, txt or excel file.")
-parser.add_argument("-V", "--version", action='version', version =f'v{db.__version__}')
+parser.add_argument("-V", "--version", action='version', version =f'{db.__version__}')
 parser.add_argument("server", help="server to run query against.")
 parser.add_argument("db", help="database to use on server.")
 parser.add_argument("directory", help="location to export flat file. do not specify extension.")
@@ -120,7 +120,7 @@ def get_filename():
 def main():
     # odbc check
     if not db.check_odbc():
-        print("Try again after installing ODBC driver. Application exiting.")
+        log.warn("Try again after installing ODBC driver. Application exiting.")
         os.system("pause")
         sys.exit()
     
@@ -129,7 +129,7 @@ def main():
     try:
         if not args.sqlscript:
             ''' if sql script is None/null then process using stored proc '''
-            print (f'executing stored proc {args.storedproc}') 
+            log.info(f'executing stored proc {args.storedproc}') 
             # fullpath = os.path.join(args.directory, args.filename)
             result = db.generate_file(args.storedproc, args.db, args.server, get_seperator(), args.directory, get_extension(), username=login, password=cred)
         else:
@@ -138,10 +138,13 @@ def main():
             
             result = db.generate_file(qry, args.db, args.server, get_seperator(), clean_path(args.directory), get_extension(), username=login, password=cred)
     except Exception as ex:
-        print(f'error in main(): {ex}')
+        log.error(f'error in main(): {ex}')
     finally: 
-      print(f'file generated - {result}')  
-      os.system("pause")      
+        if result:
+            log.info(f'file generated - {result}')
+        else:
+            log.info(f'No file generated. Please check the logs')
+        os.system("pause")      
     
 
 if __name__ == '__main__':

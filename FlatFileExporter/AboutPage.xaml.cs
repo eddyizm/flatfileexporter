@@ -14,12 +14,13 @@ namespace FlatFileExporter
     /// </summary>
     public partial class AboutPage : Page
     {
+        public string vrsn = "0.1.5";
         public AboutPage()
         {
             InitializeComponent();
+            vInfo.Text = $"Current Version: {vrsn} BETA";
         }
 
-        public string vrsn = "0.1.5";
 
         #region Support Links to repo
 
