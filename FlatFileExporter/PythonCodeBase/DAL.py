@@ -6,7 +6,7 @@ import pyodbc as db
 import pandas as pd
 import os
 from datetime import datetime
-# import xlsxwriter
+import xlsxwriter
 import logging
 log = logging.getLogger('root')
 
@@ -20,8 +20,7 @@ USERPASS_DBSTRING = 'DRIVER={{{}}};SERVER={};DATABASE={};UID={};PWD={}'
 ODBC_MISSING_MSG = '''ODBC driver not found
 please install ODBC Driver 17 for SQL Server
 https://www.microsoft.com/en-us/download/details.aspx?id=56567'''
-MSDRIVERS = ['ODBC Driver 17 for SQL Server', 'ODBC Driver 13 for SQL Server',
-   'SQL Server Native Client 11.0', 'SQL Server']
+MSDRIVERS = ['ODBC Driver 17 for SQL Server', 'SQL Server Native Client 11.0', 'SQL Server']
 
 
 def check_odbc() -> bool:
@@ -29,14 +28,11 @@ def check_odbc() -> bool:
   try:
     drivers = db.drivers()
     if drivers:
-      log.info('Checking for \'ODBC Driver 17 for SQL Server\' driver')
-      for driver in drivers:
-        if driver == 'ODBC Driver 17 for SQL Server':
-            log.info(f'Driver found - {driver}')
-            return True
-        if driver == 'ODBC Driver 11 for SQL Server':
-            log.info(f'Driver found - {driver}')
-            return True
+      log.info('Checking for a compatible driver')
+      for driver in MSDRIVERS:
+        if driver in drivers:
+          log.info(f'Driver found - {driver}')
+          return True
       else:
         log.warn(ODBC_MISSING_MSG)
         return False    
@@ -107,12 +103,11 @@ def generate_file(query, db_name, server, separator, directory, extension, file_
           df.to_csv(filename ,sep = separator, encoding='utf-8', index = False)
     return filename
   except Exception as ex:
-    # print(f'error in generate_file() function: {ex}')
     log.error(f'Error in generate_file() function: {ex}')
   
 
 if __name__ == '__main__':
-  check_odbc()
+  
   pass
   # TODO Add version 
   
