@@ -2,7 +2,7 @@ altgraph==0.17
 certifi==2023.7.22
 chardet==3.0.4
 future==0.18.3
-idna==2.10
+idna==3.7
 macholib==1.14
 numpy==1.22.0
 pandas==0.23.4
