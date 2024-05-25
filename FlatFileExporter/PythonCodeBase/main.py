@@ -2,7 +2,7 @@ from textual.app import App, ComposeResult
 from textual.containers import ScrollableContainer
 from textual.widgets import Header, Footer, Button, Static
 
-
+# pyinstaller -F -n testtextual main.py --paths=env/Lib/site-packages --add-data="stopwatch03.tcss;."
 class TimeDisplay(Static):
     """A widget to display elapsed time."""
 
