@@ -29,3 +29,25 @@ Button {
 #reset {
     dock: right;
 }
+
+.started {
+    text-style: bold;
+    background: $success;
+    color: $text;
+}
+
+.started TimeDisplay {
+    text-opacity: 100%;
+}
+
+.started #start {
+    display: none
+}
+
+.started #stop {
+    display: block
+}
+
+.started #reset {
+    visibility: hidden
+}
