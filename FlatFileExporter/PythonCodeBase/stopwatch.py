@@ -5,7 +5,7 @@ from textual.containers import ScrollableContainer
 from textual.widgets import Header, Footer, Button, Static
 from textual.reactive import reactive
 
-# pyinstaller -F -n testtextual main.py --paths=env/Lib/site-packages --add-data="stopwatch03.tcss;."
+# pyinstaller -F -n testtextual stopwatch.py --paths=env/Lib/site-packages --add-data="stopwatch03.tcss;."
 class TimeDisplay(Static):
     """A widget to display elapsed time."""
     start_time = reactive(monotonic)
@@ -67,7 +67,7 @@ class Stopwatch(Static):
         yield TimeDisplay("00:00:00.00")
 
 
-class FlatFileExporterApp(App):
+class StopWatchApp(App):
     """A Textual app export flat files."""
 
     CSS_PATH = "stopwatch03.tcss"
@@ -101,5 +101,5 @@ class FlatFileExporterApp(App):
 
 
 if __name__ == "__main__":
-    app = FlatFileExporterApp()
+    app = StopWatchApp()
     app.run()
