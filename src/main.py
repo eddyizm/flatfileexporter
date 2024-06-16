@@ -1,11 +1,19 @@
 from textual.app import App, ComposeResult
-from textual.widgets import Button
-from textual.widgets import Footer
-from textual.widgets import Header
-from textual.widgets import Label
-from textual.widgets import Static
-from textual.widgets import Input
-from textual.containers import Container, Grid
+from textual.widgets import (
+    Button,
+    Footer,
+    Header,
+    Input,
+    Label,
+    Static
+)
+from textual.containers import (
+    Container,
+    Grid
+)
+
+# #313245
+# tuna
 
 class FlatFileExporterApp(App):
     """A Textual app export flat files."""
@@ -18,13 +26,12 @@ class FlatFileExporterApp(App):
     def compose(self) -> ComposeResult:
         """Create child widgets for the app."""
         yield Header()
-        yield Label('top level text header')
+        yield Label('top level text header', classes='box')
         yield Input()
-        yield Button(label='Generate File')
-
-        yield Label()
         yield Footer()
-        yield Container()
+        with Container(classes='box'):
+            yield Button(label='Generate File')
+            yield Button(label='Exit')
 
     def action_toggle_dark(self) -> None:
         """An action to toggle dark mode."""

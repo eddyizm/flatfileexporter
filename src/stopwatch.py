@@ -25,7 +25,7 @@ class TimeDisplay(Static):
         minutes, seconds = divmod(time, 60)
         hours, minutes = divmod(minutes, 60)
         self.update(f"{hours:02,.0f}:{minutes:02.0f}:{seconds:05.2f}")
-    
+
     def start(self) -> None:
         """Method to start (or resume) time updating."""
         self.start_time = monotonic()
