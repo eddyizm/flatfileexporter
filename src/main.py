@@ -1,3 +1,5 @@
+import logging
+from logging.handlers import RotatingFileHandler
 from textual.app import App, ComposeResult
 from textual.widgets import (
     Button,
@@ -14,6 +16,7 @@ from textual.containers import (
     Horizontal
 )
 
+from DAL import check_odbc
 # #313245
 # tuna
 class FileExtensionCheckbox(Static):
@@ -44,7 +47,9 @@ class FlatFileExporterApp(App):
         button_id = event.button.id
         if button_id == "exit":
             self.exit()
- 
+        if button_id == "generate":
+            check_odbc()
+
     def compose(self) -> ComposeResult:
         """Create child widgets for the app."""
         yield Header()
@@ -53,7 +58,7 @@ class FlatFileExporterApp(App):
         yield Footer()
         with Container(classes='box'):
             yield Input(placeholder='Select a sql script...')
-            yield Button(label='Generate File')
+            yield Button(id='generate', label='Generate File')
             yield Button(id='exit', label='Exit')
 
     def action_toggle_dark(self) -> None:
