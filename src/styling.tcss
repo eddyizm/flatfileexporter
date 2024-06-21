@@ -1,4 +1,24 @@
-.box {
+.main_container {
     height: 1fr;
+    border: mediumpurple;
+}
+
+.box {
+    height: 5;
     border: solid green;
+}
+
+.button_layout {
+    align: center middle;
+    layout: horizontal;
+    padding: 1;
+}
+
+.center_buttons {
+    
+    margin: 1;
+}
+
+#script-input {
+    margin: 5;
 }

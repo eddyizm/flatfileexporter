@@ -20,9 +20,9 @@ from DAL import check_odbc
 # #313245
 # tuna
 class FileExtensionCheckbox(Static):
-
+    '''Add this optional extension in phase 2.'''
     def compose(self) -> ComposeResult:
-        with Horizontal():
+        with Horizontal(classes='box'):
             yield Checkbox("csv", True)
             yield Checkbox("[magenta]txt[/]")
             yield Checkbox("[b]XLSX[/b]")
@@ -53,13 +53,15 @@ class FlatFileExporterApp(App):
     def compose(self) -> ComposeResult:
         """Create child widgets for the app."""
         yield Header()
-        yield Label('top level text header', classes='box')
-        yield FileExtensionCheckbox(classes='box')
+        # yield Label('top level text header', classes='box')
+        
         yield Footer()
-        with Container(classes='box'):
-            yield Input(placeholder='Select a sql script...')
-            yield Button(id='generate', label='Generate File')
-            yield Button(id='exit', label='Exit')
+        with Container(classes='main_container'):
+            # yield FileExtensionCheckbox()
+            yield Input(placeholder='Select a sql script...', disabled=True, id='script-input')
+            with Horizontal(classes='button_layout'):
+                yield Button(id='generate', classes='center_buttons', label='Generate File')
+                yield Button(id='exit', classes='center_buttons', label='Exit')
 
     def action_toggle_dark(self) -> None:
         """An action to toggle dark mode."""
