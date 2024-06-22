@@ -19,6 +19,8 @@ from textual.containers import (
 from DAL import check_odbc
 # #313245
 # tuna
+TEXT = 'flat file exporter... hello world\n'
+
 class FileExtensionCheckbox(Static):
     '''Add this optional extension in phase 2.'''
     def compose(self) -> ComposeResult:
@@ -49,19 +51,20 @@ class FlatFileExporterApp(App):
             self.exit()
         if button_id == "generate":
             check_odbc()
-
+    
     def compose(self) -> ComposeResult:
         """Create child widgets for the app."""
-        yield Header()
+        yield Header(id="header")
         # yield Label('top level text header', classes='box')
-        
-        yield Footer()
-        with Container(classes='main_container'):
-            # yield FileExtensionCheckbox()
-            yield Input(placeholder='Select a sql script...', disabled=True, id='script-input')
-            with Horizontal(classes='button_layout'):
-                yield Button(id='generate', classes='center_buttons', label='Generate File')
-                yield Button(id='exit', classes='center_buttons', label='Exit')
+        yield Static("Sidebar1", id="sidebar")
+        yield Static(TEXT * 10, id="body")
+        # with Container(classes='main_container'):
+        #     # yield FileExtensionCheckbox()
+        #     yield Input(placeholder='Select a sql script...', disabled=True, id='script-input')
+        #     with Horizontal(classes='button_layout'):
+        #         yield Button(id='generate', classes='center_buttons', label='Generate File')
+        #         yield Button(id='exit', classes='center_buttons', label='Exit')
+        yield Footer(id='footer')
 
     def action_toggle_dark(self) -> None:
         """An action to toggle dark mode."""

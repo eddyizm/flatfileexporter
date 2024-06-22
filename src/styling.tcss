@@ -9,16 +9,35 @@
 }
 
 .button_layout {
-    align: center middle;
-    layout: horizontal;
-    padding: 1;
+    background: $boost;
+    # align: center right;
+    # layout: horizontal;
+    padding: 1 1 1 1;
 }
 
 .center_buttons {
-    
     margin: 1;
 }
 
+#generate {
+    background: mediumpurple;
+}
+
+
 #script-input {
+    background: $boost;
     margin: 5;
+}
+
+#sidebar {
+    dock: left;
+    width: 15;
+    height: 99%;
+    margin: 1 0 0 0;
+    # color: #0f2b41;
+    border: mediumpurple;
+}
+
+#body {
+    border: mediumpurple;
 }
