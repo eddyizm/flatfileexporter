@@ -42,9 +42,9 @@ class SideBarMenu(Static):
     def compose(self) -> ComposeResult:
         yield Label("Menu Bar")
         yield Button(id='select', label='Select a File')
-        # yield Static('Select a query ->')
         yield Label("[@click='app.bell']Select a query ->[/]")
         yield Button(id='generate', classes='menu_buttons', label='Generate File')
+        yield Button(id='settings', classes='menu_buttons', label='Settings')
         yield Button(id='exit', classes='menu_buttons', label='Exit')
 
 

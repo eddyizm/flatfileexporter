@@ -20,9 +20,9 @@
     border: none;
 }
 
-# Button:hover {
-#     background: boost$;
-#   }
+Button:hover {
+    background: mediumaquamarine !important;
+  }
 
 #generate {
     background: mediumpurple;
