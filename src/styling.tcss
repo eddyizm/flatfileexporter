@@ -15,12 +15,21 @@
     padding: 1 1 1 1;
 }
 
-.center_buttons {
-    margin: 1;
+.menu_buttons {
+    height: auto;
+    border: none;
 }
+
+# Button:hover {
+#     background: boost$;
+#   }
 
 #generate {
     background: mediumpurple;
+}
+
+#exit {
+    background: lightslategrey;
 }
 
 
@@ -31,10 +40,9 @@
 
 #sidebar {
     dock: left;
-    width: 15;
+    width: 20;
     height: 99%;
-    margin: 1 0 0 0;
-    # color: #0f2b41;
+    margin-top: 1;
     border: mediumpurple;
 }
 

@@ -1,5 +1,6 @@
-import logging
-from logging.handlers import RotatingFileHandler
+# import logging
+# from logging.handlers import RotatingFileHandler
+from textual import events
 from textual.app import App, ComposeResult
 from textual.widgets import (
     Button,
@@ -35,6 +36,18 @@ class ConnectionSettings(Static):
     pass
 
 
+class SideBarMenu(Static):
+    '''Fleshing out the side bar.'''
+
+    def compose(self) -> ComposeResult:
+        yield Label("Menu Bar")
+        yield Button(id='select', label='Select a File')
+        # yield Static('Select a query ->')
+        yield Label("[@click='app.bell']Select a query ->[/]")
+        yield Button(id='generate', classes='menu_buttons', label='Generate File')
+        yield Button(id='exit', classes='menu_buttons', label='Exit')
+
+
 class FlatFileExporterApp(App):
     """A Textual app export flat files."""
 
@@ -55,8 +68,8 @@ class FlatFileExporterApp(App):
     def compose(self) -> ComposeResult:
         """Create child widgets for the app."""
         yield Header(id="header")
-        # yield Label('top level text header', classes='box')
-        yield Static("Sidebar1", id="sidebar")
+        yield SideBarMenu(id="sidebar")
+        # yield Label("Menu Bar\nSelect A File ->", id="sidebar")
         yield Static(TEXT * 10, id="body")
         # with Container(classes='main_container'):
         #     # yield FileExtensionCheckbox()
