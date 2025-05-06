@@ -7,7 +7,8 @@ from .export import ExportSection
 
 def create_main_window(app):
     """Factory function to create the main window."""
-    window = toga.Window(title=app.formal_name)
+    window = toga.MainWindow(title=app.formal_name)
+    print(window.toolbar.__dict__)
 
     # Main container
     main_box = toga.Box(

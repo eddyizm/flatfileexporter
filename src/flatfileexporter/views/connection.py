@@ -50,7 +50,10 @@ class ConnectionSection(toga.Box):
             # TODO Call backend (uncomment when ready)
             # from py.db.connector import test_connection
             # test_connection(**params)
-
+            # self.app.main_window.dialog(toga.InfoDialog(
+            #     'Success',
+            #     f"Connected to {params['db_type']} at {params['server']}"
+            # ))
             self.app.main_window.info_dialog(
                 'Success',
                 f"Connected to {params['db_type']} at {params['server']}"
