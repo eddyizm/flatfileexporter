@@ -5,46 +5,46 @@ from toga.style.pack import COLUMN, ROW
 
 class ConfigView(toga.Box):
     def __init__(self, app, initial_config):
-        super().__init__(style=Pack(direction=COLUMN, padding=10, flex=1))
+        super().__init__(style=Pack(direction=COLUMN, margin=10, flex=1))
         self.app = app
 
         # Navigation toolbar
-        toolbar = toga.Box(style=Pack(direction=ROW, padding=5))
+        toolbar = toga.Box(style=Pack(direction=ROW, margin=5))
         back_btn = toga.Button(
-            "Back to Main", on_press=self._save_and_exit, style=Pack(padding=5)
+            "Back to Main", on_press=self._save_and_exit, style=Pack(margin=5)
         )
         toolbar.add(back_btn)
 
         # Configuration content
-        content_box = toga.Box(style=Pack(direction=COLUMN, padding=10, flex=1))
+        content_box = toga.Box(style=Pack(direction=COLUMN, margin=10, flex=1))
 
         # Database connection fields
         self.db_type = toga.Selection(
             items=["SQL Server", "PostgreSQL", "MySQL"],
             value=initial_config.get("db_type", "SQL Server"),
-            style=Pack(padding=5),
+            style=Pack(margin=5),
         )
 
         self.server_input = toga.TextInput(
             value=initial_config.get("server", ""),
             placeholder="Server",
-            style=Pack(padding=5),
+            style=Pack(margin=5),
         )
 
         self.db_input = toga.TextInput(
             value=initial_config.get("database", ""),
             placeholder="Database",
-            style=Pack(padding=5),
+            style=Pack(margin=5),
         )
 
         self.username_input = toga.TextInput(
             value=initial_config.get("username", ""),
             placeholder="Username",
-            style=Pack(padding=5),
+            style=Pack(margin=5),
         )
 
         self.password_input = toga.PasswordInput(
-            placeholder="Password", style=Pack(padding=5)
+            placeholder="Password", style=Pack(margin=5)
         )
 
         # Add fields to content box
@@ -61,7 +61,7 @@ class ConfigView(toga.Box):
 
         # Add test connection button
         test_btn = toga.Button(
-            "Test Connection", on_press=self._test_connection, style=Pack(padding=10)
+            "Test Connection", on_press=self._test_connection, style=Pack(margin=10)
         )
         content_box.add(test_btn)
 

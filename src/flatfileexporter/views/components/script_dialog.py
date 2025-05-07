@@ -22,7 +22,7 @@ class ScriptDialog(toga.Window):
         self.preview = toga.MultilineTextInput(readonly=True, style=Pack(flex=1))
 
         # Action buttons
-        btn_box = toga.Box(style=Pack(direction=ROW, padding_top=10))
+        btn_box = toga.Box(style=Pack(direction=ROW, margin_top=10))
         load_btn = toga.Button(
             "Load Script", on_press=self.load_script, style=Pack(flex=1, padding=5)
         )
