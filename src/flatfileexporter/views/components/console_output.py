@@ -2,10 +2,13 @@ import toga
 from toga.style import Pack
 from toga.style.pack import COLUMN
 
+
 class ConsoleOutput(toga.Box):
     def __init__(self):
         super().__init__(style=Pack(direction=COLUMN, flex=1))
-        self.output = toga.MultilineTextInput(readonly=True)
+        self.output = toga.MultilineTextInput(
+            readonly=True, style=Pack(flex=1, font_family="monospace", padding_bottom=5)
+        )
         # Replace ProgressBar with simple activity indicator
         self.status_label = toga.Label("Ready", style=Pack(padding_top=5))
         self.add(self.output)

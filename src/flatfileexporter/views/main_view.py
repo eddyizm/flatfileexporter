@@ -27,7 +27,7 @@ class MainView(toga.Box):
 
         # Add SQL script button
         script_btn = toga.Button(
-            "Execute SQL", on_press=self.execute_script, style=Pack(padding=10)
+            "Generate file", on_press=self.execute_script, style=Pack(padding=10)
         )
 
         content_box.add(script_btn)

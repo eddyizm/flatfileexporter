@@ -27,7 +27,7 @@ class FlatFileExporter(toga.App):
         self.config_view = ConfigView(app=self, initial_config=self.saved_config)
 
         # Create main window
-        self.main_window = toga.MainWindow(title=self.name)
+        self.main_window = toga.MainWindow(title=self.formal_name)
 
         # Show main view initially
         self._show_main_view()
