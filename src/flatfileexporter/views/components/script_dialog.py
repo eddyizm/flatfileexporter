@@ -63,7 +63,6 @@ class ScriptDialog(toga.Window):
         try:
             with open(path, "r") as f:
                 content = f.read()
-                # Show first 500 chars for preview
                 self.preview.value = content[:500] + (
                     "..." if len(content) > 500 else ""
                 )
@@ -77,13 +76,8 @@ class ScriptDialog(toga.Window):
             return
 
         try:
-            # Here you would implement what happens when a script is loaded
-            print(f"Loading script: {self.file_path.value}")
 
-            # For example, you might want to:
-            # 1. Store the script path in your app
-            # 2. Parse the script
-            # 3. Show it in the main view
+            print(f"Loading script: {self.file_path.value}")
 
             self.app.main_window.info_dialog(
                 "Success",
