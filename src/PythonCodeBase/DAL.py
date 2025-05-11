@@ -34,10 +34,10 @@ def check_odbc() -> bool:
           log.info(f'Driver found - {driver}')
           return True
       else:
-        log.warn(ODBC_MISSING_MSG)
+        log.warning(ODBC_MISSING_MSG)
         return False    
     else:
-      log.warn(ODBC_MISSING_MSG)
+      log.warning(ODBC_MISSING_MSG)
       return False
   except Exception as ex:
     log.error(f'Error in check_odbc(): {ex}')

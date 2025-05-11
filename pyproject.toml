@@ -2,7 +2,7 @@
 [tool.briefcase]
 project_name = "Flat File Exporter"
 bundle = "com.eddyizm"
-version = "0.0.1"
+version = "0.1.5"
 url = "https://eddyizm.com/flatfileexporter"
 license.file = "LICENSE"
 author = "eduardo cervantes"
@@ -35,7 +35,7 @@ requires = [
 
 [tool.briefcase.app.flatfileexporter.linux]
 requires = [
-    "toga-gtk~=0.4.7",
+    "toga-gtk~=0.5.0",
 ]
 
 [tool.briefcase.app.flatfileexporter.linux.system.debian]

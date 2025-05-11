@@ -1,10 +1,8 @@
 import toga
-import os
 from toga.style import Pack
 from toga.style.pack import COLUMN, ROW
 from .components.console_output import ConsoleOutput
-
-# from .components.script_dialog import ScriptDialog
+from ..models.files import FileExport
 
 
 class MainView(toga.Box):
@@ -19,36 +17,33 @@ class MainView(toga.Box):
             on_press=lambda widget: self.app._show_config_view(),
             style=Pack(margin=5),
         )
+        toolbar.add(config_btn)
 
+        # script selection
         add_script_btn = toga.Button(
             "Select SQL Script",
             on_press=self.open_file_dialog,
-            # on_press=self._add_script,
-            # icon='resources/file-upload-line',
             style=Pack(margin=5),
         )
-        toolbar.add(config_btn)
+
         self.file_label = toga.Label(
             "_", id="filelabel", style=Pack(direction=ROW, margin_top=15)
         )
-        # toolbar.add(add_script_btn)
         self.file_toolbar = toga.Box(style=Pack(direction=ROW, margin=5))
 
+        # Create file extension selector component
+        self.selection = toga.Selection(
+            items=["csv", "txt", "xlsx"],
+            on_change=self._file_selection,
+            style=Pack(margin=5),
+        )
+
+        # Change the selection to "Charlie"
+        self.selection.value = "csv"
+
+        self.file_toolbar.add(self.selection)
         self.file_toolbar.add(self.file_label)
         self.file_toolbar.add(add_script_btn)
-
-        # # Create UI elements
-        # self.open_button = toga.Button(
-        #     "Open SQL File",
-        #     on_press=self.open_file_dialog,
-        #     style=Pack(padding=10)
-        # )
-
-        # # Add a label to show selected file info
-        # self.file_label = toga.Label(
-        #     "No file selected",
-        #     style=Pack(padding=(0, 5, 10, 5))
-        # )
 
         # Main content
         content_box = toga.Box(style=Pack(direction=COLUMN, flex=1))
@@ -67,12 +62,24 @@ class MainView(toga.Box):
         self.add(self.file_toolbar)
         self.add(content_box)
 
+        # create file export object to hold values
+        self._file_export = FileExport(filename="", filetype="", sql_query="")
+
     def execute_script(self, widget):
         """Button handler - just delegates to app"""
-        self.app.execute_sql()
+
+        if self._file_export.sql_query == "":
+            self.console.log("Error, please select a valid sql script.")
+            return
+        self._file_export.filetype = self.selection.value
+        self._file_export.filename = "test"
+        self.app.execute_sql(self._file_export)
 
     def refresh_data(self):
-        self.console.log("Application ready")
+        self.console.log("Ready")
+
+    def _file_selection(self, widget):
+        self.console.log(f"file selected: {self.selection.value}")
 
     def _add_script(self, widget):
         self.console.log("adding sql script")
@@ -83,8 +90,6 @@ class MainView(toga.Box):
         self.console.log(type(script_path))
         self.console.log(script_path)
         self.console.log(script_path.__dict__)
-
-    #         breakpoint()
 
     async def open_file_dialog(self, widget):
         try:
@@ -102,19 +107,13 @@ class MainView(toga.Box):
             print(f"No file selected: {e}")
 
     async def handle_file_selection(self, file_path):
-        # Update the UI
         self.file_label.text = f"Selected: {file_path.name}"
-
-        # Show confirmation dialog
         await self.app.main_window.info_dialog(
             "File Selected", f"Successfully selected:\n{file_path}"
         )
         with open(str(file_path), "r") as f:
             content = f.readlines()
+            self._file_export.sql_query = content
 
             for line in content:
                 self.console.log(line.replace("\n", ""))
-        # Here you would typically:
-        # 1. Read the SQL file (file_path.read())
-        # 2. Process the content
-        # 3. Update other parts of your UI

@@ -3,7 +3,7 @@ import asyncio
 from .storage import AppConfig
 from .views.main_view import MainView
 from .views.config_view import ConfigView
-
+from .models.files import FileExport
 
 class FlatFileExporter(toga.App):
     def __init__(self, *args, **kwargs):
@@ -49,19 +49,16 @@ class FlatFileExporter(toga.App):
         """Switch to config view (private method)"""
         self.main_window.content = self.config_view
 
-    def execute_sql(self):
+    def execute_sql(self, file_info: FileExport):
         """Simple synchronous execution with progress feedback"""
-        self.main_view.console.show_working()
         self.main_view.console.log("Starting execution...")
-
+        self.main_view.console.log(file_info.as_json)
         import time
 
         for i in range(5):
             time.sleep(1)  # Blocking sleep
             self.main_view.console.log(f"Completed step {i+1}")
-
         self.main_view.console.log("Execution finished")
-        self.main_view.console.show_ready()
 
 
 def main():
