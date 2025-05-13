@@ -1,6 +1,7 @@
 import toga
 from toga.style import Pack
 from toga.style.pack import COLUMN, ROW
+from flatfileexporter.data.DAL import check_odbc
 
 
 class ConfigView(toga.Box):
@@ -80,6 +81,7 @@ class ConfigView(toga.Box):
                 "password": self.password_input.value,
             }
             # Call your backend connection test here
+            check_odbc()
             print(f"Testing connection: {params}")
             self.app.main_window.info_dialog(
                 "Success", f"Connected to {params['db_type']} at {params['server']}"

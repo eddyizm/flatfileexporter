@@ -11,11 +11,9 @@ import logging
 log = logging.getLogger('root')
 
 date_var = datetime.now().strftime("%Y%m%d")
-# When called from UI the directory will default to the l`ocation of the SQL script. 
-# TODO figure out how to auto increment this and pass it/share it with c# codebase
-__version__= '0.1.5'
+# When called from UI the directory will default to the location of the SQL script. 
 
-DB_STRING = 'DRIVER={{{}}};SERVER={};Trusted_Connection=yes;DATABASE={}'	
+DB_STRING = 'DRIVER={{{}}};SERVER={};Trusted_Connection=yes;DATABASE={}'
 USERPASS_DBSTRING = 'DRIVER={{{}}};SERVER={};DATABASE={};UID={};PWD={}'
 ODBC_MISSING_MSG = '''ODBC driver not found
 please install ODBC Driver 17 for SQL Server

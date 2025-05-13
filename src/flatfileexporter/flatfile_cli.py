@@ -8,7 +8,7 @@
    
 ''' 
 import os
-import DAL as db # local library
+import flatfileexporter.data.DAL as db # local library
 import argparse
 import logging
 from logging.handlers import RotatingFileHandler
@@ -33,7 +33,7 @@ log.addHandler(ch)
 
 # argument parser
 parser = argparse.ArgumentParser(description="Reads a sql script or calls a stored procedure and exports results to a csv, txt or excel file.")
-parser.add_argument("-V", "--version", action='version', version =f'{db.__version__}')
+# parser.add_argument("-V", "--version", action='version')
 parser.add_argument("server", help="server to run query against.")
 parser.add_argument("db", help="database to use on server.")
 parser.add_argument("directory", help="location to export flat file. do not specify extension.")
@@ -148,7 +148,7 @@ def main():
     
 
 if __name__ == '__main__':
-    log.info(f'Startiing FFE CLI version: {db.__version__}')
+    log.info('Startiing FFE CLI')
     # log_args()
     main()
     log.info(FINISH_MSG)
