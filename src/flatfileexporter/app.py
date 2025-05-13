@@ -1,5 +1,4 @@
 import toga
-import asyncio
 from .storage import AppConfig
 from .views.main_view import MainView
 from .views.config_view import ConfigView

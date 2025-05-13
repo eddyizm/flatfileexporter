@@ -7,10 +7,10 @@ class ConsoleOutput(toga.Box):
     def __init__(self):
         super().__init__(style=Pack(direction=COLUMN, flex=1))
         self.output = toga.MultilineTextInput(
-            readonly=True, style=Pack(flex=1, font_family="monospace", margin_bottom=5)
+            readonly=True, style=Pack(flex=1, font_family="monospace", margin_bottom=5, margin_left=10, margin_right=10)
         )
         self.status_label = toga.Label(
-            "Application Log", style=Pack(margin_top=5, margin_bottom=5)
+            "Application Log", style=Pack(margin_top=5, margin_bottom=5, margin_left=10, margin_right=10)
         )
         self.add(self.status_label)
         self.add(self.output)

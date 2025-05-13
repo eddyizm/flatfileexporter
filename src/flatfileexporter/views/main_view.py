@@ -13,9 +13,9 @@ class MainView(toga.Box):
         # Navigation toolbar
         toolbar = toga.Box(style=Pack(direction=ROW, margin=5))
         config_btn = toga.Button(
-            "Configuration",
+            "db configuration",
             on_press=lambda widget: self.app._show_config_view(),
-            style=Pack(margin=5),
+            style=Pack(margin=5, width=180),
         )
         toolbar.add(config_btn)
 
@@ -23,27 +23,37 @@ class MainView(toga.Box):
         add_script_btn = toga.Button(
             "Select SQL Script",
             on_press=self.open_file_dialog,
-            style=Pack(margin=5),
+            style=Pack(margin=5, width=180),
         )
 
         self.file_label = toga.Label(
-            "_", id="filelabel", style=Pack(direction=ROW, margin_top=15)
+            "Sql script",
+            id="filelabel",
+            style=Pack(direction=ROW, margin_top=15, margin_left=10, flex=0.5),
         )
         self.file_toolbar = toga.Box(style=Pack(direction=ROW, margin=5))
 
+        self.extension_block = toga.Box(style=Pack(direction=ROW, margin=5))
         # Create file extension selector component
-        self.selection = toga.Selection(
+        self.extension_label = toga.Label(
+            "Output (file type)",
+            id="ext_lb",
+            style=Pack(direction=ROW, margin_top=15, margin_left=10, flex=0.5),
+        )
+        self.extension = toga.Selection(
             items=["csv", "txt", "xlsx"],
             on_change=self._file_selection,
-            style=Pack(margin=5),
+            style=Pack(margin=5, width=180),
         )
 
-        # Change the selection to "Charlie"
-        self.selection.value = "csv"
+        # Set selection to default (config option?)
+        self.extension.value = "csv"
 
-        self.file_toolbar.add(self.selection)
-        self.file_toolbar.add(self.file_label)
+        self.extension_block.add(self.extension)
+        self.extension_block.add(self.extension_label)
+
         self.file_toolbar.add(add_script_btn)
+        self.file_toolbar.add(self.file_label)
 
         # Main content
         content_box = toga.Box(style=Pack(direction=COLUMN, flex=1))
@@ -57,8 +67,9 @@ class MainView(toga.Box):
 
         content_box.add(script_btn)
         content_box.add(self.console)
-
+        # add to main view
         self.add(toolbar)
+        self.add(self.extension_block)
         self.add(self.file_toolbar)
         self.add(content_box)
 
@@ -79,7 +90,7 @@ class MainView(toga.Box):
         self.console.log("Ready")
 
     def _file_selection(self, widget):
-        self.console.log(f"file selected: {self.selection.value}")
+        self.console.log(f"file selected: {self.extension.value}")
 
     def _add_script(self, widget):
         self.console.log("adding sql script")
