@@ -2,11 +2,6 @@ from dataclasses import dataclass, asdict
 from enum import Enum
 from typing import Optional
 
-# class FileType(Enum):
-#     CSV = "csv"
-#     TXT = "txt"
-#     XLSX = "xlsx"
-
 
 @dataclass
 class FileExport:

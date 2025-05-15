@@ -1,7 +1,13 @@
 import toga
 from toga.style import Pack
 from toga.style.pack import COLUMN, ROW
-from flatfileexporter.data.DAL import check_odbc
+from flatfileexporter.data.DAL import (
+    check_odbc,
+    test_db_connect,
+    ODBC_MISSING_MSG
+)
+import logging
+log = logging.getLogger('root')
 
 
 class ConfigView(toga.Box):
@@ -62,7 +68,7 @@ class ConfigView(toga.Box):
 
         # Add test connection button
         test_btn = toga.Button(
-            "Test Connection", on_press=self._test_connection, style=Pack(margin=10)
+            "Test Connection", on_press=self._test_btn_click, style=Pack(margin=10)
         )
         content_box.add(test_btn)
 
@@ -70,22 +76,27 @@ class ConfigView(toga.Box):
         self.add(toolbar)
         self.add(content_box)
 
-    def _test_connection(self, widget):
+    def get_params(self) -> dict:
+        return {
+            "db_type": self.db_type.value,
+            "server": self.server_input.value,
+            "database": self.db_input.value,
+            "username": self.username_input.value,
+            "password": self.password_input.value,
+        }
+
+    def _test_btn_click(self, widget):
         """Test database connection"""
         try:
-            params = {
-                "db_type": self.db_type.value,
-                "server": self.server_input.value,
-                "database": self.db_input.value,
-                "username": self.username_input.value,
-                "password": self.password_input.value,
-            }
-            # Call your backend connection test here
-            check_odbc()
-            print(f"Testing connection: {params}")
-            self.app.main_window.info_dialog(
-                "Success", f"Connected to {params['db_type']} at {params['server']}"
-            )
+            params = self.get_params()
+            server = f'{params['db_type']} at {params['server']}'
+            db_result = test_db_connect(params)
+            if db_result.success_response:
+                self.app.main_window.info_dialog(
+                    "Success", f"{db_result.message}"
+                )
+            else:
+                self.app.main_window.error_dialog("Error", db_result.message)
         except Exception as e:
             self.app.main_window.error_dialog("Error", str(e))
 

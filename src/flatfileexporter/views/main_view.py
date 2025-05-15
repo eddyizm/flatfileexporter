@@ -82,7 +82,7 @@ class MainView(toga.Box):
         if self._file_export.sql_query == "":
             self.console.log("Error, please select a valid sql script.")
             return
-        self._file_export.filetype = self.selection.value
+        self._file_export.filetype = self.extension.value
         self._file_export.filename = "test"
         self.app.execute_sql(self._file_export)
 

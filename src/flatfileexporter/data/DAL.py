@@ -5,9 +5,11 @@ Will also use this area to check for ODBC.
 import pyodbc as db
 import pandas as pd
 import os
+import sys
 from datetime import datetime
 import xlsxwriter
 import logging
+from flatfileexporter.models.data_service import DatabaseConnectionTest
 log = logging.getLogger('root')
 
 date_var = datetime.now().strftime("%Y%m%d")
@@ -16,46 +18,72 @@ date_var = datetime.now().strftime("%Y%m%d")
 DB_STRING = 'DRIVER={{{}}};SERVER={};Trusted_Connection=yes;DATABASE={}'
 USERPASS_DBSTRING = 'DRIVER={{{}}};SERVER={};DATABASE={};UID={};PWD={}'
 ODBC_MISSING_MSG = '''ODBC driver not found
-please install ODBC Driver 17 for SQL Server
-https://www.microsoft.com/en-us/download/details.aspx?id=56567'''
-MSDRIVERS = ['ODBC Driver 17 for SQL Server', 'SQL Server Native Client 11.0', 'SQL Server']
+please install ODBC Driver for SQL Server
+https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver16'''
+MSDRIVERS = ['ODBC Driver 18 for SQL Server', 'ODBC Driver 17 for SQL Server', 'SQL Server Native Client 11.0', 'SQL Server']
 
 
-def check_odbc() -> bool:
-  ''' check for odbc driver '''
-  try:
-    drivers = db.drivers()
-    if drivers:
-      log.info('Checking for a compatible driver')
-      for driver in MSDRIVERS:
-        if driver in drivers:
-          log.info(f'Driver found - {driver}')
-          return True
-      else:
-        log.warning(ODBC_MISSING_MSG)
-        return False    
-    else:
-      log.warning(ODBC_MISSING_MSG)
-      return False
-  except Exception as ex:
-    log.error(f'Error in check_odbc(): {ex}')
+def get_os_and_platform() -> tuple:
+    return (sys.platform, os.system('uname -a'))
+
+
+def test_db_connect(params) -> DatabaseConnectionTest:
+    params.get('db_type')
+    params.get('database')
+    params.get('server')
+    db_connection = DB_STRING.format(MSDRIVERS[0], params.get('server'), params.get('database'))
+    db_result = DatabaseConnectionTest(
+        message='',
+        success_response=False
+    )
+    try:
+        conn = db.connect(db_connection)
+        conn.close()
+        db_result.message = f"Connected to {params.get('server')}"
+        return db_result
+    except db.Error as e:
+        # print("Error connecting to SQL Server:", e)
+        db_result.message = f"Unable connect to Server: {e}"
+        return db_result
+
+
+def check_odbc(params, platform) -> bool:
+    ''' check for odbc driver on nt systems.'''
+    try:
+        drivers = db.drivers()
+        if platform == 'linux':
+            return test_db_connect(params, drivers)
+        log.info(os.system('uname -a'))
+        if drivers:
+            log.info('Checking for a compatible driver')
+            for driver in MSDRIVERS:
+                if driver in drivers:
+                    log.info(f'Driver found - {driver}')
+                    return True
+                else:
+                    log.warning(ODBC_MISSING_MSG)
+                    return False
+        else:
+            log.warning(ODBC_MISSING_MSG)
+            return False
+    except Exception as ex:
+        log.error(f'Error in check_odbc(): {ex}')
 
 
 def get_odbc() -> str:
-  ''' get odbc driver - the check should have already been done and pass
-  however maybe I need to combine this later to specify which one to use.
-  '''
-  try:
-    drivers = db.drivers()
-    if drivers:
-      log.info('Loading driver')
-      for driver in MSDRIVERS:
-        if driver in drivers:
-          log.info(f'Driver found - {driver}')
-          return driver
-
-  except Exception as ex:
-    log.error(f'Error in get_odbc(): {ex}')
+    ''' get odbc driver - the check should have already been done and pass
+    however maybe I need to combine this later to specify which one to use.
+    '''
+    try:
+        drivers = db.drivers()
+        if drivers:
+            log.info('Loading driver')
+            for driver in MSDRIVERS:
+                if driver in drivers:
+                    log.info(f'Driver found - {driver}')
+                    return driver
+    except Exception as ex:
+        log.error(f'Error in get_odbc(): {ex}')
 
 
 def read_file(file):
@@ -108,6 +136,3 @@ if __name__ == '__main__':
   
   pass
   # TODO Add version 
-  
-  
-  
