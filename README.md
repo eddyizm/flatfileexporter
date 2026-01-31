@@ -49,22 +49,22 @@ https://www.microsoft.com/en-us/download/details.aspx?id=49981
 
 # GUI 
 ---
-![alt text](Docs/assets/ffe_01.png "Flat File Exporter") 
+![alt text](docs/assets/ffe_01.png "Flat File Exporter") 
 
 The server and database has a dummy value, `Server1` and `DB1`. 
 You will need to specify your actual server by clicking on the plus and going to the Add A Server screen. 
 
-![alt text](Docs/assets/ffe_02.png "Add A Server") 
+![alt text](docs/assets/ffe_02.png "Add A Server") 
 
 Add your databases...
 
-![alt text](Docs/assets/ffe_03.png "Add A Database") 
+![alt text](docs/assets/ffe_03.png "Add A Database") 
 
 ### Credentials
 
 By default Flat File Exporter uses Microsoft's ODBC Driver 17 for SQL Server and the Trusted_Connection=yes setting, passing the credentials of the user along to the db. This is standard practice in Enterprise environments that relay on AD to manage permissions. If you enter credentials below then your default credentials will be ignored."
 
-![alt text](Docs/assets/ffe_04.png "Credentials") 
+![alt text](docs/assets/ffe_04.png "Credentials") 
 
 ---
 # Command Line Interface (CLI)  
