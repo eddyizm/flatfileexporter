@@ -5,9 +5,9 @@ from utils import get_version_from_file
 
 with ui.header().classes(replace="row items-center") as header:
     with ui.tabs() as tabs:
-        ui.tab(constants.NAV_HOME)
-        ui.tab(constants.NAV_CONFIG)
-        ui.tab(constants.NAV_LOG)
+        ui.tab(constants.NAV_HOME, icon=constants.NAV_HOME)
+        ui.tab(constants.NAV_CONFIG, icon='settings')
+        ui.tab(constants.NAV_LOG, icon='receipt_long')
 
 with ui.footer(value=False) as footer:
     ui.label(get_version_from_file())
