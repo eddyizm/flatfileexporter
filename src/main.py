@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-from nicegui import ui
+from nicegui import ui, app
 from core import constants
 from utils import get_version_from_file
+
+from views.config_view import config_page_content
 
 with ui.header().classes(replace="row items-center") as header:
     with ui.tabs() as tabs:
@@ -20,8 +22,8 @@ with ui.tab_panels(tabs, value=constants.NAV_HOME).classes("w-full"):
     with ui.tab_panel(constants.NAV_HOME):
         ui.label("Home")
     with ui.tab_panel(constants.NAV_CONFIG):
-        ui.label("Config")
+        config_page_content()
     with ui.tab_panel(constants.NAV_LOG):
         ui.label("Log")
 
-ui.run(fastapi_docs=True)
+ui.run(fastapi_docs=True, storage_secret=constants.NAV_HOME)
