@@ -1,29 +1,46 @@
 #!/usr/bin/env python3
-from nicegui import ui, app
-from core import constants
-from utils import get_version_from_file
+import sqlite3
+import uuid
+from nicegui import ui
+from tasks import simulate_work_order
 
-from views.config_view import config_page_content
+# Setup the state DB
+with sqlite3.connect('poc.db') as conn:
+    conn.execute('CREATE TABLE IF NOT EXISTS jobs (id TEXT, data TEXT, status TEXT, result TEXT)')
 
-with ui.header().classes(replace="row items-center") as header:
-    with ui.tabs() as tabs:
-        ui.tab(constants.NAV_HOME, icon=constants.NAV_HOME)
-        ui.tab(constants.NAV_CONFIG, icon='settings')
-        ui.tab(constants.NAV_LOG, icon='receipt_long')
+def get_db_rows():
+    with sqlite3.connect('poc.db') as conn:
+        return [{'id': r[0], 'data': r[1], 'status': r[2], 'result': r[3]} for r in conn.execute('SELECT * FROM jobs')]
 
-with ui.footer(value=False) as footer:
-    ui.label(get_version_from_file())
+def process_input():
+    for line in text_input.value.strip().split('\n'):
+        if not line.strip(): continue
+        
+        
+        result = simulate_work_order(line.strip())
+        with sqlite3.connect('poc.db') as conn:
+            conn.execute('INSERT INTO jobs VALUES (?, ?, ?, ?)', (result.id, line.strip(), 'Pending', '-'))
+        # print(result.id)
+    
+    text_input.set_value('')
+    grid.rows[:] = get_db_rows()
+    grid.update()
 
+with ui.column().classes('w-full p-4'):
+    text_input = ui.textarea('Work Orders').classes('w-full')
+    ui.button('Enqueue', on_click=process_input).classes('w-full')
+    
+    grid = ui.table(
+        columns=[
+            {'name': 'id', 'label': 'ID', 'field': 'id'},
+            {'name': 'data', 'label': 'Data', 'field': 'data'},
+            {'name': 'status', 'label': 'Status', 'field': 'status'},
+            {'name': 'result', 'label': 'Result', 'field': 'result'},
+        ], 
+        rows=get_db_rows()
+    ).classes('w-full mt-4')
 
-with ui.page_sticky(position="bottom-right", x_offset=20, y_offset=20):
-    ui.button(on_click=footer.toggle, icon="contact_support").props("fab")
+# Poll every 2 seconds to refresh the table from poc.db
+ui.timer(2.0, lambda: (setattr(grid, 'rows', get_db_rows()), grid.update()))
 
-with ui.tab_panels(tabs, value=constants.NAV_HOME).classes("w-full"):
-    with ui.tab_panel(constants.NAV_HOME):
-        ui.label("Home")
-    with ui.tab_panel(constants.NAV_CONFIG):
-        config_page_content()
-    with ui.tab_panel(constants.NAV_LOG):
-        ui.label("Log")
-
-ui.run(fastapi_docs=True, storage_secret=constants.NAV_HOME)
+ui.run()
